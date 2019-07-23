@@ -36,11 +36,11 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  if(password.length < 7){
-    res.json({ message: 'Please make your password at least 8 characters long for security purposes.' });
-    console.log("hola")
-    return;
-}
+//   if(password.length < 7){
+//     res.json({ message: 'Please make your password at least 8 characters long for security purposes.' });
+//     console.log("hola")
+//     return;
+// }
 
 
   User.findOne({ username }, "username", (err, foundUser) => {

@@ -6,7 +6,9 @@ export default class Profile extends Component {
       <div>
         <h1>{this.props.username} DONDE VAMOS HOY??</h1>
         <button onClick={(e)=>{this.props.logout(e)}}>LOGOUT</button>
-        <p>{(this.props).toString()}</p>
+        <p>{this.props.email}</p> 
+        <p>{this.props.about}</p>  
+        <img src={this.props.avatar} alt="blabla" /> 
       </div>
     )
   }

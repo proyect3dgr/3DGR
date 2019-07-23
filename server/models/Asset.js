@@ -1,0 +1,31 @@
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
+
+const assetSchema = new Schema({
+  author: {type:Schema.Types.ObjectId, ref:"User"},
+  title: String,
+  urlPathModel: String,
+  urlPathImg: String,
+  description: String,
+  price: Number,
+  size: Number,
+  format: {
+    type: String,
+    enum: ["COLLADA", "MAYA", "FBX"],
+    default: "COLLADA"
+  },
+  categories:  {
+    type:[String],
+    enum: ["Animal", "Character", "Industrial", "Nature", "Others", "Robot", "Vehicles", "Weapons"],
+    default:["Others"] 
+  },
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+});
+
+const Asset = mongoose.model('Asset', assetSchema);
+module.exports = Asset;
