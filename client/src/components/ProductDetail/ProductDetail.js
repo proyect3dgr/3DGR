@@ -6,7 +6,7 @@ export default class ProductDetail extends Component {
   constructor(){
     super()
     this.state = {
-      assetDetails: {} 
+      assetDetails:{author:"", comments:[{author:""}]}    
     }
     this.service = new AssetServices() 
   } 
@@ -14,22 +14,29 @@ export default class ProductDetail extends Component {
   componentDidMount() {
 
     this.service.assets().then(assetPayload => {
-      console.log(assetPayload[0])
       this.setState({ 
       ...this.state,
-      assetDetails: assetPayload[0] 
+      assetDetails: assetPayload[0]
     }  
     )} 
     )
     
   } 
 
-  render() {
+  render() { 
+    console.log(this.state.assetDetails.comments[0])
     return (
       <div>
         <p>{this.state.assetDetails.title}</p>
-        <img src={this.state.assetDetails.urlPathImg} alt ="ok"/>
-        <p>{this.state.assetDetails.author}</p>
+        <img src={this.state.assetDetails.urlPathImg} style={{width: 200, height: 200}}  alt ="ok"/>
+        <p>{this.state.assetDetails.author.description} </p>
+{
+  this.state.assetDetails.comments.map((el, idx) => {
+    return (<div key={idx}><p>{el.description}</p>
+      <p>{el.author.username}</p></div>)
+  } )
+} 
+
       </div>
     )
   }
