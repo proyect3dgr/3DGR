@@ -16,6 +16,7 @@ router.get("/assets", (req, res, next) => {
     }
   })
   .then(assetPayload => {
+    console.log(req.user)
     res.json(assetPayload);
   });
 });

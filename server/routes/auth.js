@@ -8,17 +8,17 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-router.get("/userData", (req,res)=>{ 
+
+
+router.get("/checklogin", (req,res)=>{ 
   let user = req.user
   res.json(user)
 })
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
-    console.log(err)
-    console.log(theUser)
-    console.log(failureDetails)
-
+    console.log(req.user)
+    
 
     if (err) { res.status(500).json({failureDetails}); return; }
     // "failureDetails" contains the error messages from our logic in "LocalStrategy" { message: '...' }.

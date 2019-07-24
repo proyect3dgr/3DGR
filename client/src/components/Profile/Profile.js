@@ -3,13 +3,35 @@ import React, { Component } from 'react'
 export default class Profile extends Component {
   render() {
     return (
-      <div>
-        <h1>{this.props.username} DONDE VAMOS HOY??</h1>
-        <button onClick={(e)=>{this.props.logout(e)}}>LOGOUT</button>
-        <p>{this.props.email}</p> 
+      <React.Fragment>
+      <section className="infoUser">
+        <article>
+      <img src={this.props.avatar} alt="blabla" /> 
+        <h1>{this.props.username}</h1>
         <p>{this.props.about}</p>  
-        <img src={this.props.avatar} alt="blabla" /> 
+
+        <p>{this.props.email}</p> 
+
+        <button onClick={(e)=>{this.props.logout(e)}}>LOGOUT</button>
+        </article>
+      </section>
+
+      <div className="lowPart">
+      <section className="collection">
+        <h1>Collection</h1>
+        <ul>
+          <li>My pepe</li>
+          <li>My pepe</li>
+          <li>My pepe</li>
+          <li>My pepe</li>
+        </ul>
+      </section>
+
+      <section className="statistics">
+        <h1>Statistics</h1>
+      </section>
       </div>
+      </React.Fragment>
     )
   }
 }

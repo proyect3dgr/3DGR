@@ -16,12 +16,11 @@ export default class AuthServices {
   login = (username, password)=>{
     return this.service.post('/login', {username, password})
     .then(response => response.data)
-
   }
 
-  loggedin = ()=>{
-    return this.service.get('/userData')
-  .then(response => response.data)
+  checkLogin = () => {
+    return this.service.get("/checklogin")
+    .then(response=>response.data)
   }
 
   logout = ()=>{

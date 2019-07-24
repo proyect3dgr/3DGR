@@ -11,8 +11,6 @@ import ProductList from "../ProductList/ProductList";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Nav from "../Nav/Nav";
 
-
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -44,48 +42,58 @@ export default class App extends Component {
     });
   };
 
-  userCreated;
+  componentDidMount() {
+    this.service.checkLogin().then(response => {
+      this.getTheUser(response);
+    });
+  }
 
   render() {
     if (this.state.loggedInUser) {
       return (
         <React.Fragment>
-        <Nav userLogged={this.state.loggedInUser}/>
-        <Switch>
-          <Route
-            exact
-            path="/Profile"
-            render={() => (
-              <Profile {...this.state.loggedInUser} logout={this.logout} />
-            )}
-          />
+          <Nav userLogged={this.state.loggedInUser} />
+          <Switch>
+            <Route
+              exact
+              path="/Profile"
+              render={() => (
+                <Profile {...this.state.loggedInUser} logout={this.logout} />
+              )}
+            />
 
-          <Route
-            exact
-            path="/(login|signup)/"
-            render={() => {
-              return <Redirect to="/profile" />;
-            }}
-          />
+            <Route
+              exact
+              path="/(login|signup)/"
+              render={() => {
+                return <Redirect to="/profile" />;
+              }}
+            />
 
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <React.Fragment>
-                <Slider />
-                <ProductList />
-              </React.Fragment>
-            )}
-          />
-        </Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <React.Fragment>
+                  <Slider />
+                  <ProductList />
+                </React.Fragment>
+              )}
+            />
+
+            <Route
+              exact
+              path="/product/detail"
+              render={() => <ProductDetail />}
+            />
+          </Switch>
         </React.Fragment>
       );
     }
 
     return (
       <React.Fragment>
-        <Nav></Nav>
+        <Nav />
         <Route
           exact
           path="/"
