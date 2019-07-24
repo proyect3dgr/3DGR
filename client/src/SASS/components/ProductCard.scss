@@ -2,25 +2,50 @@
   border: 3px solid black;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
-  width: 130px;
-  height: 200px;
+  width: 20rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 30px;
-  transition: all .5s ease-in-out;
-
-  &:hover {
-  transform: scale(1.5,1.5);
+  transition: all 0.5s ease-in-out;
+  padding: 2rem;
   
+
+
+  div {
+    margin: 1rem 0;
+  }
+  &:hover {
+    transform: scale(1.2, 1.2);
   }
 
   .productImg {
-    border: 1px solid white;
-    border-radius: 10px;
-    background: rgba(250, 250, 250, 0.2);
-    width: 100px;
-    height: 100px;
+    img {
+      border: 1px solid white;
+      border-radius: 10px;
+      background: rgba(250, 250, 250, 0.2);
+      width: 12rem;
+      height: 10rem;
+    }
   }
+
+  .productName {
+    width: 10rem;
+    text-align: center;
+    height: auto;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .productAuthor {
+    color: blue;
+  }
+
+  .productPrice {
+    color: olivedrab;
+  }
+
 }
