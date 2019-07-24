@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import AuthServices from "../../Services/Services";
 import { Link } from "react-router-dom";
-import "../../SASS/Main.scss";
 
 class Login extends Component {
   constructor(props) {
@@ -15,10 +14,12 @@ class Login extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+
     this.service
       .login(username, password)
       .then(response => {
-        console.log(response);
+        //console.log(response);
+        this.errMessage = response.message;
         this.setState({ username: "", password: "" });
         this.props.getUser(response);
       })
