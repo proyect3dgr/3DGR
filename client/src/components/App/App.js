@@ -15,8 +15,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filterQuery:"",
       loggedInUser: null,
-      userCreated: false
+      userCreated: false,
     };
     this.service = new AuthServices();
   }
@@ -48,11 +49,24 @@ export default class App extends Component {
     });
   }
 
+  filterProduct(e) {
+    const filter = e.target.value;
+    let filteredProducts = this.state.asset.filter(asset => {
+      return asset.title.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+    });
+
+    this.setState({
+      ...this.state,
+      filterQuery: filter,
+      filteredProducts: filteredProducts
+    });
+  }
+
   render() {
     if (this.state.loggedInUser) {
       return (
         <React.Fragment>
-          <Nav userLogged={this.state.loggedInUser} />
+          <Nav isProductList={this.state.isProductList} filter={(e)=>this.filterProduct(e)} userLogged={this.state.loggedInUser} />
           <Switch>
             <Route
               exact

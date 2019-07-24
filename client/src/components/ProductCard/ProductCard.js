@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../../SASS/Main.scss";
 
 export default class ProductCard extends Component {
   render() {
@@ -8,11 +7,11 @@ export default class ProductCard extends Component {
       <Link to={"/product/detail"}>
       <article className="productCard">
         <div className="productImg">
-          <img src="#" alt="productImg" />
+          <img src={this.props.urlPathImg} alt="productImg" />
         </div>
-        <div className="productName">productName</div>
-        <div className="productAuthor">productAuthor</div>
-        <div className="productPrice">productPrice €</div>
+        <div className="productName">{this.props.title}</div>
+        <div className="productAuthor">{this.props.author.username}</div>
+        <div className="productPrice">{this.props.price} €</div>
       </article>
       </Link>
     );

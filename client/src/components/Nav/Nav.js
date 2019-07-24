@@ -12,9 +12,6 @@ export default class Nav extends Component {
         <Link to={"/"}>
           <img src={logo} alt="logo" />
         </Link>
-
-        <Search />
-
         <div>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/cart"}>Cart</Link>
@@ -28,9 +25,6 @@ export default class Nav extends Component {
         <Link to={"/"}>
           <img src={logo} alt="logo" />
         </Link>
-
-        <Search />
-
         <div>
           <Link to={"/signup"}>Signup</Link>
           <Link to={"/login"}>Login</Link>
