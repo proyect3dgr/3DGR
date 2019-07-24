@@ -9,6 +9,9 @@ import Profile from "../Profile/Profile";
 import AuthServices from "../../Services/Services";
 import ProductList from "../ProductList/ProductList";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import Nav from "../Nav/Nav";
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -41,11 +44,13 @@ export default class App extends Component {
     });
   };
 
-  userCreated
+  userCreated;
 
   render() {
     if (this.state.loggedInUser) {
       return (
+        <React.Fragment>
+        <Nav userLogged={this.state.loggedInUser}/>
         <Switch>
           <Route
             exact
@@ -74,11 +79,13 @@ export default class App extends Component {
             )}
           />
         </Switch>
+        </React.Fragment>
       );
     }
 
     return (
       <React.Fragment>
+        <Nav></Nav>
         <Route
           exact
           path="/"
@@ -89,7 +96,7 @@ export default class App extends Component {
             </React.Fragment>
           )}
         />
-        
+
         <Route
           exact
           path="/login"
@@ -106,57 +113,14 @@ export default class App extends Component {
 
         <Route exact path="/product/detail" render={() => <ProductDetail />} />
 
+        <Route
+          exact
+          path="/profile"
+          render={() => {
+            return <Redirect to="/login" />;
+          }}
+        />
       </React.Fragment>
     );
-
-    //   if (this.state.loggedInUser) {
-    //     return (
-    //       <React.Fragment>
-    //
-    //         <Switch>
-    //           <Route
-    //             exact
-    //             path="/login"
-    //             render={() => {
-    //               return <Redirect to="/profile" />;
-    //             }}
-    //           />
-    //           <Route
-    //             exact
-    //             path="/profile"
-    //             render={() => (
-    //               <Profile {...this.state.loggedInUser} logout={this.logout} />
-    //             )}
-    //           />
-    //         </Switch>
-    //       </React.Fragment>
-    //     );
-    //   } else {
-    //     return (
-    //       <React.Fragment>
-    //         <Switch>
-
-    //           <Route
-    //             exact
-    //             path="/login"
-    //             render={() => (
-    //               <Login {...this.state.loggedInUser} getUser={this.getTheUser} />
-    //             )}
-    //           />
-    //           <Route
-    //             exact
-    //             path="/signup"
-    //             render={() => <Signup {...this.state.loggedInUser} />}
-    //           />
-    //           <Route
-    //             render={() => {
-    //               return <Redirect to="/login" />;
-    //             }}
-    //           />
-    //         </Switch>
-    //       </React.Fragment>
-    //     );
-    //   }
-    // }
   }
 }
