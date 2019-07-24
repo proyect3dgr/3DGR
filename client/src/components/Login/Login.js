@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", error: false };
     this.service = new AuthServices();
-    this.errMessage = "";
   }
 
   handleFormSubmit = event => {
@@ -19,11 +18,16 @@ class Login extends Component {
       .login(username, password)
       .then(response => {
         //console.log(response);
-        this.errMessage = response.message;
         this.setState({ username: "", password: "" });
         this.props.getUser(response);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
+        });
+      });
   };
 
   handleChange = event => {
@@ -54,9 +58,7 @@ class Login extends Component {
             />
           </div>
 
-          <div>
-            <p>{this.errMessage}</p>
-          </div>
+          <div>{this.state.error ? <p>'Incorrect Login'</p> : null}</div>
 
           <div>
             <button type="submit" value="Login">
