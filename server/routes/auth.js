@@ -17,7 +17,7 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) { res.status(500).json({ message: 'Something went wrong authenticating user' }); return; }
     // "failureDetails" contains the error messages from our logic in "LocalStrategy" { message: '...' }.
-    if (!theUser) { return res.status(401).json({ message: 'Incorrect login.' },failureDetails); }
+    if (!theUser) {  res.status(401).json({ message: 'Incorrect login.' },failureDetails); return }
     // save user in session
     req.login(theUser, (err) => {
       if (err) { res.status(500).json({ message: 'Session save went bad.' }); return; }

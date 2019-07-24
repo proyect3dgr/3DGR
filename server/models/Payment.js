@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const assetSchema = new Schema({
+const paymentSchema = new Schema({
   name: String,
   company: String,
   address: String,
@@ -13,5 +13,5 @@ const assetSchema = new Schema({
   expDate: Date,
 });
 
-const Asset = mongoose.model('Asset', assetSchema);
-module.exports = Asset;
+const Payment = mongoose.model('Payment', paymentSchema);
+module.exports = Payment;
