@@ -1,9 +1,9 @@
-section {
+.productList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100vw;
-    height: 50rem;
+    min-height: 100vh;
     background: rgba(255, 255, 0, 0.235);
     align-items: center;
     justify-content: center;
