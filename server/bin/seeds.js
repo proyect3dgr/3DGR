@@ -3,6 +3,8 @@
 // To execute this seed, run from the root of the project
 // $ node bin/seeds.js
 
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
@@ -12,7 +14,7 @@ const Comment = require("../models/Comment");
 const bcryptSalt = 10;
 
 mongoose
-  .connect("mongodb://localhost/serverAuth", { useNewUrlParser: true })
+  .connect(process.env.BBDD_URL, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -68,23 +70,116 @@ User.remove()
     return User.create(users);
   })
   .then(createdUsers => {
-    userId = createdUsers[0]._id;
-    userBId = createdUsers[1]._id;
+    userId = createdUsers[1]._id;
+    userBId = createdUsers[2]._id;
+    userCId = createdUsers[3]._id; 
     return Comment.create([
-      { description: '"QUE PEDASO DE LINCE, CABESA"', author: userId }
+      { description: 'QUE PEDASO DE LINCE, CABESA"', author: userId }
     ]);
   })
   .then(createdComment => {
     createdCommentPayload = createdComment;
 
     return Comment.create([
-      { description: '"Comment2 with Dani"', author: userId }
+      { description: 'El modelo de este lince parece que es real', author: userBId }
     ]);
   })
   .then(createdComment2 => {
     createdCommentPayload2 = createdComment2;
 
     return Asset.create(
+      {
+        title: "Modelo de un lince",
+        description: "Este lince es tan real que da miedito intenso",
+        author: userCId,
+        urlPathImg:
+          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "MAYA",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Modelo de un señor",
+        description: "Un señor que señorea",
+        author: userBId,
+        urlPathImg:
+          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
+      {
+        title: "Modelo de un lince",
+        description: "Este lince es tan real que da miedito intenso",
+        author: userCId,
+        urlPathImg:
+          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "MAYA",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Modelo de un señor",
+        description: "Un señor que señorea",
+        author: userId,
+        urlPathImg:
+          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
+      {
+        title: "Modelo de un lince",
+        description: "Este lince es tan real que da miedito intenso",
+        author: userId,
+        urlPathImg:
+          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "MAYA",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Modelo de un señor",
+        description: "Un señor que señorea",
+        author: userBId,
+        urlPathImg:
+          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
+      {
+        title: "Modelo de un lince",
+        description: "Este lince es tan real que da miedito intenso",
+        author: userCId,
+        urlPathImg:
+          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "MAYA",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Modelo de un señor",
+        description: "Un señor que señorea",
+        author: userId,
+        urlPathImg:
+          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
       {
         title: "Modelo de un lince",
         description: "Este lince es tan real que da miedito intenso",
@@ -96,6 +191,17 @@ User.remove()
         size: 54,
         format: "MAYA",
         categories: ["Animal", "Character"]
+      },
+      {
+        title: "Modelo de un señor",
+        description: "Un señor que señorea",
+        author: userBId,
+        urlPathImg:
+          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
       }
     );
   })
@@ -110,7 +216,7 @@ User.remove()
         }
       })
       .then(popAsset => {
-        let assetId = popAsset[0]._id 
+        let assetId =[popAsset[0]._id, popAsset[3]._id] 
         console.log(popAsset[0]._id)
         User.findByIdAndUpdate(popAsset[0].author, {
           $push: { assetCollection: assetId}  
