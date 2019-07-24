@@ -193,7 +193,7 @@ User.remove()
         categories: ["Animal", "Character"]
       },
       {
-        title: "Modelo de un señor",
+        title: "Modelo de un señor para Gabi",
         description: "Un señor que señorea",
         author: userBId,
         urlPathImg:
