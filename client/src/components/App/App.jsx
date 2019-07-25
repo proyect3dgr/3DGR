@@ -14,9 +14,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterQuery:"",
+      filterQuery: "",
       loggedInUser: null,
-      userCreated: false,
+      userCreated: false
     };
     this.service = new AuthServices();
   }
@@ -65,11 +65,13 @@ export default class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <React.Fragment>
-          <Nav logout={this.logout} ProductList={this.state.isProductList} filter={(e)=>this.filterProduct(e)} userLogged={this.state.loggedInUser} />
+
+          <Nav logout={this.logout} isProductList={this.state.isProductList} filter={(e)=>this.filterProduct(e)} userLogged={this.state.loggedInUser} />
+
           <Switch>
             <Route
               exact
-              path= {`/profile/${this.state.loggedInUser.username}`}
+              path={`/profile/${this.state.loggedInUser.username}`}
               render={() => (
                 <Profile {...this.state.loggedInUser}/>
               )}
@@ -79,7 +81,11 @@ export default class App extends Component {
               exact
               path="/(login|signup)/"
               render={() => {
-                return <Redirect to={`/profile/${this.state.loggedInUser.username}`} />;
+                return (
+                  <Redirect
+                    to={`/profile/${this.state.loggedInUser.username}`}
+                  />
+                );
               }}
             />
 
@@ -96,8 +102,8 @@ export default class App extends Component {
 
             <Route
               exact
-              path="/product/detail"
-              render={() => <ProductDetail />}
+              path="/product/:id"
+              render={props => <ProductDetail {...props} />}
             />
           </Switch>
         </React.Fragment>
@@ -132,8 +138,11 @@ export default class App extends Component {
           render={() => <Signup {...this.state.loggedInUser} />}
         />
 
-        <Route exact path="/product/detail" render={() => <ProductDetail />} />
-
+        <Route
+          exact
+          path="/product/:id"
+          render={props => <ProductDetail {...props} />}
+        />
         <Route
           exact
           path="/profile/:id"

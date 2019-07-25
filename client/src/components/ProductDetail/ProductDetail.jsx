@@ -12,24 +12,37 @@ export default class ProductDetail extends Component {
     this._isMounted = false;
   }
 
-  componentDidMount() {
-    this._isMounted = true;
-    this.service.assets().then(assetPayload => {
-      if (this._isMounted) {
-        this.setState({
-          ...this.state,
-          assetDetails: assetPayload[0]
-        });
-      }
-    });
+  // componentDidMount() {
+  //   this._isMounted = true;
+  //   this.service.assets().then(assetPayload => {
+  //     if (this._isMounted) {
+  //       this.setState({
+  //         ...this.state,
+  //         assetDetails: assetPayload[0]
+  //       });
+  //     }
+  //   });
+  // }
+
+  componentDidMount(){
+    this.getAsset()
+  } 
+
+  getAsset(){
+    const params = this.props.match.params.id;
+    this.service.getAsset(params).then(response =>{
+      this.setState({ 
+        ...this.state,
+        assetDetails: response
+       })
+    } )
   }
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
+  // componentWillUnmount() {
+  //   this._isMounted = false;
+  // }
 
   render() {
-    console.log(this.state.assetDetails.comments[0]);
     return (
       <div>
         <p>{this.state.assetDetails.title}</p>
