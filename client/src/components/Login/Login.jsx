@@ -56,6 +56,7 @@ class Login extends Component {
 
           <div>
             <input
+            type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}

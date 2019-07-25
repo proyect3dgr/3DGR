@@ -13,8 +13,13 @@ export default class assetServices {
     .then(response => response.data)
   }
 
-  createAsset = () =>{
-    return this.service.post('/create-asset')
+  createAsset = (title, price, description) =>{
+    return this.service.post('/create-asset', {title, price, description} ) 
     .then(response => response.data)
   }
+
+  getUser = (params) =>{
+    return this.service.get(`/user/${params}`) 
+    .then(response => response.data)
+  } 
 }
