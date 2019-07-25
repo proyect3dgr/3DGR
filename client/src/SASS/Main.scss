@@ -5,13 +5,14 @@
 // @import "./utils/_mixins";
 
 @import "./components/Nav";
+@import "./components/DropMenu";
+@import "./components/Slider";
+@import "./components/ProductList";
 @import "./components/Search";
 @import "./components/Login";
 @import "./components/Signup";
 @import "./components/Profile";
-@import "./components/ProductList";
 @import "./components/ProductCard";
-@import "./components/Slider";
 
 @import "./pages/App";
 @import "./pages/index";

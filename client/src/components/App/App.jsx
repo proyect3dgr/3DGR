@@ -65,13 +65,13 @@ export default class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <React.Fragment>
-          <Nav isProductList={this.state.isProductList} filter={(e)=>this.filterProduct(e)} userLogged={this.state.loggedInUser} />
+          <Nav logout={this.logout} ProductList={this.state.isProductList} filter={(e)=>this.filterProduct(e)} userLogged={this.state.loggedInUser} />
           <Switch>
             <Route
               exact
               path= {`/profile/${this.state.loggedInUser.username}`}
               render={() => (
-                <Profile {...this.state.loggedInUser} logout={this.logout} />
+                <Profile {...this.state.loggedInUser}/>
               )}
             />
 
