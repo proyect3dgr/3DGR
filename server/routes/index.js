@@ -69,6 +69,37 @@ router.post(
   }
 );
 
+router.put("edit-asset", (req, res, next) => {
+  Asset.findByIdAndUpdate(req.user._id, {
+    title: req.body.title,
+    description: req.body.description,
+    price: req.body.price
+    // urlPathImg: req.file.url,
+  }).then(x => {
+    res.json(x)
+  });
+});
+
+router.put("edit-profile", (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, {
+    password: req.body.password,
+    // avatar: req.file.url,
+    about: req.body.price,
+    email: req.body.email
+    // urlPathImg: req.file.url,
+  }).then(x => {
+    res.json(x)
+  });
+});
+
+router.post("create-comment", (req, res, next) =>{
+  Comment.create({
+    description:req.body.description
+  }).then(createdComment => {
+    res.json(createdComment)
+  } )
+}) 
+
 // router.post(
 //   "/assets",
 //   // uploadSingle('asset'),

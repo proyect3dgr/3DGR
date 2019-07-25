@@ -74,7 +74,11 @@ User.remove()
     userBId = createdUsers[2]._id;
     userCId = createdUsers[3]._id;
     return Comment.create([
-      { description: 'QUE PEDASO DE LINCE, CABESA"', author: userId }
+      { description: "QUE PEDASO DE LINCE, CABESA", author: userId },
+      { description: "No me lo creo", author: userCId },
+      { description: "Hola Gabi", author: userBId },
+      { description: "Este modelo me parece muy interesante porque lo cierto es que me recuerda cosas de mi infancia, cuando yo era una niña y me iba por ahí a buscar aceitunas con mis abuelos y veía algunos de los linces a lo lejos cazando pequeños pájaros. Es todo muy bonito.", author: userId },
+      { description: "¿Quedan galletas?", author: userCId }
     ]);
   })
   .then(createdComment => {
@@ -93,11 +97,33 @@ User.remove()
     return Asset.create(
       {
         title: "Modelo de un lince",
-        description: "Este lince es tan real que da miedito intenso",
+        description: "Este lince es tan real que da miedito intenso pero si te digo la verdad me gusta mucho que tenga esos bigotes tan largos y ese pájaro en la boca. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt.",
         author: userCId,
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
-        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        comments: [
+          createdCommentPayload[0]._id,
+          createdCommentPayload[1]._id,
+          createdCommentPayload[2]._id,
+          createdCommentPayload[3]._id,
+          createdCommentPayload[4]._id,
+          createdCommentPayload[0]._id,
+          createdCommentPayload[1]._id,
+          createdCommentPayload[2]._id,
+          createdCommentPayload[3]._id,
+          createdCommentPayload[4]._id,
+          createdCommentPayload[0]._id,
+          createdCommentPayload[1]._id,
+          createdCommentPayload[2]._id,
+          createdCommentPayload[3]._id,
+          createdCommentPayload[4]._id,
+          createdCommentPayload[0]._id,
+          createdCommentPayload[1]._id,
+          createdCommentPayload[2]._id,
+          createdCommentPayload[3]._id,
+          createdCommentPayload[4]._id,
+          createdCommentPayload2[0]._id
+        ],
         price: 39,
         size: 54,
         format: "MAYA",
