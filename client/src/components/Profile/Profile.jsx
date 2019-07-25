@@ -6,21 +6,19 @@ import assetServices from "../../Services/assetServices";
 export default class Profile extends Component {
   constructor() {
     super();
-    this.state = {assetCollection:[]};
+    this.state = { assetCollection: [] };
     this.service = new assetServices();
   }
 
   getProfile = () => {
     const params = this.props._id;
     this.service.getUser(params).then(response => {
-      this.setState(this.state=response);
-      console.log(this.state.assetCollection[0].title)
+      this.setState(response);
     });
   };
 
   componentDidMount() {
     this.getProfile();
-    
   }
 
   render() {
@@ -47,20 +45,18 @@ export default class Profile extends Component {
             <UploadAsset />
           </section>
         </section>
-              
+
         <div className="lowPart">
           <section className="collection">
             <h1>Collection</h1>
             <ul>
-              
-                 {this.state.assetCollection.map((asset, idx) => (
-                  <li><ProductCard key={idx} {...asset} /></li>
-                ))}
-              
+              {this.state.assetCollection.map((asset, idx) => (
+                <li key={idx}>
+                  <ProductCard className="cocowawa" {...asset} />
+                </li>
+              ))}
             </ul>
           </section>
-
-          
         </div>
       </React.Fragment>
     );
