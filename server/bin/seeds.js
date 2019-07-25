@@ -72,7 +72,7 @@ User.remove()
   .then(createdUsers => {
     userId = createdUsers[1]._id;
     userBId = createdUsers[2]._id;
-    userCId = createdUsers[3]._id; 
+    userCId = createdUsers[3]._id;
     return Comment.create([
       { description: 'QUE PEDASO DE LINCE, CABESA"', author: userId }
     ]);
@@ -81,7 +81,10 @@ User.remove()
     createdCommentPayload = createdComment;
 
     return Comment.create([
-      { description: 'El modelo de este lince parece que es real', author: userBId }
+      {
+        description: "El modelo de este lince parece que es real",
+        author: userBId
+      }
     ]);
   })
   .then(createdComment2 => {
@@ -216,16 +219,19 @@ User.remove()
         }
       })
       .then(popAsset => {
-        let assetId =[popAsset[0]._id, popAsset[3]._id] 
-        console.log(popAsset[0]._id)
-        User.findByIdAndUpdate(popAsset[0].author, {
-          $push: { assetCollection: assetId}  
-        }, {
-          new: true
-        })
-          .then(givenUser => {
-            console.log(givenUser)
-            process.exit(0);
-          } )
+        let assetId = [popAsset[0]._id, popAsset[3]._id];
+        console.log(popAsset[0]._id);
+        User.findByIdAndUpdate(
+          popAsset[0].author,
+          {
+            $push: { assetCollection: assetId }
+          },
+          {
+            new: true
+          }
+        ).then(givenUser => {
+          console.log(givenUser);
+          process.exit(0);
         });
       });
+  });

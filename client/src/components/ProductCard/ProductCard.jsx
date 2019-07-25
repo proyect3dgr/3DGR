@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class ProductCard extends Component {
   render() {
     return (
-      <Link to={"/product/detail"}>
+      <Link to={`/product/${this.props._id}`}>
       <article className="productCard">
         <div className="productImg">
           <img src={this.props.urlPathImg} alt="productImg" />
