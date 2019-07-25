@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
+import cart from "./cart.png";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 export default class Nav extends Component {
@@ -11,6 +12,7 @@ export default class Nav extends Component {
           <Link to={"/"}>
             <img className="logo" src={logo} alt="logo" />
           </Link>
+          
 
           <div className="menu">
             <div>
@@ -20,7 +22,7 @@ export default class Nav extends Component {
               />
             </div>
             <div>
-              <Link to={"/cart"}>Cart</Link>
+              <Link to={"/cart"}><img className="cart" src={cart} alt="cart" /></Link>
             </div>
           </div>
         </nav>

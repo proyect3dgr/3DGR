@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AssetServices from "../../Services/assetServices";
+import Visualizer from "../Visualizer/Visualizer";
 
 export default class ProductDetail extends Component {
   constructor() {
@@ -24,18 +25,18 @@ export default class ProductDetail extends Component {
   //   });
   // }
 
-  componentDidMount(){
-    this.getAsset()
-  } 
+  componentDidMount() {
+    this.getAsset();
+  }
 
-  getAsset(){
+  getAsset() {
     const params = this.props.match.params.id;
-    this.service.getAsset(params).then(response =>{
-      this.setState({ 
+    this.service.getAsset(params).then(response => {
+      this.setState({
         ...this.state,
         assetDetails: response
-       })
-    } )
+      });
+    });
   }
 
   // componentWillUnmount() {
@@ -44,22 +45,36 @@ export default class ProductDetail extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.state.assetDetails.title}</p>
-        <img
-          src={this.state.assetDetails.urlPathImg}
-          alt="ok"
-        />
-        <p>{this.state.assetDetails.author.description} </p>
-        {this.state.assetDetails.comments.map((el, idx) => {
-          return (
-            <div key={idx}>
-              <p>{el.description}</p>
-              <p>{el.author.username}</p>
-            </div>
-          );
-        })}
-      </div>
+      <section className="productDetail">
+        <div className="canvas">
+          <Visualizer />
+        </div>
+
+        <div className="aside">
+          <div>
+          <h1>{this.state.assetDetails.title}</h1>
+          <img
+            className="photo"
+            src={this.state.assetDetails.urlPathImg}
+            alt="ok"
+          />
+          <h2>{this.state.assetDetails.description}</h2>
+          <h5>{this.state.assetDetails.price} €</h5>
+          </div>
+
+          <div className="comments">
+            <h1>Comments</h1>
+            {this.state.assetDetails.comments.map((el, idx) => {
+              return (
+                <div className="comment" key={idx}>
+                  <h4>{el.author.username}</h4>
+                  <h3>{el.description}</h3>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     );
   }
 }
