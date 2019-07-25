@@ -1,0 +1,33 @@
+.dropMenu {
+  .avatar {
+    width: 100px;
+    height: 60px;
+    border-radius: 1rem;
+  }
+  .btn-success {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .btn-success.dropdown-toggle {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .btn-success.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  
+  .show>.btn-success.dropdown-toggle {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .btn-success.dropdown-toggle {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .btn-success:focus {
+    box-shadow: 0 0 0 0 transparent
+  }
+}

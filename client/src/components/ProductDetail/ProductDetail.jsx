@@ -48,7 +48,6 @@ export default class ProductDetail extends Component {
         <p>{this.state.assetDetails.title}</p>
         <img
           src={this.state.assetDetails.urlPathImg}
-          style={{ width: 200, height: 200 }}
           alt="ok"
         />
         <p>{this.state.assetDetails.author.description} </p>

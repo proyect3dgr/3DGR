@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 export default class Nav extends Component {
   render() {
@@ -8,13 +9,19 @@ export default class Nav extends Component {
       return (
         <nav className="nav">
           <Link to={"/"}>
-            <img src={logo} alt="logo" />
+            <img className="logo" src={logo} alt="logo" />
           </Link>
-          <div>
-            
 
-            <Link to={`/profile/${this.props.userLogged.username}`}>Profile</Link>
-            <Link to={"/cart"}>Cart</Link>
+          <div className="menu">
+            <div>
+              <DropDownMenu
+                logout={this.props.logout}
+                userLogged={this.props.userLogged}
+              />
+            </div>
+            <div>
+              <Link to={"/cart"}>Cart</Link>
+            </div>
           </div>
         </nav>
       );
@@ -23,12 +30,16 @@ export default class Nav extends Component {
     return (
       <nav className="nav">
         <Link to={"/"}>
-          <img src={logo} alt="logo" />
+          <img className="logo" src={logo} alt="logo" />
         </Link>
-        <div>
-          
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+
+        <div className="menu">
+          <div>
+            <Link to={"/signup"}>Signup</Link>
+          </div>
+          <div>
+            <Link to={"/login"}>Login</Link>
+          </div>
         </div>
       </nav>
     );

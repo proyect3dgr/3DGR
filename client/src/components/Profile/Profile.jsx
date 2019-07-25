@@ -18,7 +18,7 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
-    this.getProfile();
+    this.getProfile(); 
   }
 
   render() {
@@ -26,7 +26,7 @@ export default class Profile extends Component {
       <React.Fragment>
         <section className="infoUser">
           <article>
-            <img src={this.props.avatar} alt="blabla" />
+            <img src={this.props.avatar} alt="avatar" />
             <h1>{this.props.username}</h1>
             <p>{this.props.about}</p>
 
