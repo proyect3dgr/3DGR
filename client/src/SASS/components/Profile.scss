@@ -36,26 +36,31 @@
 }
 
 .lowPart {
-display: flex;
+
 
 .collection {
     border: 1px solid purple;
-    width: 50%;
-    height: 50vh;
     text-align: center;
+    overflow: scroll;
+    
     h1 {
         margin: 2rem;
+        position: fixed;
+        right: 50%;
     }
-    li {
-        margin: 2rem;
-        list-style-type: none;
+    ul {
+        display: flex;
+        
+
+        li {
+            margin: 2rem;
+            list-style-type: none;
+        }
     }
 }
 
 
 .statistics {
     border: 1px solid steelblue;
-    width: 50%;
-    height: 50vh;
 }
 }

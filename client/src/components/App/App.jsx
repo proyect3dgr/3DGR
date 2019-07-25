@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "../../SASS/Main.scss";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "../Login/Login";
@@ -70,7 +69,7 @@ export default class App extends Component {
           <Switch>
             <Route
               exact
-              path="/Profile"
+              path= {`/profile/${this.state.loggedInUser.username}`}
               render={() => (
                 <Profile {...this.state.loggedInUser} logout={this.logout} />
               )}
@@ -80,7 +79,7 @@ export default class App extends Component {
               exact
               path="/(login|signup)/"
               render={() => {
-                return <Redirect to="/profile" />;
+                return <Redirect to={`/profile/${this.state.loggedInUser.username}`} />;
               }}
             />
 
@@ -137,7 +136,7 @@ export default class App extends Component {
 
         <Route
           exact
-          path="/profile"
+          path="/profile/:id"
           render={() => {
             return <Redirect to="/login" />;
           }}
