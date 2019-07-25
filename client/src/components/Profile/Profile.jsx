@@ -32,17 +32,17 @@ export default class Profile extends Component {
 
             <p>{this.props.email}</p>
 
-            <button
+            {/* <button
               onClick={e => {
                 this.props.logout(e);
               }}
             >
               LOGOUT
-            </button>
+            </button> */}
           </article>
           <section className="statistics">
             <h1>Statistics</h1>
-            <UploadAsset />
+            
           </section>
         </section>
 

@@ -1,0 +1,65 @@
+.productDetail {
+  padding: 1rem;
+  display: flex;
+  
+
+  .canvas {
+    width: 80vw;
+    height: 85vh;
+    
+  }
+  
+  .aside {
+    border: 1px solid black;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 20vw;
+    text-align: center;
+    margin-left: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      height: 20vh;
+      overflow: scroll;
+      text-align: left;
+      font-size: 2rem;
+    }
+
+  }
+
+  .photo {
+    width: 15vw;
+    border-radius: 2rem;
+  }
+
+  .comments {
+    border: 1px solid orange;
+    border-radius: 2rem;
+    margin: 1rem 0;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    overflow: scroll;
+    height: 30vh;
+
+    h1 {
+      font-weight: bold;
+    }
+
+    .comment {
+      margin: 1rem 0;
+      border: 1px solid green;
+      border-radius: 2rem;
+      padding: 1rem;
+
+      h4 {
+        font-weight: bold;
+      }
+    }
+  }
+}
