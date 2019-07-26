@@ -68,15 +68,29 @@ router.post(
   }
 );
 
-router.post("create-comment", (req, res, next) => {
+router.post("/create-comment", (req, res, next) => {
+  assetID=req.body.populateAsset
   Comment.create({
-    description: req.body.description
+    description: req.body.description,
+    author: req.user._id
   }).then(createdComment => {
+    let commentID = createdComment._id;
+
+    Asset.findByIdAndUpdate(
+      assetID,
+      {
+        $push: { comments: commentID }
+      },
+      {
+        new: true
+      }
+    ).then(response => {
     res.json(createdComment);
   });
 });
+});
 
-/* ------------CREATE ENDPOINTS-------------- */
+/* ------------EDIT ENDPOINTS-------------- */
 
 router.post("/edit-asset", (req, res, next) => {
   Asset.findByIdAndUpdate(req.body._id, {

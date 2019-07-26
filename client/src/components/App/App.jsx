@@ -114,7 +114,7 @@ export default class App extends Component {
             <Route
               exact
               path="/product/:id"
-              render={props => <ProductDetail {...props} />}
+              render={props => <ProductDetail {...props} {...this.state.loggedInUser} />}
             />
           </Switch>
         </React.Fragment>

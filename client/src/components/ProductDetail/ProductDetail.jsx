@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AssetServices from "../../Services/assetServices";
 import Visualizer from "../Visualizer/Visualizer";
+import CommentList from "../CommentList/CommentList";
 
 export default class ProductDetail extends Component {
   constructor() {
@@ -18,6 +19,7 @@ export default class ProductDetail extends Component {
 
   componentDidMount() {
     this.getAsset();
+    console.log(this.props.username)
   }
 
   getAsset() {
@@ -69,6 +71,7 @@ export default class ProductDetail extends Component {
   };
 
   render() {
+    if (this.props.username === this.state.assetDetails.author.username) {
     return (
       <React.Fragment>
         <section className="productDetail">
@@ -88,20 +91,12 @@ export default class ProductDetail extends Component {
               <h5>{this.state.assetDetails.price} €</h5>
             </div>
 
-            <div className="comments">
-              <h1>Comments</h1>
-              {this.state.assetDetails.comments.map((el, idx) => {
-                return (
-                  <div className="comment" key={idx}>
-                    <h4>{el.author.username}</h4>
-                    <h3>{el.description}</h3>
-                  </div>
-                );
-              })}
-            </div>
+            <CommentList renderAsset={() => this.getAsset()} paramsId={this.props.match.params.id} {...this.state.assetDetails}></CommentList>
+
           </div>
         </section>
-        <section className="productDetail">
+       
+      <section className="productDetail">
           <form onSubmit={this.handleFormSubmit}>
             <input
               name="title"
@@ -135,7 +130,34 @@ export default class ProductDetail extends Component {
             <button>Change avatar</button>
           </form>
         </section>
-      </React.Fragment>
-    );
+        </React.Fragment>
+        ) } 
+
+        return (
+          <React.Fragment>
+            <section className="productDetail">
+              <div className="canvas">
+                <Visualizer />
+              </div>
+    
+              <div className="aside">
+                <div>
+                  <h1>{this.state.assetDetails.title}</h1>
+                  <img
+                    className="photo"
+                    src={this.state.assetDetails.urlPathImg}
+                    alt="ok"
+                  />
+                  <h2>{this.state.assetDetails.description}</h2>
+                  <h5>{this.state.assetDetails.price} €</h5>
+                </div>
+    
+                <CommentList {...this.state.assetDetails} paramsId={this.props.match.params.id}></CommentList>
+
+              </div>
+            </section>
+          </React.Fragment>
+        );
+
   }
 }

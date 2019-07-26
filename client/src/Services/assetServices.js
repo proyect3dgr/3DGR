@@ -18,6 +18,12 @@ export default class assetServices {
       .then(response => response.data);
   };
 
+  createComment = (description, populateAsset) => {
+    return this.service
+      .post("/create-comment", { description, populateAsset })
+      .then(response => response.data);
+  };
+
   getUser = params => {
     return this.service.get(`/user/${params}`).then(response => response.data);
   };
