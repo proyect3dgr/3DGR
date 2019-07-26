@@ -8,7 +8,7 @@ export default class Visualizer extends Component {
     ////////////Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
-    //scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
+    scene.fog = new THREE.Fog(0xa0a0a0, 300, 5000);
 
     var clock = new THREE.Clock();
 
@@ -16,7 +16,7 @@ export default class Visualizer extends Component {
     var camera = new THREE.PerspectiveCamera(75, 2, 1, 5000);
 
     camera.position.set(100, 200, 300);
-    //camera.lookAt(scene.position);
+    camera.lookAt(scene.position);
     scene.add(camera);
 
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -55,17 +55,16 @@ export default class Visualizer extends Component {
     ///////////// light
     var light = new THREE.HemisphereLight(0xffffff, 0x444444);
     light.position.set(0, 200, 0);
-    light.castShadow = true;
     scene.add(light);
 
-    // var light2 = new THREE.DirectionalLight(0xffffff);
-    // light2.position.set(0, 200, 100);
-    // light2.castShadow = true;
-    // light2.shadow.camera.top = 180;
-    // light2.shadow.camera.bottom = -100;
-    // light2.shadow.camera.left = -120;
-    // light2.shadow.camera.right = 120;
-    // scene.add(light2);
+    var light2 = new THREE.DirectionalLight(0xffffff, 0.2);
+    light2.position.set(0, 200, 100);
+    light2.castShadow = true;
+    light2.shadow.camera.top = 180;
+    light2.shadow.camera.bottom = -100;
+    light2.shadow.camera.left = -120;
+    light2.shadow.camera.right = 120;
+    scene.add(light2);
 
     ////////////// ground
     var mesh = new THREE.Mesh(
@@ -100,7 +99,7 @@ export default class Visualizer extends Component {
       
       var mixerFix = undefined
 
-      loader.load("https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/tumblrapp/3dassets/Hip_Hop_Dancing_yne9fv.fbx",
+      loader.load("https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/tumblrapp/3dassets/Punching_6_q7gxxj.fbx",
 
       function(object) {
         var mixer = new THREE.AnimationMixer(object);
