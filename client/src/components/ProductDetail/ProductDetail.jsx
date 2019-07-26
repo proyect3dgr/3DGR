@@ -48,6 +48,7 @@ export default class ProductDetail extends Component {
       <section className="productDetail">
         <div className="canvas">
           <Visualizer />
+         
         </div>
 
         <div className="aside">

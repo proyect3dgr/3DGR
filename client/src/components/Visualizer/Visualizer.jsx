@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import * as THREE from "three";
-import OrbitControls from "orbit-controls-es6";
-import assetOB from "../../assets/lego.obj";
-import assetMT from "../../assets/lego.mtl";
+ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 export default class Visualizer extends Component {
   
@@ -11,7 +9,7 @@ export default class Visualizer extends Component {
     scene.background = new THREE.Color("gray");
 
     var camera = new THREE.PerspectiveCamera(75, 2, 0.1, 1000);
-    camera.position.set(0, 0, 10);
+    camera.position.set(0, 0, 5);
     camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -29,6 +27,29 @@ export default class Visualizer extends Component {
     // renderer.setSize(selector.width, selector.height);
     renderer.domElement.setAttribute("class", "canvas");
     selector.appendChild(renderer.domElement);
+
+
+
+
+var mtlLoader = new THREE.MaterialLoader();
+    
+    mtlLoader.load("/assets/lego.mtl", function(materials) {
+      materials.preload();
+
+      var objLoader = new THREE.ObjectLoader();
+      objLoader.setMaterials(materials);
+      
+      objLoader.load("/assets/lego.obj", function(object) {
+        scene.add(object);
+        object.position.set(0, 0, 5)
+      });
+    });
+
+
+
+
+
+
 
     const textureloader = new THREE.TextureLoader();
     const texture = textureloader.load(
