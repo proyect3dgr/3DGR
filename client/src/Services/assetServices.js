@@ -27,4 +27,16 @@ export default class assetServices {
       .get(`/product/${params}`)
       .then(response => response.data);
   };
+
+  editAsset = (_id, title, price, description) => {
+    return this.service
+      .post("/edit-asset", { _id, title, price, description })
+      .then(response => response.data);
+  };
+
+  editAssetImg = (_id, image) => {
+    return this.service
+      .post("/edit-asset-img", { _id, image })
+      .then(response => response.data);
+  };
 }

@@ -36,10 +36,8 @@ export default class App extends Component {
   };
 
   fetchUser = () => {
-    this.service.loggedin().then(response => {
-      this.setState({
-        loggedInUser: response
-      });
+    this.service.checkLogin().then(response => {
+      this.getTheUser(response);
     });
   };
 
@@ -77,7 +75,12 @@ export default class App extends Component {
             <Route
               exact
               path={`/profile/${this.state.loggedInUser.username}`}
-              render={() => <Profile {...this.state.loggedInUser} />}
+              render={() => (
+                <Profile
+                  {...this.state.loggedInUser}
+                  fetchUser={this.fetchUser}
+                />
+              )}
             />
 
             <Route
@@ -103,13 +106,16 @@ export default class App extends Component {
               )}
             />
 
-    <Route exact path="/product/upload" render={()=><UploadAsset />} />
+            <Route
+              exact
+              path="/product/upload"
+              render={() => <UploadAsset />}
+            />
             <Route
               exact
               path="/product/:id"
               render={props => <ProductDetail {...props} />}
             />
-
           </Switch>
         </React.Fragment>
       );
