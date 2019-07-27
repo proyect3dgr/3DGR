@@ -35,11 +35,12 @@ export default class Nav extends Component {
       <nav className="nav">
         <Link to={"/"}>
           <img className="logo" src={logo} alt="logo" />
+          <span className="name">3DGR</span>
         </Link>
 
         <div className="menu">
           <div>
-            <Link to={"/signup"}>Signup</Link>
+            <Link to={"/signup"}>Sign up</Link>
           </div>
           <div>
             <Link to={"/login"}>Login</Link>

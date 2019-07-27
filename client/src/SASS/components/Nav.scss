@@ -1,35 +1,34 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap");
 
 .nav {
-  
-background: linear-gradient(to right, #3498dbb1, #2c3e50b5);
-
+  background: linear-gradient(to right, #3498dba1, #2c3e50a7);
+  z-index: 99;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100vw;
   height: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
 
   .logo {
     margin-left: 20px;
     border: 1px solid whitesmoke;
     width: 250px;
     height: 90px;
-    
     border-radius: 2rem;
-    opacity: .6;
-    transition: all .5s ease-in-out;
+    opacity: 0.6;
+    transition: all 0.5s ease-in-out;
     position: relative;
-    
 
-    &:hover{
-      opacity: 1
+    &:hover {
+      opacity: 1;
     }
-
-    
   }
-  .name{
-    font-family: 'Bungee Outline', cursive;
+  .name {
+    font-family: "Bungee Outline", cursive;
     position: absolute;
     left: 60px;
     top: 15px;
@@ -37,25 +36,33 @@ background: linear-gradient(to right, #3498dbb1, #2c3e50b5);
     color: rgb(8, 4, 46);
     font-size: 6rem;
     font-weight: bold;
-    opacity: .8;
+    opacity: 0.8;
     z-index: 2;
   }
 
   .cart {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
-    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+
+    opacity: .8;
+    transition: all .5s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    font-size: 2rem;
+    a {
+      color: whitesmoke;
+      text-shadow: 2px 2px 5px black;
+    }
 
     div {
-      margin: 0 2rem;
+      margin-right:1rem;
     }
   }
 }
