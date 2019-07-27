@@ -32,13 +32,11 @@ export default class CommentList extends Component {
 
   handleChange = event => {
     event.preventDefault();
-    console.log(this.state.description)
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="comments">
         <h1>Comments</h1>

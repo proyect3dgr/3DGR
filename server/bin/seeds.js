@@ -104,6 +104,7 @@ User.remove()
         description:
           "Este lince es tan real que da miedito intenso pero si te digo la verdad me gusta mucho que tenga esos bigotes tan largos y ese pájaro en la boca. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt.",
         author: userCId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx" ,
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
         comments: [
@@ -138,6 +139,7 @@ User.remove()
         title: "Modelo de un señor",
         description: "Un señor que señorea",
         author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
         urlPathImg:
           "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,
@@ -149,6 +151,7 @@ User.remove()
         title: "Modelo de un lince",
         description: "Este lince es tan real que da miedito intenso",
         author: userCId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
@@ -161,6 +164,7 @@ User.remove()
         title: "Modelo de un señor",
         description: "Un señor que señorea",
         author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
         urlPathImg:
           "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,
@@ -172,6 +176,7 @@ User.remove()
         title: "Modelo de un lince",
         description: "Este lince es tan real que da miedito intenso",
         author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
@@ -184,6 +189,7 @@ User.remove()
         title: "Modelo de un señor",
         description: "Un señor que señorea",
         author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
         urlPathImg:
           "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,
@@ -195,6 +201,7 @@ User.remove()
         title: "Modelo de un lince",
         description: "Este lince es tan real que da miedito intenso",
         author: userCId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
@@ -207,6 +214,7 @@ User.remove()
         title: "Modelo de un señor",
         description: "Un señor que señorea",
         author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
         urlPathImg:
           "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,
@@ -218,6 +226,7 @@ User.remove()
         title: "Modelo de un lince",
         description: "Este lince es tan real que da miedito intenso",
         author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
         urlPathImg:
           "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
@@ -230,6 +239,7 @@ User.remove()
         title: "Modelo de un señor para Gabi",
         description: "Un señor que señorea",
         author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
         urlPathImg:
           "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,

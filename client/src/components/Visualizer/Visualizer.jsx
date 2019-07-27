@@ -4,7 +4,24 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
 export default class Visualizer extends Component {
-  componentDidMount() {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      urlPathModel: this.props.urlPathModel
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.props)
+    // only update chart if the data has changed
+    if (prevProps.author !== this.props.author) {
+      this.loadModel();
+    }
+  }
+
+loadModel() {
+    let modelCloud = this.props.urlPathModel
     ////////////Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -99,7 +116,9 @@ export default class Visualizer extends Component {
       
       var mixerFix = undefined
 
-      loader.load("https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/tumblrapp/3dassets/Punching_6_q7gxxj.fbx",
+      
+
+      loader.load(`${modelCloud}`,
 
       function(object) {
         var mixer = new THREE.AnimationMixer(object);
@@ -137,6 +156,7 @@ export default class Visualizer extends Component {
       // stats.update();
     }
     animate()
+    
   }
   
 

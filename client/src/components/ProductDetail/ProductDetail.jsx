@@ -19,7 +19,6 @@ export default class ProductDetail extends Component {
 
   componentDidMount() {
     this.getAsset();
-    console.log(this.props.username)
   }
 
   getAsset() {
@@ -28,7 +27,9 @@ export default class ProductDetail extends Component {
       this.setState({
         ...this.state,
         assetDetails: response
-      });
+        
+      })
+      console.log(this.state.assetDetails.urlPathModel);
     });
   }
 
@@ -76,7 +77,7 @@ export default class ProductDetail extends Component {
       <React.Fragment>
         <section className="productDetail">
           <div className="canvas">
-            <Visualizer />
+            <Visualizer {...this.state.assetDetails} />
           </div>
 
           <div className="aside">
@@ -137,7 +138,7 @@ export default class ProductDetail extends Component {
           <React.Fragment>
             <section className="productDetail">
               <div className="canvas">
-                <Visualizer />
+                <Visualizer {...this.state.assetDetails} />
               </div>
     
               <div className="aside">
@@ -152,7 +153,7 @@ export default class ProductDetail extends Component {
                   <h5>{this.state.assetDetails.price} €</h5>
                 </div>
     
-                <CommentList {...this.state.assetDetails} paramsId={this.props.match.params.id}></CommentList>
+                <CommentList renderAsset={() => this.getAsset()} {...this.state.assetDetails} paramsId={this.props.match.params.id}></CommentList>
 
               </div>
             </section>
