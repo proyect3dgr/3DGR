@@ -25,6 +25,8 @@
         padding: 2rem;
         text-align: center;
         border-radius: 1rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+
         &:focus {
           outline: none;
         }
@@ -41,6 +43,8 @@
         opacity: 0.6;
         transition: all 0.5s;
         text-shadow: 2px 2px 5px #f0f2f0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+
   
         &:hover {
           opacity: 1;

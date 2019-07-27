@@ -6,7 +6,7 @@ import "../../SASS/Main.scss";
 export default class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", email:"" };
     this.service = new AuthServices();
     this.errMessage = "";
   }
@@ -15,15 +15,17 @@ export default class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    const email = this.state.email;
 
     this.service
-      .signup(username, password)
+      .signup(username, password, email)
       .then(response => {
         console.log(response);
         this.errMessage = response.message;
         this.setState({
           username: "",
-          password: ""
+          password: "",
+          email:""
         });
         // this.props.getUser(response)
       })
@@ -51,7 +53,18 @@ export default class Signup extends Component {
 
           <div>
             <input
+              name="email"
+              type="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={e => this.handleChange(e)}
+            />
+          </div>
+
+          <div>
+            <input
               name="password"
+              type="password"
               placeholder="Password"
               value={this.state.password}
               onChange={e => this.handleChange(e)}

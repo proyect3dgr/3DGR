@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import assetServices from "../../Services/assetServices";
 import Service from "../../Services/Services";
+import edit from "./edit-button.svg"
+import { Link } from "react-router-dom";
+
 
 export default class Profile extends Component {
   constructor() {
@@ -63,6 +66,8 @@ export default class Profile extends Component {
     this.setState({ [name]: value });
   };
 
+  
+
   render() {
     return (
       <React.Fragment>
@@ -80,6 +85,9 @@ export default class Profile extends Component {
             <div className="description">
             <p><p className="title">About Me</p> 
             {this.props.about}</p>
+            <Link to={"/profile/settings"}><img className="edit" src={edit} alt="edit" /></Link>
+            
+
             </div>
 
             {/* <button
