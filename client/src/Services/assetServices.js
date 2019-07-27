@@ -18,6 +18,12 @@ export default class assetServices {
       .then(response => response.data);
   };
 
+  createComment = (description, populateAsset) => {
+    return this.service
+      .post("/create-comment", { description, populateAsset })
+      .then(response => response.data);
+  };
+
   getUser = params => {
     return this.service.get(`/user/${params}`).then(response => response.data);
   };
@@ -25,6 +31,18 @@ export default class assetServices {
   getAsset = params => {
     return this.service
       .get(`/product/${params}`)
+      .then(response => response.data);
+  };
+
+  editAsset = (_id, title, price, description) => {
+    return this.service
+      .post("/edit-asset", { _id, title, price, description })
+      .then(response => response.data);
+  };
+
+  editAssetImg = (_id, image) => {
+    return this.service
+      .post("/edit-asset-img", { _id, image })
       .then(response => response.data);
   };
 }

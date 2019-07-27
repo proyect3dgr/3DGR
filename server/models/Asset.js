@@ -12,7 +12,7 @@ const assetSchema = new Schema(
     size: Number,
     format: {
       type: String,
-      enum: ["COLLADA", "MAYA", "FBX"],
+      enum: ["COLLADA", "OBJ", "FBX"],
       default: "COLLADA"
     },
     categories: {
