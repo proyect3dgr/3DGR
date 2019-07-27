@@ -6,8 +6,14 @@
   .canvas {
     width: 80vw;
     height: 85vh;
+    border-radius: 2rem;
+    canvas{
+      border: 2px solid blue;
+    }
     
   }
+
+  
   
   .aside {
     border: 1px solid black;

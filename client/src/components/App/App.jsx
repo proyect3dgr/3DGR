@@ -103,7 +103,11 @@ export default class App extends Component {
               )}
             />
 
-    <Route exact path="/product/upload" render={()=><UploadAsset />} />
+            <Route
+              exact
+              path="/product/upload"
+              render={() => <UploadAsset />}
+            />
             <Route
               exact
               path="/product/:id"

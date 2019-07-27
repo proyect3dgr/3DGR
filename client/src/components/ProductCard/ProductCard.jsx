@@ -9,9 +9,11 @@ export default class ProductCard extends Component {
         <div className="productImg">
           <img src={this.props.urlPathImg} alt="productImg" />
         </div>
+       
         <div className="productName">{this.props.title}</div>
         <div className="productAuthor">{this.props.author.username}</div>
         <div className="productPrice">{this.props.price} €</div>
+
       </article>
       </Link>
     );
