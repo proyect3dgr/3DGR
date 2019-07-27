@@ -10,6 +10,7 @@ import ProductList from "../ProductList/ProductList";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Nav from "../Nav/Nav";
 import UploadAsset from "../UploadAsset/UploadAsset";
+import Settings from "../Settings/Settings";
 
 export default class App extends Component {
   constructor(props) {
@@ -115,6 +116,11 @@ export default class App extends Component {
               exact
               path="/product/:id"
               render={props => <ProductDetail {...props} {...this.state.loggedInUser} />}
+            />
+            <Route
+              exact
+              path="/profile/settings"
+              render={() => <Settings />}
             />
           </Switch>
         </React.Fragment>

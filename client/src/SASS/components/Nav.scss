@@ -1,61 +1,83 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap");
 
 .nav {
-  
-background: linear-gradient(to right, #3498dbb1, #2c3e50b5);
-
+  background: linear-gradient(to right, #3498dba1, #2c3e50a7);
+  z-index: 99;
+  position: sticky;
+  top: 0;
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: 100px;
+  height: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  a {
+    text-decoration: none;
+    
+  }
   .logo {
     margin-left: 20px;
     border: 1px solid whitesmoke;
-    width: 250px;
-    height: 90px;
-    
+    width: 100px;
+    height: 45px;
     border-radius: 2rem;
-    opacity: .6;
-    transition: all .5s ease-in-out;
-    position: relative;
-    
+    opacity: 0.6;
+    transition: all 0.5s ease-in-out;
 
-    &:hover{
-      opacity: 1
+    &:hover {
+      opacity: 1;
     }
-
-    
   }
-  .name{
-    font-family: 'Bungee Outline', cursive;
-    position: absolute;
-    left: 60px;
-    top: 15px;
-    text-shadow: 5px 5px 10px whitesmoke;
+  .name {
+    font-family: "Bungee Outline", cursive;
+
     color: rgb(8, 4, 46);
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: bold;
-    opacity: .8;
-    z-index: 2;
+    opacity: 0.8;
+    padding: 0 2rem;
+    transition: all 0.5s ease-in-out;
+    
+    &:hover {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff,
+        0 0 80px rgb(0, 123, 255), 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+      opacity: 1;
+    }
   }
 
   .cart {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
-    opacity: 0.7;
+    width: 35px;
+    height: 35px;
+
+    opacity: 0.8;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    font-size: 2rem;
+    margin-right: 1rem;
+
+
+    a {
+      color: whitesmoke;
+      text-shadow: 2px 2px 5px black;
+
+    }
 
     div {
-      margin: 0 2rem;
+      padding-right: 1rem;
+      opacity: .6;
+      transition: all .5s;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

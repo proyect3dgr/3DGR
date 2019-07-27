@@ -1,11 +1,8 @@
 .allProductList {
-  background: linear-gradient(to right, #2980b9, #2c3e50);
-  padding: 1rem;
-
-  .searchBar {
+  background: linear-gradient(10deg, rgba(61,59,59,1) 0%, rgba(180,195,207,1) 100%);  .searchBar {
     display: flex;
     justify-content: center;
-    margin: 3rem 0;
+    padding: 5rem 0;
   }
 
   .productList {

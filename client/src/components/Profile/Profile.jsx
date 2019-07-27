@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import assetServices from "../../Services/assetServices";
 import Service from "../../Services/Services";
+import edit from "./edit-button.svg"
+import { Link } from "react-router-dom";
+
 
 export default class Profile extends Component {
   constructor() {
@@ -63,16 +66,29 @@ export default class Profile extends Component {
     this.setState({ [name]: value });
   };
 
+  
+
   render() {
     return (
       <React.Fragment>
         <section className="infoUser">
           <article>
+            <div className="userAvatar">
             <img src={this.state.avatar} alt="avatar" />
+            </div>
+            
+            <div className="details">
             <h1>{this.props.username}</h1>
-            <p>{this.props.about}</p>
+            <h2>{this.props.email}</h2>
+            </div>
 
-            <p>{this.props.email}</p>
+            <div className="description">
+            <p><p className="title">About Me</p> 
+            {this.props.about}</p>
+            <Link to={"/profile/settings"}><img className="edit" src={edit} alt="edit" /></Link>
+            
+
+            </div>
 
             {/* <button
               onClick={e => {
@@ -82,46 +98,14 @@ export default class Profile extends Component {
               LOGOUT
             </button> */}
           </article>
-          <section className="statistics">
-            <h1>Statistics</h1>
-            <form onSubmit={this.handleFormSubmit}>
-              <input
-                name="oldPass"
-                placeholder="Old password"
-                value={this.state.oldPass}
-                onChange={e => this.handleChange(e)}
-              />
-              <input
-                name="newPass"
-                placeholder="New password"
-                value={this.state.newPass}
-                onChange={e => this.handleChange(e)}
-              />
-              <input
-                name="newPassRepeat"
-                placeholder="Repeat New Password"
-                value={this.state.newPassRepeat}
-                onChange={e => this.handleChange(e)}
-              />
-
-              <button>Submit</button>
-            </form>
-
-            <form onSubmit={this.handleFormSubmit}>
-              <input
-                name="image"
-                placeholder="Choose Avatar URL"
-                value={this.state.image}
-                onChange={e => this.handleChange(e)}
-              />
-              <button>Change avatar</button>
-            </form>
-          </section>
+          
+              
+            
         </section>
 
         <div className="lowPart">
           <section className="collection">
-            <h1>Collection</h1>
+            
             <ul>
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
