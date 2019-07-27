@@ -4,24 +4,32 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
 export default class Visualizer extends Component {
-
-  constructor(props) {
-    super(props)
+  constructor() {
+    super();
     this.state = {
-      urlPathModel: this.props.urlPathModel
-    }
+      urlPathModel: "hola"
+    };
+  }
+
+  componentDidMount() {
+    // if (!this.props.author) {
+    // this.loadModel();
+    // }
+    // this.urlPathModel = this.props.urlPathModel;
+    console.log(this.props)
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props)
+    console.log(prevProps)
+    console.log(this.props.author);
     // only update chart if the data has changed
-    if (prevProps.author !== this.props.author) {
+    if (prevProps !== this.props) {
       this.loadModel();
     }
   }
 
-loadModel() {
-    let modelCloud = this.props.urlPathModel
+  loadModel() {
+    let modelCloud = this.props.urlPathModel;
     ////////////Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -100,29 +108,27 @@ loadModel() {
     grid.position.set(0, -5, 0);
     scene.add(grid);
 
-    
     /////////Responsive Canvas
     const canvas = renderer.domElement;
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
-    
+
     if (canvas.width !== width || canvas.height !== height) {
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
     }
-      ////////////////////// model
-      var loader = new FBXLoader();
-      
-      var mixerFix = undefined
+    ////////////////////// model
+    var loader = new FBXLoader();
 
-      
+    var mixerFix = undefined;
 
-      loader.load(`${modelCloud}`,
+    loader.load(
+      `${modelCloud}`,
 
       function(object) {
         var mixer = new THREE.AnimationMixer(object);
-        mixerFix=mixer
+        mixerFix = mixer;
         var action = mixer.clipAction(object.animations[0]);
         action.play();
         object.traverse(function(child) {
@@ -132,9 +138,10 @@ loadModel() {
           }
         });
         scene.add(object);
-      });
-      
-      /////////Animation
+      }
+    );
+
+    /////////Animation
     //   var animate = function() {
     //     requestAnimationFrame(animate);
     //     cube.rotation.x += 0.0;
@@ -147,18 +154,16 @@ loadModel() {
 
     // var stats = new Stats();
     // selector.appendChild( stats.dom );
-        
+
     function animate() {
-      requestAnimationFrame( animate );
+      requestAnimationFrame(animate);
       var delta = clock.getDelta();
-      if ( mixerFix ) mixerFix.update( delta );
-      renderer.render( scene, camera );
+      if (mixerFix) mixerFix.update(delta);
+      renderer.render(scene, camera);
       // stats.update();
     }
-    animate()
-    
+    animate();
   }
-  
 
   render() {
     return <React.Fragment />;

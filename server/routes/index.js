@@ -117,13 +117,13 @@ router.post("/edit-asset-img", (req, res, next) => {
   });
 });
 
-router.put("edit-comment", (req, res, next) => {
-  Comment.findByIdAndUpdate(req.params._id, {
-    description: req.body.description
-  }).then(x => {
-    res.json(x);
-  });
-});
+// router.put("edit-comment", (req, res, next) => {
+//   Comment.findByIdAndUpdate(req.params._id, {
+//     description: req.body.description
+//   }).then(x => {
+//     res.json(x);
+//   });
+// });
 
 /* ------------DELETE ENDPOINTS-------------- */
 

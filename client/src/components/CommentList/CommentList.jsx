@@ -2,24 +2,40 @@ import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
 
 export default class CommentList extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
-      description: ""
-    }
-    this.service = new assetServices()
+      description: "",
+      assetDetails: { author: "", comments: [{ author: "" }] },
+    };
+    this.service = new assetServices();
+  }
+
+  componentDidMount() {
+    this.getAsset()
+  }
+
+  getAsset() {
+    const params = this.props.paramsId;
+    this.service.getAsset(params).then(response => {
+      this.setState({
+        ...this.state,
+        assetDetails: response
+        
+      })
+    });
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const description = this.state.description;
-    const populateAsset = this.props.paramsId
+    const populateAsset = this.props.paramsId;
 
-    this.service.createComment(description, populateAsset)
+    this.service
+      .createComment(description, populateAsset)
       .then(response => {
-        this.setState({description:""});  
-        this.props.renderAsset()      
+        this.setState({ description: "" });
+        this.getAsset()
       })
       .catch(error => {
         console.log(error);
@@ -40,13 +56,25 @@ export default class CommentList extends Component {
     return (
       <div className="comments">
         <h1>Comments</h1>
-        {this.props.comments.map((el, idx) => {
-          return (
-            <div className="comment" key={idx}>
-              <h4>{el.author.username}</h4>
-              <h3>{el.description}</h3>
-            </div>
-          );
+        {this.state.assetDetails.comments.map((el, idx) => {
+          if (
+            this.props.loggedUser === el.author.username
+          ) {
+            return (
+              <div className="comment" key={idx}>
+                <button>Delete Comment</button>
+                <h4>{el.author.username}</h4>
+                <h3>{el.description}</h3>
+              </div>
+            );
+          } else {
+            return (
+              <div className="comment" key={idx}>
+                <h4>{el.author.username}</h4>
+                <h3>{el.description}</h3>
+              </div>
+            );
+          }
         })}
 
         <form onSubmit={this.handleFormSubmit}>

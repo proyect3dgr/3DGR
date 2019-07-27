@@ -92,7 +92,7 @@ export default class ProductDetail extends Component {
               <h5>{this.state.assetDetails.price} €</h5>
             </div>
 
-            <CommentList renderAsset={() => this.getAsset()} paramsId={this.props.match.params.id} {...this.state.assetDetails}></CommentList>
+            <CommentList loggedUser={this.props.username} paramsId={this.props.match.params.id}></CommentList>
 
           </div>
         </section>
@@ -153,7 +153,7 @@ export default class ProductDetail extends Component {
                   <h5>{this.state.assetDetails.price} €</h5>
                 </div>
     
-                <CommentList renderAsset={() => this.getAsset()} {...this.state.assetDetails} paramsId={this.props.match.params.id}></CommentList>
+                <CommentList loggedUser={this.props.username}  paramsId={this.props.match.params.id}></CommentList>
 
               </div>
             </section>

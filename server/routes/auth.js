@@ -14,7 +14,6 @@ router.get("/checklogin", (req, res) => {
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
-    console.log(req.user);
 
     if (err) {
       res.status(500).json({ failureDetails });
@@ -32,6 +31,7 @@ router.post("/login", (req, res, next) => {
         return;
       }
       // We are now logged in (that's why we can also send req.user)
+
       res.status(200).json(theUser);
     });
   })(req, res, next);
