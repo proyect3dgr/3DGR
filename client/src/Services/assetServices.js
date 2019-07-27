@@ -45,4 +45,11 @@ export default class assetServices {
       .post("/edit-asset-img", { _id, image })
       .then(response => response.data);
   };
+
+  deleteComment = id => {
+    console.log(id);
+    return this.service
+      .delete("/delete-comment", { id})
+      .then(response => response.data);
+  };
 }

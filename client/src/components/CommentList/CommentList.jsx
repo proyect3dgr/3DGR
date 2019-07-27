@@ -6,13 +6,13 @@ export default class CommentList extends Component {
     super();
     this.state = {
       description: "",
-      assetDetails: { author: "", comments: [{ author: "" }] },
+      assetDetails: { author: "", comments: [{ author: "" }] }
     };
     this.service = new assetServices();
   }
 
   componentDidMount() {
-    this.getAsset()
+    this.getAsset();
   }
 
   getAsset() {
@@ -21,8 +21,7 @@ export default class CommentList extends Component {
       this.setState({
         ...this.state,
         assetDetails: response
-        
-      })
+      });
     });
   }
 
@@ -35,7 +34,7 @@ export default class CommentList extends Component {
       .createComment(description, populateAsset)
       .then(response => {
         this.setState({ description: "" });
-        this.getAsset()
+        this.getAsset();
       })
       .catch(error => {
         console.log(error);
@@ -45,6 +44,17 @@ export default class CommentList extends Component {
         });
       });
   };
+
+  handleFormDelete = (event, id) => {
+    event.preventDefault();
+    let commID = id
+
+    this.service.deleteComment(commID)
+    .then(response => {
+      this.getAsset();
+    })
+    
+  }
 
   handleChange = event => {
     event.preventDefault();
@@ -57,12 +67,11 @@ export default class CommentList extends Component {
       <div className="comments">
         <h1>Comments</h1>
         {this.state.assetDetails.comments.map((el, idx) => {
-          if (
-            this.props.loggedUser === el.author.username
-          ) {
+          if (this.props.loggedUser === el.author.username) {
             return (
               <div className="comment" key={idx}>
-                <button>Delete Comment</button>
+                <form onSubmit={e => this.handleFormDelete(e, el._id)}><button>Delete Comment</button></form>
+                
                 <h4>{el.author.username}</h4>
                 <h3>{el.description}</h3>
               </div>
