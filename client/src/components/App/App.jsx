@@ -115,7 +115,9 @@ export default class App extends Component {
             <Route
               exact
               path="/product/:id"
-              render={props => <ProductDetail {...props} {...this.state.loggedInUser} />}
+              render={props => (
+                <ProductDetail {...props} {...this.state.loggedInUser} />
+              )}
             />
             <Route
               exact
