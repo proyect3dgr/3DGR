@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "./logo.png";
+import logo from "./logo2.gif";
 import cart from "./cart.png";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
@@ -11,6 +11,7 @@ export default class Nav extends Component {
         <nav className="nav">
           <Link to={"/"}>
             <img className="logo" src={logo} alt="logo" />
+            <span className="name">3DGR</span>
           </Link>
 
           <div className="menu">
