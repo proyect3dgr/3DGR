@@ -11,7 +11,6 @@ import ProductDetail from "../ProductDetail/ProductDetail";
 import Nav from "../Nav/Nav";
 import UploadAsset from "../UploadAsset/UploadAsset";
 import Settings from "../Settings/Settings";
-import Editor from "../Editor/Editor";
 
 export default class App extends Component {
   constructor(props) {
@@ -125,11 +124,7 @@ export default class App extends Component {
               path="/profile/settings"
               render={() => <Settings />}
             />
-            <Route
-              exact
-              path="/editor"
-              render={() => <Editor />}
-            />
+            
           </Switch>
         </React.Fragment>
       );
