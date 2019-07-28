@@ -124,6 +124,7 @@ export default class App extends Component {
               path="/profile/settings"
               render={() => <Settings />}
             />
+            
           </Switch>
         </React.Fragment>
       );
