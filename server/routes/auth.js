@@ -3,6 +3,9 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 
+// include CLOUDINARY:
+const uploader = require("../configs/cloudinary-setup");
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -14,7 +17,6 @@ router.get("/checklogin", (req, res) => {
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
-
     if (err) {
       res.status(500).json({ failureDetails });
       return;
@@ -40,6 +42,7 @@ router.post("/login", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email;
 
   if (!username || !password) {
     res.json({ message: "Provide username and password" });
@@ -68,7 +71,8 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email
     });
 
     newUser
@@ -78,10 +82,22 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
+router.post("/upload", uploader.single("avatar"), (req, res, next) => {
+  // console.log('file is: ', req.file)
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+  // get secure_url from the file object and save it in the
+  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+  res.json({ secure_url: req.file.secure_url });
+});
+
 router.post(
   "/edit-profile",
   // ensureLogin.ensureLoggedIn(),
-  // uploadCloud.single("image"),
+  // uploader.single("avatar"),
   (req, res, next) => {
     User.findById(req.user._id).then(foundUser => {
       if (!bcrypt.compareSync(req.body.oldPass, foundUser.password)) {
@@ -103,8 +119,8 @@ router.post(
       User.findByIdAndUpdate(
         req.user._id,
         {
-          password: hashPass
-          // picture: { url: req.file.url }
+          password: hashPass,
+          // avatar: req.body.avatar
         },
         { new: true }
       ).then(updatedUser => {
@@ -122,7 +138,7 @@ router.post(
     User.findByIdAndUpdate(
       req.user._id,
       {
-        avatar: req.body.image
+        avatar: req.body.avatar
       },
       { new: true }
     ).then(updatedUser => {

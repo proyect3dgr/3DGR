@@ -4,6 +4,9 @@ const Asset = require("../models/Asset");
 const User = require("../models/User");
 const Comment = require("../models/Comment");
 
+// include CLOUDINARY:
+const uploader = require("../configs/cloudinary-setup");
+
 /* ------------GET ENDPOINTS-------------- */
 router.get("/assets", (req, res, next) => {
   Asset.find()
@@ -38,15 +41,27 @@ router.get("/product/:id", (req, res, next) => {
 });
 /* ------------CREATE ENDPOINTS-------------- */
 
+router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
+  // console.log('file is: ', req.file)
+
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  // get secure_url from the file object and save it in the 
+  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+  res.json({ secure_url: req.file.secure_url });
+})
+
 router.post(
   "/create-asset",
-  // uploadSingle("image"),
+  // uploader.single("imageUrl"),
   (req, res, next) => {
     Asset.create({
       title: req.body.title,
       author: req.user._id,
       description: req.body.description,
-      price: req.body.price
+      price: req.body.price,
       // urlPathImg: req.file.url,
       // urlPathModel: req.file.url,
       // size: req.file.size???
@@ -134,7 +149,7 @@ router.delete("/delete-profile", (req, res, next) => {
 router.delete("/delete-comment", (req, res, next) => {
   console.log(req.body);
   console.log(req.body._id);
-  console.log(req.body)
+  console.log(req.body);
   // console.log(req.data._id);
   Comment.findByIdAndRemove(req.body._id).then(x => res.json(x));
 });

@@ -8,9 +8,9 @@ export default class AuthServices {
     });
   }
 
-  signup = (username, password) => {
+  signup = (username, password, email) => {
     return this.service
-      .post("/signup", { username, password })
+      .post("/signup", { username, password, email })
       .then(response => response.data);
   };
 
@@ -28,15 +28,19 @@ export default class AuthServices {
     return this.service.get("/logout").then(response => response.data);
   };
 
+  handleUpload = (file) => {
+    return this.service.post('/upload', file).then(res => res.data)
+  }
+
   editProfile = (oldPass, newPass, newPassRepeat) => {
     return this.service
       .post("/edit-profile", { oldPass, newPass, newPassRepeat })
       .then(response => response.data);
   };
 
-  editAvatar = image => {
+  editAvatar = avatar => {
     return this.service
-      .post("/edit-avatar", { image })
+      .post("/edit-avatar", { avatar })
       .then(response => response.data);
   };
 }
