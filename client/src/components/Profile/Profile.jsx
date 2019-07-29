@@ -60,6 +60,15 @@ export default class Profile extends Component {
     }
   };
 
+  handleFormDelete = (event, id) => {
+    event.preventDefault();
+    let commID = id;
+
+    this.service.deleteAsset(commID).then(response => {
+      this.getProfile();
+    });
+  };
+
   handleChange = event => {
     event.preventDefault();
     const { name, value } = event.target;

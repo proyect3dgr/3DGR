@@ -11,13 +11,13 @@ cloudinary.config({
 var storage = cloudinaryStorage({
   cloudinary,
   folder: "thing-gallery", // The name of the folder in cloudinary
-  allowedFormats: ["jpg", "png", "gif", "fbx"],
-  // params: { resource_type: "auto" },
+  allowedFormats: ["fbx", "obx"],
+  params: { resource_type: "auto" },
 
   filename: function(req, res, cb) {
     cb(null, res.originalname); // The file on cloudinary would have the same name as the original file name
   }
 });
 
-const uploader = multer({ storage });
-module.exports = uploader;
+const uploaderModel = multer({ storage });
+module.exports = uploaderModel;
