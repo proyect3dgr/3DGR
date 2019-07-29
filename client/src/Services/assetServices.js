@@ -12,9 +12,18 @@ export default class assetServices {
     return this.service.get("/assets").then(response => response.data);
   };
 
-  createAsset = (title, price, description) => {
+  handleUpload = file => {
+    return this.service.post("/upload", file).then(res => res.data);
+  };
+
+  handleUploadModel = file => {
+    return this.service.post("/upload-asset", file).then(res => res.data);
+  };
+
+  createAsset = (title, price, description, model, size, image) => {
+    console.log(title, price, description, model, size, image)
     return this.service
-      .post("/create-asset", { title, price, description })
+      .post("/create-asset", { title, price, description, model, size, image })
       .then(response => response.data);
   };
 

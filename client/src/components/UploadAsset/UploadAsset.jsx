@@ -7,7 +7,10 @@ export default class UploadAsset extends Component {
     this.state = {
       title: "",
       price: "",
-      description: ""
+      description: "",
+      image: "",
+      model: "",
+      size: ""
     };
     this.service = new assetServices();
   }
@@ -18,13 +21,26 @@ export default class UploadAsset extends Component {
     const title = this.state.title;
     const price = this.state.price;
     const description = this.state.description;
+    const image = this.state.image;
+    const model = this.state.model;
+    const size = this.state.size;
 
-    console.log(title + price + description);
+    console.log(image)
+    console.log(size)
+    console.log(model)
+
+    if (image) {
     this.service
-
-      .createAsset(title, price, description)
+      .createAsset(title, price, description, model, size, image)
       .then(response => {
-        this.setState({ title: "", price: "", description: "" });
+        this.setState({
+          title: "",
+          price: "",
+          description: "",
+          image: "",
+          model: "",
+          size: ""
+        });
       })
       .catch(error => {
         console.log(error);
@@ -33,12 +49,74 @@ export default class UploadAsset extends Component {
           error: true
         });
       });
+    } else {
+      this.service
+      .createAsset(title, price, description, model, size)
+      .then(response => {
+        this.setState({
+          title: "",
+          price: "",
+          description: "",
+          model: "",
+          size: ""
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
+        });
+      });
+    }
   };
 
   handleChange = event => {
     event.preventDefault();
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  };
+
+  // this method handles just the file upload
+  handleImgUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("modelImg", e.target.files[0]);
+
+    this.service
+      .handleUpload(uploadData)
+      .then(response => {
+        console.log("response is: ", response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ image: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
+  handleModelUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("modelFile", e.target.files[0]);
+
+    this.service
+      .handleUploadModel(uploadData)
+      .then(response => {
+        console.log("response is: ", response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({
+          size: Math.floor(response.bytes / 2048),
+          model: response.secure_url
+        });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
   };
 
   render() {
@@ -62,6 +140,10 @@ export default class UploadAsset extends Component {
           value={this.state.description}
           onChange={e => this.handleChange(e)}
         />
+
+        <input type="file" onChange={e => this.handleImgUpload(e)} />
+
+        <input required type="file" onChange={e => this.handleModelUpload(e)} />
 
         <button>Submit</button>
       </form>
