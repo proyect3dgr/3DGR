@@ -4,6 +4,8 @@ import assetServices from "../../Services/assetServices";
 import Service from "../../Services/Services";
 import edit from "./edit-button.svg";
 import { Link } from "react-router-dom";
+import bin from "../CommentList/bin.png"
+
 
 export default class Profile extends Component {
   constructor(props) {
@@ -84,7 +86,7 @@ export default class Profile extends Component {
               <p className="title">About Me</p>
               <p>{this.props.about}</p>
               <Link to={"/profile/settings"}>
-                <img className="edit" src={edit} alt="edit" />
+                <div className="edit"><img src={edit} alt="edit" /></div>
               </Link>
             </div>
 
@@ -104,7 +106,9 @@ export default class Profile extends Component {
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
                   <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
-                  <button>Delete Asset</button>
+                  <button className="deleteBtn"><img src={bin} alt="delete button"></img></button>
+                  <Link to="/product-edit"><button className="edit"><img src={edit} alt="delete button"></img></button></Link>
+
                 </form>
                   <ProductCard className="cocowawa" {...asset} />
                 </li>
