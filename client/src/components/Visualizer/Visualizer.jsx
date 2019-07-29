@@ -16,11 +16,11 @@ export default class Visualizer extends Component {
     // this.loadModel();
     // }
     // this.urlPathModel = this.props.urlPathModel;
-    console.log(this.props)
+    console.log(this.props);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps)
+    console.log(prevProps);
     console.log(this.props.author);
     // only update chart if the data has changed
     if (prevProps !== this.props) {

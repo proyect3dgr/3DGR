@@ -119,7 +119,7 @@ router.post(
       User.findByIdAndUpdate(
         req.user._id,
         {
-          password: hashPass,
+          password: hashPass
           // avatar: req.body.avatar
         },
         { new: true }

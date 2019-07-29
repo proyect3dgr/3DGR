@@ -41,17 +41,17 @@ router.get("/product/:id", (req, res, next) => {
 });
 /* ------------CREATE ENDPOINTS-------------- */
 
-router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
+router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
   // console.log('file is: ', req.file)
 
   if (!req.file) {
-    next(new Error('No file uploaded!'));
+    next(new Error("No file uploaded!"));
     return;
   }
-  // get secure_url from the file object and save it in the 
+  // get secure_url from the file object and save it in the
   // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
   res.json({ secure_url: req.file.secure_url });
-})
+});
 
 router.post(
   "/create-asset",
@@ -61,7 +61,7 @@ router.post(
       title: req.body.title,
       author: req.user._id,
       description: req.body.description,
-      price: req.body.price,
+      price: req.body.price
       // urlPathImg: req.file.url,
       // urlPathModel: req.file.url,
       // size: req.file.size???

@@ -28,9 +28,9 @@ export default class AuthServices {
     return this.service.get("/logout").then(response => response.data);
   };
 
-  handleUpload = (file) => {
-    return this.service.post('/upload', file).then(res => res.data)
-  }
+  handleUpload = file => {
+    return this.service.post("/upload", file).then(res => res.data);
+  };
 
   editProfile = (oldPass, newPass, newPassRepeat) => {
     return this.service

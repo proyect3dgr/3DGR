@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import assetServices from "../../Services/assetServices";
 import Service from "../../Services/Services";
-import edit from "./edit-button.svg"
+import edit from "./edit-button.svg";
 import { Link } from "react-router-dom";
-
 
 export default class Profile extends Component {
   constructor() {
@@ -66,28 +65,28 @@ export default class Profile extends Component {
     this.setState({ [name]: value });
   };
 
-  
-
   render() {
     return (
       <React.Fragment>
         <section className="infoUser">
           <article>
             <div className="userAvatar">
-            <img src={this.state.avatar} alt="avatar" />
+              <img src={this.state.avatar} alt="avatar" />
             </div>
-            
+
             <div className="details">
-            <h1>{this.props.username}</h1>
-            <h2>{this.props.email}</h2>
+              <h1>{this.props.username}</h1>
+              <h2>{this.props.email}</h2>
             </div>
 
             <div className="description">
-            <p><p className="title">About Me</p> 
-            {this.props.about}</p>
-            <Link to={"/profile/settings"}><img className="edit" src={edit} alt="edit" /></Link>
-            
-
+              <p>
+                <p className="title">About Me</p>
+                {this.props.about}
+              </p>
+              <Link to={"/profile/settings"}>
+                <img className="edit" src={edit} alt="edit" />
+              </Link>
             </div>
 
             {/* <button
@@ -98,14 +97,10 @@ export default class Profile extends Component {
               LOGOUT
             </button> */}
           </article>
-          
-              
-            
         </section>
 
         <div className="lowPart">
           <section className="collection">
-            
             <ul>
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>

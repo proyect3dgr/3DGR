@@ -6,7 +6,10 @@ const assetSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
     urlPathModel: String,
-    urlPathImg: { type: String, default: "https://i.stack.imgur.com/dZSMi.jpg?s=328&g=1" },
+    urlPathImg: {
+      type: String,
+      default: "https://i.stack.imgur.com/dZSMi.jpg?s=328&g=1"
+    },
     description: String,
     price: Number,
     size: Number,

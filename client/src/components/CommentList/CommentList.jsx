@@ -47,14 +47,12 @@ export default class CommentList extends Component {
 
   handleFormDelete = (event, id) => {
     event.preventDefault();
-    let commID = id
+    let commID = id;
 
-    this.service.deleteComment(commID)
-    .then(response => {
+    this.service.deleteComment(commID).then(response => {
       this.getAsset();
-    })
-    
-  }
+    });
+  };
 
   handleChange = event => {
     event.preventDefault();
@@ -70,8 +68,10 @@ export default class CommentList extends Component {
           if (this.props.loggedUser === el.author.username) {
             return (
               <div className="comment" key={idx}>
-                <form onSubmit={e => this.handleFormDelete(e, el._id)}><button>Delete Comment</button></form>
-                
+                <form onSubmit={e => this.handleFormDelete(e, el._id)}>
+                  <button>Delete Comment</button>
+                </form>
+
                 <h4>{el.author.username}</h4>
                 <h3>{el.description}</h3>
               </div>
