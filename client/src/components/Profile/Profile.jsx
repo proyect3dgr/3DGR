@@ -103,6 +103,9 @@ export default class Profile extends Component {
             <ul>
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
+                  <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
+                  <button>Delete Asset</button>
+                </form>
                   <ProductCard className="cocowawa" {...asset} />
                 </li>
               ))}
