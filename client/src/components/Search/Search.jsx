@@ -11,7 +11,7 @@ export default class Search extends Component {
           name="search"
           placeholder="Search..."
           onChange={this.props.filter}
-          value={this.props.filterQuery} 
+          value={this.props.filterQuery}
         />
       </React.Fragment>
     );

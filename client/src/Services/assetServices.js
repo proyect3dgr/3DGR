@@ -49,7 +49,7 @@ export default class assetServices {
   deleteComment = id => {
     console.log(id);
     return this.service
-      .delete("/delete-comment", { id})
+      .delete("/delete-comment", { id })
       .then(response => response.data);
   };
 }

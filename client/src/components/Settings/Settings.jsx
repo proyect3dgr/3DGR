@@ -31,7 +31,7 @@ export default class Settings extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.image)
+    console.log(this.state.image);
     const newPass = this.state.newPass;
     const oldPass = this.state.oldPass;
     const newPassRepeat = this.state.newPassRepeat;
@@ -77,10 +77,10 @@ export default class Settings extends Component {
     this.authService
       .handleUpload(uploadData)
       .then(response => {
-        console.log('response is: ', response);
+        console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ image: response.secure_url });
-        console.log(this.state.image)
+        console.log(this.state.image);
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
@@ -128,8 +128,6 @@ export default class Settings extends Component {
           <input type="file" onChange={e => this.handleFileUpload(e)} />
           <button>Change avatar</button>
         </form>
-
-        
       </section>
     );
   }

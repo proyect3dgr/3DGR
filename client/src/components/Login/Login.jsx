@@ -6,9 +6,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { username: "", password: "", error : false};
-
-
+    this.state = { username: "", password: "", error: false };
 
     this.service = new AuthServices();
   }
@@ -21,7 +19,6 @@ class Login extends Component {
     this.service
       .login(username, password)
       .then(response => {
-
         //console.log(response);
         this.setState({ username: "", password: "" });
         this.props.getUser(response);
@@ -56,7 +53,7 @@ class Login extends Component {
 
           <div>
             <input
-            type="password"
+              type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
