@@ -83,7 +83,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/upload", uploader.single("avatar"), (req, res, next) => {
-  // console.log('file is: ', req.file)
+  console.log('file is: ', req.file)
 
   if (!req.file) {
     next(new Error("No file uploaded!"));

@@ -41,7 +41,7 @@ router.get("/product/:id", (req, res, next) => {
 });
 /* ------------CREATE ENDPOINTS-------------- */
 
-router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
+router.post("/upload", uploader.single("modelImg"), (req, res, next) => {
   // console.log('file is: ', req.file)
 
   if (!req.file) {
@@ -53,18 +53,35 @@ router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 });
 
+router.post("/upload-asset", uploader.single("modelFile"), (req, res, next) => {
+  // console.log('file is: ', req.file)
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+  // get secure_url from the file object and save it in the
+  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+  res.json({ bytes:req.file.bytes, secure_url: req.file.secure_url });
+});
+
+
+
 router.post(
   "/create-asset",
   // uploader.single("imageUrl"),
   (req, res, next) => {
+console.log(req.body.model)
+console.log(req.body.image)
+
     Asset.create({
       title: req.body.title,
       author: req.user._id,
       description: req.body.description,
-      price: req.body.price
-      // urlPathImg: req.file.url,
-      // urlPathModel: req.file.url,
-      // size: req.file.size???
+      price: req.body.price,
+      urlPathImg: req.body.image,
+      urlPathModel: req.body.model,
+      size: req.body.size
     }).then(assetCreated => {
       let assetID = assetCreated._id;
 
