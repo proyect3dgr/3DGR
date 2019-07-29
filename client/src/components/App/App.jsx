@@ -103,7 +103,7 @@ export default class App extends Component {
                 <ProductDetail {...props} {...this.state.loggedInUser} />
               )}
             />
-            <Route exact path="/profile/settings" render={() => <Settings {...this.state.loggedInUser}/>} />
+            <Route exact path="/profile/settings" render={() => <Settings reloadUser={this.fetchUser} {...this.state.loggedInUser}/>} />
           </Switch>
         </React.Fragment>
       );
@@ -134,7 +134,7 @@ export default class App extends Component {
         <Route
           exact
           path="/signup"
-          render={() => <Signup {...this.state.loggedInUser} />}
+          render={() => <Signup />}
         />
 
         <Route

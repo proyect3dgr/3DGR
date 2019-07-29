@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
 import AuthServices from "../../Services/Services";
+import {Redirect} from "react-router-dom"
 
 export default class Settings extends Component {
   constructor() {
@@ -10,9 +11,11 @@ export default class Settings extends Component {
       newPass: "",
       newPassRepeat: "",
       oldPass: "",
+      about: "",
       avatar: "",
       secure_url: "",
-      image: ""
+      image: "",
+      deleted: false,
     };
     this.service = new assetServices();
     this.authService = new AuthServices();
@@ -21,7 +24,6 @@ export default class Settings extends Component {
   getProfile = () => {
     const params = this.props._id;
     this.service.getUser(params).then(response => {
-      console.log(params);
       this.setState(response);
     });
   };
@@ -37,7 +39,28 @@ export default class Settings extends Component {
     this.authService.editAvatar(image).then(response => {
       this.setState({ image: "", avatar: response.avatar });
       console.log(response.avatar);
+      this.props.reloadUser();
     });
+  };
+
+  handleAboutSubmit = event => {
+    event.preventDefault();
+
+    const aboutMe = this.state.about;
+
+    this.authService
+      .editAbout(aboutMe)
+      .then(response => {
+        this.setState({ about: "" });
+        this.props.reloadUser();
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
+        });
+      });
   };
 
   handleFormSubmit = event => {
@@ -61,17 +84,26 @@ export default class Settings extends Component {
       });
   };
 
+  handleFormDelete = (event, id) => {
+    event.preventDefault();
+    let commID = id;
+    console.log(commID)
+    this.authService.deleteProfile(commID).then(response => {
+this.props.reloadUser()}).then(response => {this.setState({deleted:true})  })
+  ;
+  };
+
   handleChange = event => {
     event.preventDefault();
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    console.log(this.state.avatar);
+    console.log(this.state.about);
   };
 
   // this method handles just the file upload
   handleFileUpload = e => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
-    console.log(e.target.files[0].size)
+    console.log(e.target.files[0].size);
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
@@ -90,6 +122,9 @@ export default class Settings extends Component {
   };
 
   render() {
+    if (this.state.deleted === true) {
+      return(<Redirect to="/"></Redirect>)
+    } else {
     return (
       <section className="form">
         <h1>Settings</h1>
@@ -119,6 +154,16 @@ export default class Settings extends Component {
           <button>Submit</button>
         </form>
 
+        <form onSubmit={this.handleAboutSubmit}>
+          <textarea
+            name="about"
+            onChange={e => this.handleChange(e)}
+            value={this.state.about}
+            placeholder="About me..."
+          />
+          <button>Submit</button>
+        </form>
+
         <form onSubmit={this.handleFormSubmitAvatar}>
           {/* <input
                 name="image"
@@ -127,13 +172,14 @@ export default class Settings extends Component {
                 value={this.state.image}
                 onChange={e => this.handleChange(e)}
               /> */}
-          <input
-            type="file"
-            onChange={e => this.handleFileUpload(e)}
-          />
+          <input type="file" onChange={e => this.handleFileUpload(e)} />
           <button>Change avatar</button>
+        </form>
+
+        <form onSubmit={e => this.handleFormDelete(e, this.state._id)}>
+          <button>Delete account</button>
         </form>
       </section>
     );
-  }
+  }}
 }

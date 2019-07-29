@@ -159,9 +159,7 @@ router.post("/edit-asset-img", (req, res, next) => {
 
 /* ------------DELETE ENDPOINTS-------------- */
 
-router.delete("/delete-profile", (req, res, next) => {
-  User.findByIdAndRemove(req.params._id).then(x => res.json(x));
-});
+
 
 router.delete("/delete-comment", (req, res, next) => {
   console.log(req._id);
