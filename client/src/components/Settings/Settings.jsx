@@ -154,6 +154,9 @@ this.props.reloadUser()}).then(response => {this.setState({deleted:true})  })
           <button>Submit</button>
         </form>
 
+
+        {/* Poner editar description */}
+
         <form onSubmit={this.handleAboutSubmit}>
           <textarea
             name="about"
@@ -163,6 +166,7 @@ this.props.reloadUser()}).then(response => {this.setState({deleted:true})  })
           />
           <button>Submit</button>
         </form>
+
 
         <form onSubmit={this.handleFormSubmitAvatar}>
           {/* <input

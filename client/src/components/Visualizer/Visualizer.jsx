@@ -38,13 +38,13 @@ export default class Visualizer extends Component {
     var clock = new THREE.Clock();
 
     ///////////Camera
-    var camera = new THREE.PerspectiveCamera(75, 2, 1, 5000);
+    var camera = new THREE.PerspectiveCamera(75, window.width/window.height, .1, 4000);
 
     camera.position.set(100, 200, 300);
     camera.lookAt(scene.position);
     scene.add(camera);
 
-    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    var renderer = new THREE.WebGLRenderer({ antialias: true });
     var selector = document.querySelector(".canvas");
     renderer.shadowMap.enabled = true;
 
@@ -54,7 +54,7 @@ export default class Visualizer extends Component {
     //controls.maxDistance = 50;
     controls.minDistance = 1.5;
     controls.enableDamping = true;
-    controls.dampingFactor = 1;
+    controls.dampingFactor = .5;
     controls.enableZoom = true;
 
     ////////////canvas size

@@ -38,6 +38,8 @@
     opacity: 0.8;
     padding: 0 2rem;
     transition: all 0.5s ease-in-out;
+    text-shadow: 2px 2px 5px black;
+    
     
     &:hover {
       text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff,
@@ -49,8 +51,10 @@
   .cart {
     width: 35px;
     height: 35px;
-
+    border-radius: 50%;
     opacity: 0.8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+
     transition: all 0.5s ease-in-out;
     &:hover {
       opacity: 1;
