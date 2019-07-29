@@ -2,7 +2,8 @@
   display: flex;
   height: 100vh;
   padding: 1rem;
-
+  background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   .canvas {
     width: 80vw;
     height: calc(100vh - 60px);

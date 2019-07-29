@@ -72,10 +72,10 @@ export default class CommentList extends Component {
           if (this.props.loggedUser === el.author.username) {
             return (
               <div className="comment" key={idx}>
-                <div>
+               
                 <h4 className="author">{el.author.username}</h4>
                 <h3 className="message">{el.description}</h3>
-                </div>
+                
                 <div>
                 <form onSubmit={e => this.handleFormDelete(e, el._id)}>
                   <button className="deleteBtn"><img src={bin} alt="delete button"></img></button>
@@ -97,14 +97,18 @@ export default class CommentList extends Component {
         </div>
         <div className="newComment">
           <form onSubmit={this.handleFormSubmit}>
-            <div><textarea
+            <div>
+              <textarea
               name="description"
               placeholder="Your new comment..."
               value={this.state.description}
               onChange={e => this.handleChange(e)}
-            /></div>
+            />
+            </div>
+
             <div>
-            <button>Post it!</button></div>
+            <button>Post it!</button>
+            </div>
           </form>
         </div>
 

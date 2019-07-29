@@ -11,6 +11,7 @@ import ProductDetail from "../ProductDetail/ProductDetail";
 import Nav from "../Nav/Nav";
 import UploadAsset from "../UploadAsset/UploadAsset";
 import Settings from "../Settings/Settings";
+import EditAsset from "../EditAsset/EditAsset";
 
 export default class App extends Component {
   constructor(props) {
@@ -104,6 +105,14 @@ export default class App extends Component {
               )}
             />
             <Route exact path="/profile/settings" render={() => <Settings reloadUser={this.fetchUser} {...this.state.loggedInUser}/>} />
+            
+            <Route
+              exact
+              path="/product-edit"
+              render={() => <EditAsset />}
+            />
+          
+          
           </Switch>
         </React.Fragment>
       );

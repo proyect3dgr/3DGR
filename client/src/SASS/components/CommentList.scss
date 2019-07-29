@@ -1,21 +1,28 @@
 .comments {
-  border-radius: 2rem;
+  
   display: flex;
-  justify-content: space-around;
   padding: 1rem;
-  background: rgba(0, 0, 255, 0.5);
+background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
   .displayComments {
+    background: rgba(0, 0, 255, 0.5);
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     border-radius: 1rem;
     font-size: 1.2rem;
+    width: 40vw;
+    text-shadow: 2px 2px 5px black;
+
     h1 {
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 3rem;
       margin: 1rem;
       color: whitesmoke;
+      text-align: center;
+      
+
     }
 
     .comment {
@@ -26,15 +33,18 @@
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
       color: whitesmoke;
       display: flex;
-      justify-content: space-between;
+      
       align-items: center;
 
       .author {
+        font-weight: bold;
+        font-size: 2rem;
+        padding-right: 4rem;
       }
 
       .message {
-        width: 20%;
-        overflow: auto;
+        padding-right: 4rem;
+        font-size: 1.5rem;
       }
       form {
         .deleteBtn {
@@ -46,6 +56,7 @@
           border: 0;
           opacity: 0.6;
           transition: all 0.5s ease-in-out;
+          
           &:hover {
             opacity: 1;
           }
@@ -59,17 +70,44 @@
   }
 
   .newComment {
+    text-shadow: 2px 2px 5px black;
+    background: rgba(0, 0, 255, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: space-around;
+    padding: 4rem;
+    margin-left: 4rem;
+    border-radius: 1rem;
+    height: 30rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+
     textarea {
+      font-size: 1.5rem;
       border-radius: 1rem;
-      width: 16rem;
-      height: 10rem;
+      width: 20rem;
+      height: 15rem;
       resize: none;
       margin: 2rem 0;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     }
-    //justify-content: center;
+
+    button {
+      background: whitesmoke;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 10px black;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+      transition: all 0.5s ease-in-out;
+      margin-top: 2rem;
+      opacity: .8;
+      
+          &:hover {
+            opacity: 1;
+          }
+
+    }
   }
 }

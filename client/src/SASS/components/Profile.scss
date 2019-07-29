@@ -28,7 +28,6 @@
         width: 30rem;
         height: 30rem;
         background-position: center;
-        
       }
     }
 
@@ -54,17 +53,25 @@
       }
 
       .edit {
-        width: 2rem;
-        height: 2rem;
+        background: gainsboro;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
         position: absolute;
         right: 0;
-        bottom: 0;
-        opacity: .6;
+        bottom: -5rem;
+        opacity: 0.6;
 
-        &:hover{
+        img {
+          width: 2rem;
+          height: 2rem;
+          background-position: center;
+          margin-bottom: 4px;
+        }
+
+        &:hover {
           opacity: 1;
         }
-        
       }
     }
 
@@ -83,6 +90,11 @@
     text-align: center;
     overflow: scroll;
     height: 50%;
+    background: linear-gradient(
+      to right,
+      #434343,
+      #131212
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     ul {
       display: flex;
@@ -90,11 +102,50 @@
       li {
         margin: 2rem;
         list-style-type: none;
+
+        form {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .deleteBtn {
+          border-radius: 50%;
+          width: 4rem;
+          height: 4rem;
+          padding: 0;
+          margin: 0;
+          border: 0;
+          opacity: 0.6;
+          transition: all 0.5s ease-in-out;
+          margin-right: 1rem;
+
+          &:hover {
+            opacity: 1;
+          }
+          img {
+            width: 4rem;
+            height: 4rem;
+          }
+        }
+
+        .edit {
+          background: gainsboro;
+          border-radius: 50%;
+          width: 4rem;
+          height: 4rem;
+          opacity: 0.6;
+
+          img {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
     }
-  }
-
-  .statistics {
-    border: 1px solid steelblue;
   }
 }
