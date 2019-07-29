@@ -6,14 +6,15 @@ import edit from "./edit-button.svg";
 import { Link } from "react-router-dom";
 
 export default class Profile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       assetCollection: [],
       newPass: "",
       newPassRepeat: "",
       oldPass: "",
-      image: ""
+      image: "",
+      about: this.props.about
     };
     this.service = new assetServices();
     this.authService = new Service();
@@ -102,6 +103,9 @@ export default class Profile extends Component {
             <ul>
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
+                  <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
+                  <button>Delete Asset</button>
+                </form>
                   <ProductCard className="cocowawa" {...asset} />
                 </li>
               ))}

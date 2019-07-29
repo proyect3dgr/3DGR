@@ -159,16 +159,15 @@ router.post("/edit-asset-img", (req, res, next) => {
 
 /* ------------DELETE ENDPOINTS-------------- */
 
-router.delete("/delete-profile", (req, res, next) => {
-  User.findByIdAndRemove(req.params._id).then(x => res.json(x));
-});
+
 
 router.delete("/delete-comment", (req, res, next) => {
-  console.log(req.body);
+  console.log(req._id);
+  console.log(req.body.id);
   console.log(req.body._id);
-  console.log(req.body);
-  // console.log(req.data._id);
-  Comment.findByIdAndRemove(req.body._id).then(x => res.json(x));
+  console.log(req.body)
+
+  Comment.findByIdAndRemove(req.body.id).then(x => res.json(x));
 });
 
 router.delete("/delete-asset", (req, res, next) => {
