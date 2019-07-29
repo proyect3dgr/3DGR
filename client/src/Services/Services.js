@@ -38,9 +38,22 @@ export default class AuthServices {
       .then(response => response.data);
   };
 
+  editAbout = about => {
+    return this.service
+      .post("/edit-about", { about })
+      .then(response => response.data);
+  };
+
   editAvatar = avatar => {
     return this.service
       .post("/edit-avatar", { avatar })
+      .then(response => response.data);
+  };
+
+  deleteProfile = id => {
+    console.log(id);
+    return this.service
+      .delete("/delete-profile", { data: { id: id } })
       .then(response => response.data);
   };
 }

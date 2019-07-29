@@ -69,21 +69,20 @@ router.post("/signup", (req, res, next) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
+    User.create({
       username,
       password: hashPass,
       email
-    });
-
-    newUser
-      .save()
-      .then(() => {})
+    })
+      .then(userCreated => {
+        res.json(userCreated);
+      })
       .catch(err => {});
   });
 });
 
 router.post("/upload", uploader.single("avatar"), (req, res, next) => {
-  console.log('file is: ', req.file)
+  console.log("file is: ", req.file);
 
   if (!req.file) {
     next(new Error("No file uploaded!"));
@@ -94,41 +93,52 @@ router.post("/upload", uploader.single("avatar"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 });
 
-router.post(
-  "/edit-profile",
-  // ensureLogin.ensureLoggedIn(),
-  // uploader.single("avatar"),
-  (req, res, next) => {
-    User.findById(req.user._id).then(foundUser => {
-      if (!bcrypt.compareSync(req.body.oldPass, foundUser.password)) {
-        foundUser.errorMessage = "Incorrect password";
+router.post("/edit-about", (req, res, next) => {
+  console.log(req.body.about);
+  let aboutMe = req.body.about;
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      about: aboutMe
+      // avatar: req.body.avatar
+    },
+    { new: true }
+  ).then(updatedUser => {
+    res.json(updatedUser);
+  });
+});
 
-        return;
-      }
+router.post("/edit-profile", (req, res, next) => {
+  User.findById(req.user._id).then(foundUser => {
+    if (!bcrypt.compareSync(req.body.oldPass, foundUser.password)) {
+      foundUser.errorMessage = "Incorrect password";
 
-      if (req.body.newPass !== req.body.newPassRepeat) {
-        foundUser.errorMessage = "New password doesnt match";
+      return;
+    }
 
-        return;
-      }
+    if (req.body.newPass !== req.body.newPassRepeat) {
+      foundUser.errorMessage = "New password doesnt match";
 
-      const bcryptSalt = 10;
-      const salt = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(req.body.newPass, salt);
+      return;
+    }
 
-      User.findByIdAndUpdate(
-        req.user._id,
-        {
-          password: hashPass
-          // avatar: req.body.avatar
-        },
-        { new: true }
-      ).then(updatedUser => {
-        res.json(updatedUser);
-      });
+    const bcryptSalt = 10;
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(req.body.newPass, salt);
+
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        password: hashPass,
+        about: aboutMe
+        // avatar: req.body.avatar
+      },
+      { new: true }
+    ).then(updatedUser => {
+      res.json(updatedUser);
     });
-  }
-);
+  });
+});
 
 router.post(
   "/edit-avatar",
@@ -150,6 +160,11 @@ router.post(
 router.get("/logout", (req, res) => {
   req.logout();
   res.json({ loggedOut: true, timestamp: new Date() });
+});
+
+router.delete("/delete-profile", (req, res, next) => {
+  console.log(req.body.id)
+  User.findByIdAndRemove(req.body.id).then(x => res.json(x));
 });
 
 module.exports = router;
