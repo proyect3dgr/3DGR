@@ -9,8 +9,17 @@
   height: 50rem;
   opacity: 1;
   transition: all .5s;
-
+  animation: fade .5s ease-in-out;
   
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
 
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
