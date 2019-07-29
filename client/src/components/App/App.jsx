@@ -103,7 +103,7 @@ export default class App extends Component {
                 <ProductDetail {...props} {...this.state.loggedInUser} />
               )}
             />
-            <Route exact path="/profile/settings" render={() => <Settings />} />
+            <Route exact path="/profile/settings" render={() => <Settings {...this.state.loggedInUser}/>} />
           </Switch>
         </React.Fragment>
       );
