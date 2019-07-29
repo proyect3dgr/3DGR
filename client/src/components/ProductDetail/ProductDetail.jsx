@@ -80,25 +80,27 @@ export default class ProductDetail extends Component {
             </div>
 
             <div className="aside">
-              <div>
-                <h1>{this.state.assetDetails.title}</h1>
+            <div>
+                <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
                 <img
                   className="photo"
                   src={this.state.assetDetails.urlPathImg}
                   alt="ok"
                 />
-                <h2>{this.state.assetDetails.description}</h2>
-                <h5>{this.state.assetDetails.price} €</h5>
+                <h2 className="descriptionAsset">{this.state.assetDetails.description}</h2>
+                <h5 className="priceAsset">{this.state.assetDetails.price} €</h5>
               </div>
 
-              <CommentList
+             
+              </div>
+          </section>
+          <div>
+          <CommentList
                 loggedUser={this.props.username}
                 paramsId={this.props.match.params.id}
               />
-            </div>
-          </section>
-
-          <section className="productDetail">
+          </div>
+          {/* <section className="productDetail">
             <form onSubmit={this.handleFormSubmit}>
               <input
                 name="title"
@@ -131,7 +133,7 @@ export default class ProductDetail extends Component {
               />
               <button>Change avatar</button>
             </form>
-          </section>
+          </section> */}
         </React.Fragment>
       );
     }
@@ -144,23 +146,25 @@ export default class ProductDetail extends Component {
           </div>
 
           <div className="aside">
-            <div>
-              <h1>{this.state.assetDetails.title}</h1>
-              <img
-                className="photo"
-                src={this.state.assetDetails.urlPathImg}
-                alt="ok"
-              />
-              <h2>{this.state.assetDetails.description}</h2>
-              <h5>{this.state.assetDetails.price} €</h5>
-            </div>
+            
+                <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
+                <img
+                  className="photo"
+                  src={this.state.assetDetails.urlPathImg}
+                  alt="assetPhoto"
+                />
+                <h2 className="descriptionAsset">{this.state.assetDetails.description}</h2>
+                <h5 className="priceAsset">{this.state.assetDetails.price} €</h5>
+              
 
-            <CommentList
-              loggedUser={this.props.username}
-              paramsId={this.props.match.params.id}
-            />
           </div>
         </section>
+        
+          <CommentList
+                loggedUser={this.props.username}
+                paramsId={this.props.match.params.id}
+              />
+          
       </React.Fragment>
     );
   }

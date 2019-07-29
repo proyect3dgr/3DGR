@@ -119,6 +119,8 @@ export default class Settings extends Component {
           <button>Submit</button>
         </form>
 
+        {/* Poner editar description */}
+
         <form onSubmit={this.handleFormSubmitAvatar}>
           {/* <input
                 name="image"

@@ -1,72 +1,49 @@
 .productDetail {
-  padding: 1rem;
   display: flex;
-  
+  height: 100vh;
+  padding: 1rem;
 
   .canvas {
     width: 80vw;
-    height: 85vh;
-    border-radius: 2rem;
-    canvas{
-      border: 2px solid blue;
+    height: calc(100vh - 60px);
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    canvas {
       display: block;
     }
-    
   }
 
-  
-  
   .aside {
-    border: 1px solid black;
+    background: rgba(54, 57, 60, 0.8);
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     width: 20vw;
+    height: calc(100vh - 60px);
     text-align: center;
     margin-left: 0.5rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px black;
 
-    h2 {
-      height: 20vh;
-      overflow: scroll;
-      text-align: left;
-      font-size: 2rem;
-    }
-
-  }
-
-  .photo {
-    width: 15vw;
-    border-radius: 2rem;
-  }
-
-  .comments {
-    border: 1px solid orange;
-    border-radius: 2rem;
-    margin: 1rem 0;
-    padding: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    overflow: scroll;
-    height: 30vh;
-
-    h1 {
+    .titleAsset {
       font-weight: bold;
     }
-
-    .comment {
-      margin: 1rem 0;
-      border: 1px solid green;
-      border-radius: 2rem;
-      padding: 1rem;
-
-      h4 {
-        font-weight: bold;
-      }
+    .photo {
+      width: 15vw;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     }
+
+    .descriptionAsset {
+      height: 30vh;
+      overflow: scroll;
+      text-align: left;
+    }
+
   }
 }

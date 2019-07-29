@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
+import bin from "./bin.png"
 
 export default class CommentList extends Component {
   constructor() {
@@ -62,40 +63,52 @@ export default class CommentList extends Component {
 
   render() {
     return (
-      <div className="comments">
-        <h1>Comments</h1>
+      <section className="comments">
+
+        
+        <div className="displayComments">
+        <div><h1>Comments</h1></div>
         {this.state.assetDetails.comments.map((el, idx) => {
           if (this.props.loggedUser === el.author.username) {
             return (
               <div className="comment" key={idx}>
+                <div>
+                <h4 className="author">{el.author.username}</h4>
+                <h3 className="message">{el.description}</h3>
+                </div>
+                <div>
                 <form onSubmit={e => this.handleFormDelete(e, el._id)}>
-                  <button>Delete Comment</button>
+                  <button className="deleteBtn"><img src={bin} alt="delete button"></img></button>
                 </form>
-
-                <h4>{el.author.username}</h4>
-                <h3>{el.description}</h3>
+                </div>
               </div>
             );
+
+            
           } else {
             return (
               <div className="comment" key={idx}>
-                <h4>{el.author.username}</h4>
-                <h3>{el.description}</h3>
+                <h4 className="author">{el.author.username}</h4>
+                <h3 className="message">{el.description}</h3>
               </div>
             );
           }
         })}
+        </div>
+        <div className="newComment">
+          <form onSubmit={this.handleFormSubmit}>
+            <div><textarea
+              name="description"
+              placeholder="Your new comment..."
+              value={this.state.description}
+              onChange={e => this.handleChange(e)}
+            /></div>
+            <div>
+            <button>Post it!</button></div>
+          </form>
+        </div>
 
-        <form onSubmit={this.handleFormSubmit}>
-          <textarea
-            name="description"
-            placeholder="description"
-            value={this.state.description}
-            onChange={e => this.handleChange(e)}
-          />
-          <button>Submit</button>
-        </form>
-      </div>
+      </section>
     );
   }
 }
