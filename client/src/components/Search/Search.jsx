@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../SASS/Main.scss";
 
 export default class Search extends Component {
   render() {
@@ -10,7 +9,7 @@ export default class Search extends Component {
           type="search"
           name="search"
           placeholder="Search..."
-          onChange={this.props.filter}
+          onChange={(e) => this.props.filterProductHandler(e)}
           value={this.props.filterQuery}
         />
       </React.Fragment>

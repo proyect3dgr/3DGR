@@ -80,10 +80,8 @@ export default class Profile extends Component {
             </div>
 
             <div className="description">
-              <p>
-                <p className="title">About Me</p>
-                {this.props.about}
-              </p>
+              <p className="title">About Me</p>
+              <p>{this.props.about}</p>
               <Link to={"/profile/settings"}>
                 <img className="edit" src={edit} alt="edit" />
               </Link>
