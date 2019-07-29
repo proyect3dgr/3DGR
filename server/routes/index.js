@@ -6,6 +6,8 @@ const Comment = require("../models/Comment");
 
 // include CLOUDINARY:
 const uploader = require("../configs/cloudinary-setup");
+const uploaderModel = require("../configs/cloudinary-model");
+
 
 /* ------------GET ENDPOINTS-------------- */
 router.get("/assets", (req, res, next) => {
@@ -53,7 +55,7 @@ router.post("/upload", uploader.single("modelImg"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 });
 
-router.post("/upload-asset", uploader.single("modelFile"), (req, res, next) => {
+router.post("/upload-asset", uploaderModel.single("modelFile"), (req, res, next) => {
   // console.log('file is: ', req.file)
 
   if (!req.file) {
@@ -171,7 +173,7 @@ router.delete("/delete-comment", (req, res, next) => {
 });
 
 router.delete("/delete-asset", (req, res, next) => {
-  Asset.findByIdAndRemove(req.params._id).then(x => res.json(x));
+  Asset.findByIdAndRemove(req.body.id).then(x => res.json(x));
 });
 
 module.exports = router;

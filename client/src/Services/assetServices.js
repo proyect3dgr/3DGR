@@ -55,6 +55,13 @@ export default class assetServices {
       .then(response => response.data);
   };
 
+  deleteAsset = id => {
+    console.log(id);
+    return this.service
+      .delete("/delete-asset", { data: { id: id } })
+      .then(response => response.data);
+  };
+
   deleteComment = id => {
     console.log(id);
     return this.service

@@ -130,8 +130,6 @@ router.post("/edit-profile", (req, res, next) => {
       req.user._id,
       {
         password: hashPass,
-        about: aboutMe
-        // avatar: req.body.avatar
       },
       { new: true }
     ).then(updatedUser => {
