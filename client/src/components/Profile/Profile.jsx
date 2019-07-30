@@ -116,10 +116,10 @@ export default class Profile extends Component {
                 <li key={idx}>
                   <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
                   <button className="deleteBtn"><img src={bin} alt="delete button"></img></button>
-                  <Link to="/product-edit"><button className="edit"><img src={edit} alt="delete button"></img></button></Link>
+                  <Link to={`/product-edit/${asset._id}`}><button className="edit"><img src={edit} alt="delete button"></img></button></Link>
 
                 </form>
-                  <ProductCard className="cocowawa" {...asset} />
+                  <ProductCard {...asset} />
                 </li>
               ))}
             </ul>

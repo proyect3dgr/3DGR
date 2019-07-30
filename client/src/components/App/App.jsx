@@ -96,7 +96,9 @@ export default class App extends Component {
             <Route
               exact
               path="/product/upload"
-              render={() => <UploadAsset user={this.state.loggedInUser.username}/>}
+              render={() => (
+                <UploadAsset user={this.state.loggedInUser.username} />
+              )}
             />
             <Route
               exact
@@ -105,15 +107,22 @@ export default class App extends Component {
                 <ProductDetail {...props} {...this.state.loggedInUser} />
               )}
             />
-            <Route exact path="/profile/settings" render={() => <Settings reloadUser={this.fetchUser} {...this.state.loggedInUser}/>} />
-            
             <Route
               exact
-              path="/product-edit"
-              render={() => <EditAsset />}
+              path="/profile/settings"
+              render={() => (
+                <Settings
+                  reloadUser={this.fetchUser}
+                  {...this.state.loggedInUser}
+                />
+              )}
             />
-          
-          
+
+            <Route
+              exact
+              path="/product-edit/:id"
+              render={props => <EditAsset {...props} />}
+            />
           </Switch>
         </React.Fragment>
       );
@@ -141,11 +150,7 @@ export default class App extends Component {
           )}
         />
 
-        <Route
-          exact
-          path="/signup"
-          render={() => <Signup />}
-        />
+        <Route exact path="/signup" render={() => <Signup />} />
 
         <Route
           exact
