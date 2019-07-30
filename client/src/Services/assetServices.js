@@ -6,7 +6,6 @@ export default class assetServices {
       baseURL: process.env.REACT_APP_URL,
       withCredentials: true
     });
-    console.log(process.env.REACT_APP_URL)
   }
 
   assets = () => {
