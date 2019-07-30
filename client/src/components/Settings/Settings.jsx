@@ -129,12 +129,15 @@ export default class Settings extends Component {
     this.authService
       .handleUpload(uploadData)
       .then(response => {
-        // console.log("response is: ", response);
+        //console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ image: response.secure_url });
+
       })
       .then(response => {
-        this.setState({ updated: true });
+        console.log("miuau hola como estas?")
+        this.setState({ uploaded: true });
+        //console.log(this.state.uploaded )
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
@@ -185,6 +188,8 @@ export default class Settings extends Component {
               value={this.state.about}
               placeholder="About me..."
             />
+
+           
             <button>Change your Description!</button>
           </form>
 
@@ -197,7 +202,8 @@ export default class Settings extends Component {
                 onChange={e => this.handleChange(e)}
               /> */}
             <input type="file" onChange={e => this.handleFileUpload(e)} />
-            <button>Change your Avatar!</button>
+            {this.state.uploaded === true ? <button>Change your Avatar!</button> : <button disabled>Change your Avatar!</button>}
+            {/* <button>Change your Avatar!</button> */}
           </form>
           </div>
           <div className="lowPart">
