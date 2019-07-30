@@ -7,6 +7,7 @@
 @import "./components/Nav";
 @import "./components/DropMenu";
 @import "./components/Slider";
+@import "./components/CommentList";
 @import "./components/ProductList";
 @import "./components/Search";
 @import "./components/Login";
@@ -14,7 +15,12 @@
 @import "./components/Profile";
 @import "./components/ProductCard";
 @import "./components/ProductDetail";
-@import "./components/CommentList";
+@import "./components/Settings";
+@import "./components/UploadAsset";
+@import "./components/EditAsset";
+
+
+
 
 @import "./pages/App";
 @import "./pages/index";

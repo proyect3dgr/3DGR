@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
-import {Redirect} from "react-router-dom"
-
+import { Redirect } from "react-router-dom";
 
 export default class UploadAsset extends Component {
   constructor() {
@@ -15,7 +14,7 @@ export default class UploadAsset extends Component {
       size: "",
       created: false,
       imgUploaded: false,
-      modelUploaded: false,
+      modelUploaded: false
     };
     this.service = new assetServices();
   }
@@ -46,8 +45,9 @@ export default class UploadAsset extends Component {
             model: "",
             size: ""
           });
-        }).then(response => {
-          this.setState({created:true})
+        })
+        .then(response => {
+          this.setState({ created: true });
         })
         .catch(error => {
           console.log(error);
@@ -67,8 +67,9 @@ export default class UploadAsset extends Component {
             model: "",
             size: ""
           });
-        }).then(response => {
-          this.setState({created:true})
+        })
+        .then(response => {
+          this.setState({ created: true });
         })
         .catch(error => {
           console.log(error);
@@ -100,7 +101,8 @@ export default class UploadAsset extends Component {
         console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ image: response.secure_url });
-      }).then(response => {
+      })
+      .then(response => {
         this.setState({ imgUploaded: true });
       })
       .catch(err => {
@@ -123,8 +125,9 @@ export default class UploadAsset extends Component {
         this.setState({
           size: Math.floor(response.bytes / 2048),
           model: response.secure_url
-        })
-      }).then(response => {
+        });
+      })
+      .then(response => {
         this.setState({ modelUploaded: true });
       })
       .catch(err => {
@@ -137,36 +140,63 @@ export default class UploadAsset extends Component {
       return <Redirect to={`/profile/${this.props.user}`} />;
     } else {
       return (
-        <form onSubmit={this.handleFormSubmit}>
-          <input
-            name="title"
-            placeholder="title"
-            value={this.state.title}
-            onChange={e => this.handleChange(e)}
-          />
-          <input
-            name="price"
-            placeholder="price"
-            value={this.state.price}
-            onChange={e => this.handleChange(e)}
-          />
-          <textarea
-            name="description"
-            placeholder="description"
-            value={this.state.description}
-            onChange={e => this.handleChange(e)}
-          />
+        <section className="uploadNewAsset">
+          <h1>Upload your New Asset</h1>
 
-          <input type="file" onChange={e => this.handleImgUpload(e)} />
-
-          <input
-            required
-            type="file"
-            onChange={e => this.handleModelUpload(e)}
-          />
-
-          <button>Submit</button>
-        </form>
+          <form className="upload" onSubmit={this.handleFormSubmit}>
+            <div className="upPart">
+              <div>
+                <input
+                  name="title"
+                  placeholder="Title"
+                  value={this.state.title}
+                  onChange={e => this.handleChange(e)}
+                />
+              </div>
+              <div>
+                <input
+                  name="price"
+                  type="number"
+                  placeholder="Price"
+                  value={this.state.price}
+                  onChange={e => this.handleChange(e)}
+                />
+              </div>
+              <div>
+                <textarea
+                  name="description"
+                  placeholder="Description"
+                  value={this.state.description}
+                  onChange={e => this.handleChange(e)}
+                />
+              </div>
+            </div>
+            <div className="lowPart">
+              <div className="each">
+                <label for="cover">Cover Image</label>
+                <input
+                  className="file"
+                  name="cover"
+                  type="file"
+                  onChange={e => this.handleImgUpload(e)}
+                />
+              </div>
+              <div className="each">
+                <label for="model">Model File</label>
+                <input
+                  className="file"
+                  name="model"
+                  required
+                  type="file"
+                  onChange={e => this.handleModelUpload(e)}
+                />
+              </div>
+            </div>
+            <div className="infernoPart">
+              <button>Upload It!</button>
+            </div>
+          </form>
+        </section>
       );
     }
   }
