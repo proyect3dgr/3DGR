@@ -3,7 +3,10 @@
   height: 100vh;
   padding: 1rem;
   background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  transition: all .5s;
+  animation: fade .5s ease-in-out;
+
+
   .canvas {
     width: 80vw;
     height: calc(100vh - 60px);
@@ -46,5 +49,15 @@
       text-align: left;
     }
 
+  }
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

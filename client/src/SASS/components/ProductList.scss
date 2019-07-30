@@ -1,6 +1,7 @@
 .allProductList {
   background: linear-gradient(10deg, rgba(61,59,59,1) 0%, rgba(180,195,207,1) 100%); 
-  
+  transition: all .5s;
+  animation: fade .5s ease-in-out;
   .searchBar {
     display: flex;
     justify-content: center;
@@ -18,5 +19,15 @@
     a {
       text-decoration: none;
     }
+  }
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
