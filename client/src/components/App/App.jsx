@@ -21,6 +21,7 @@ export default class App extends Component {
     };
     this.service = new AuthServices();
   }
+  
 
   getTheUser = userObj => {
     this.setState({ ...this.state, loggedInUser: userObj });

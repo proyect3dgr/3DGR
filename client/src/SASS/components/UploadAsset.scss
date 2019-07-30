@@ -5,6 +5,8 @@
   min-height: 100vh;
   color: antiquewhite;
   text-shadow: 2px 2px 5px black;
+  transition: all .5s;
+  animation: fade .5s ease-in-out;
 
   input {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
@@ -27,8 +29,17 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     font-weight: bold;
     margin-top: 3rem;
+
     &:hover {
       opacity: 1;
+    }
+
+    &:disabled {
+      background: #999;
+      cursor: default;
+      &:hover {
+        opacity: 0;
+      }
     }
   }
 
@@ -53,6 +64,7 @@
       border-radius: 1rem;
       width: 20rem;
       height: 15rem;
+      padding: .5rem;
       resize: none;
       margin: 2rem 0;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
@@ -87,5 +99,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

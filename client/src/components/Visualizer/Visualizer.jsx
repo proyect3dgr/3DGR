@@ -67,7 +67,7 @@ export default class Visualizer extends Component {
     const texture = textureloader.load(
       "https://66.media.tumblr.com/07b00df16a910359a331e158b79dfa72/tumblr_nvuw1mFBzL1qharjqo1_500.gif"
     );
-    var geometry = new THREE.BoxGeometry(2, 2, 1);
+    var geometry = new THREE.BoxGeometry(.1, .1, .1);
     var material = new THREE.MeshLambertMaterial({
       map: texture,
       //color: "#0006FF",

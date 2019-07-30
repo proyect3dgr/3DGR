@@ -148,6 +148,7 @@ export default class UploadAsset extends Component {
               <div>
                 <input
                   name="title"
+                  required
                   placeholder="Title"
                   value={this.state.title}
                   onChange={e => this.handleChange(e)}
@@ -157,6 +158,7 @@ export default class UploadAsset extends Component {
                 <input
                   name="price"
                   type="number"
+                  required
                   placeholder="Price"
                   value={this.state.price}
                   onChange={e => this.handleChange(e)}
@@ -193,7 +195,7 @@ export default class UploadAsset extends Component {
               </div>
             </div>
             <div className="infernoPart">
-              <button>Upload It!</button>
+            {this.state.modelUploaded ? <button>Upload It!</button> : <button disabled>Upload It!</button>}
             </div>
           </form>
         </section>
