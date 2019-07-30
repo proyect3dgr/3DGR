@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
-import AuthServices from "../../Services/Services";
 
 export default class EditAsset extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      _id: "",
       title: "",
       price: "",
       description: "",
@@ -18,6 +18,22 @@ export default class EditAsset extends Component {
     };
     this.service = new assetServices();
   }
+
+  componentDidMount() {
+    this.getAsset();
+  }
+
+  getAsset() {
+    const params = this.props.match.params.id;
+
+    this.service.getAsset(params).then(response => {
+      this.setState({
+        ...this.state,
+        ...response
+      });
+    });
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     const title = this.state.title;
@@ -26,6 +42,7 @@ export default class EditAsset extends Component {
     const image = this.state.image;
     const model = this.state.model;
     const size = this.state.size;
+    const params = this.props.match.params.id;
 
     console.log(image);
     console.log(size);
@@ -33,7 +50,7 @@ export default class EditAsset extends Component {
 
     if (image) {
       this.service
-        .createAsset(title, price, description, model, size, image)
+        .editAsset(params, title, price, description, model, size, image)
         .then(response => {
           this.setState({
             title: "",
@@ -56,7 +73,7 @@ export default class EditAsset extends Component {
         });
     } else {
       this.service
-        .createAsset(title, price, description, model, size)
+        .editAsset(params, title, price, description, model, size)
         .then(response => {
           this.setState({
             title: "",
@@ -136,7 +153,7 @@ export default class EditAsset extends Component {
   render() {
     return (
       <section className="edditAsset">
-        <h1>Update your New Asset</h1>
+        <h1>Update your Asset</h1>
 
         <form className="upload" onSubmit={this.handleFormSubmit}>
           <div className="upPart">
@@ -168,7 +185,7 @@ export default class EditAsset extends Component {
           </div>
           <div className="lowPart">
             <div className="each">
-              <label for="cover">Cover Image</label>
+              <label htmlFor="cover">Cover Image</label>
               <input
                 className="file"
                 name="cover"
@@ -177,11 +194,11 @@ export default class EditAsset extends Component {
               />
             </div>
             <div className="each">
-              <label for="model">Model File</label>
+              <label htmlFor="model">Model File</label>
               <input
                 className="file"
                 name="model"
-                required
+                // required
                 type="file"
                 onChange={e => this.handleModelUpload(e)}
               />

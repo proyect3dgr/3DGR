@@ -21,7 +21,6 @@ export default class assetServices {
   };
 
   createAsset = (title, price, description, model, size, image) => {
-    console.log(title, price, description, model, size, image)
     return this.service
       .post("/create-asset", { title, price, description, model, size, image })
       .then(response => response.data);
@@ -55,15 +54,18 @@ export default class assetServices {
       .then(response => response.data);
   };
 
+  editAssetModel = (_id, model) => {
+    return this.service
+    .post("/edit-asset-model", {_id, model})
+  }
+
   deleteAsset = id => {
-    console.log(id);
     return this.service
       .delete("/delete-asset", { data: { id: id } })
       .then(response => response.data);
   };
 
   deleteComment = id => {
-    console.log(id);
     return this.service
       .delete("/delete-comment", { data: { id: id } })
       .then(response => response.data);

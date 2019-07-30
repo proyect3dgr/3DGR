@@ -8,7 +8,6 @@ const Comment = require("../models/Comment");
 const uploader = require("../configs/cloudinary-setup");
 const uploaderModel = require("../configs/cloudinary-model");
 
-
 /* ------------GET ENDPOINTS-------------- */
 router.get("/assets", (req, res, next) => {
   Asset.find()
@@ -55,27 +54,26 @@ router.post("/upload", uploader.single("modelImg"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 });
 
-router.post("/upload-asset", uploaderModel.single("modelFile"), (req, res, next) => {
-  // console.log('file is: ', req.file)
+router.post(
+  "/upload-asset",
+  uploaderModel.single("modelFile"),
+  (req, res, next) => {
+    // console.log('file is: ', req.file)
 
-  if (!req.file) {
-    next(new Error("No file uploaded!"));
-    return;
+    if (!req.file) {
+      next(new Error("No file uploaded!"));
+      return;
+    }
+    // get secure_url from the file object and save it in the
+    // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+    res.json({ bytes: req.file.bytes, secure_url: req.file.secure_url });
   }
-  // get secure_url from the file object and save it in the
-  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
-  res.json({ bytes:req.file.bytes, secure_url: req.file.secure_url });
-});
-
-
+);
 
 router.post(
   "/create-asset",
   // uploader.single("imageUrl"),
   (req, res, next) => {
-console.log(req.body.model)
-console.log(req.body.image)
-
     Asset.create({
       title: req.body.title,
       author: req.user._id,
@@ -161,14 +159,7 @@ router.post("/edit-asset-img", (req, res, next) => {
 
 /* ------------DELETE ENDPOINTS-------------- */
 
-
-
 router.delete("/delete-comment", (req, res, next) => {
-  console.log(req._id);
-  console.log(req.body.id);
-  console.log(req.body._id);
-  console.log(req.body)
-
   Comment.findByIdAndRemove(req.body.id).then(x => res.json(x));
 });
 
