@@ -3,9 +3,10 @@ import axios from "axios";
 export default class assetServices {
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:5000",
+      baseURL: process.env.REACT_APP_URL,
       withCredentials: true
     });
+    console.log(process.env.REACT_APP_URL)
   }
 
   assets = () => {
