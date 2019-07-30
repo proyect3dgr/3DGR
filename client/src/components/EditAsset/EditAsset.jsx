@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
+import AuthServices from "../../Services/Services";
 
 export default class EditAsset extends Component {
   constructor() {

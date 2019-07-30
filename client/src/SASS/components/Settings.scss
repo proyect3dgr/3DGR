@@ -27,8 +27,17 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     font-weight: bold;
     margin-top: 3rem;
+
     &:hover {
       opacity: 1;
+    }
+
+    &:disabled {
+      background: #999;
+      cursor: default;
+      &:hover {
+        opacity: 0;
+      }
     }
   }
 
