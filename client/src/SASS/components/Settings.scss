@@ -1,0 +1,101 @@
+.settings {
+  padding: 2rem;
+  font-size: 1.2rem;
+  background: linear-gradient(to right, #000c40, #f0f2f0);
+  min-height: 100vh;
+  color: antiquewhite;
+  text-shadow: 2px 2px 5px black;
+
+  input {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    padding: 2rem;
+    width: 20rem;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    padding: 2.5rem 5rem;
+    border-radius: 1rem;
+    background: #f0f2f0;
+    opacity: 0.6;
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    font-weight: bold;
+    margin-top: 3rem;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:disabled {
+      background: #999;
+      cursor: default;
+      &:hover {
+        opacity: 0;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 5rem;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .upPart {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+
+    .password {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+
+      textarea {
+        font-size: 1.5rem;
+        border-radius: 1rem;
+        width: 20rem;
+        height: 15rem;
+        resize: none;
+        margin: 2rem 0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+      }
+    }
+
+    .avatar {
+      color: black;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      align-items: center;
+
+      input {
+        width: 25rem;
+      }
+    }
+  }
+
+  .lowPart {
+    text-align: center;
+    padding: 2rem;
+    .deleteAccount {
+      margin-top: 5rem;
+      padding: 2rem;
+    }
+  }
+}

@@ -1,9 +1,11 @@
 .comments {
-  
   display: flex;
   padding: 1rem;
-background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: linear-gradient(
+    to right,
+    #434343,
+    #131212
+  ); 
 
   .displayComments {
     background: rgba(0, 0, 255, 0.5);
@@ -21,8 +23,6 @@ background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, F
       margin: 1rem;
       color: whitesmoke;
       text-align: center;
-      
-
     }
 
     .comment {
@@ -33,7 +33,7 @@ background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, F
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
       color: whitesmoke;
       display: flex;
-      
+
       align-items: center;
 
       .author {
@@ -56,7 +56,7 @@ background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, F
           border: 0;
           opacity: 0.6;
           transition: all 0.5s ease-in-out;
-          
+
           &:hover {
             opacity: 1;
           }
@@ -102,12 +102,11 @@ background: linear-gradient(to right, #434343, #131212); /* W3C, IE 10+/ Edge, F
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
       transition: all 0.5s ease-in-out;
       margin-top: 2rem;
-      opacity: .8;
-      
-          &:hover {
-            opacity: 1;
-          }
+      opacity: 0.8;
 
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
