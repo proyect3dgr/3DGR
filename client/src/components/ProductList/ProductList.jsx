@@ -11,7 +11,6 @@ export default class ProductList extends Component {
       assetDetails: [{ author: "" }],
       isLoading: true,
       filteredAssets: [{ author: "" }]
-      
     };
     this.service = new AssetServices();
     this._isMounted = false;
@@ -34,8 +33,6 @@ export default class ProductList extends Component {
     this._isMounted = false;
   }
 
-
-
   // handleInputChange = event => {
   //   const query = event.target.value;
 
@@ -51,11 +48,9 @@ export default class ProductList extends Component {
   //   });
   // };
 
-
   filterProduct(e) {
-    
     const filter = e.target.value;
-    
+
     let filteredProducts = this.state.assetDetails.filter(product => {
       return product.title.toLowerCase().indexOf(filter.toLowerCase()) > -1;
     });
@@ -63,15 +58,18 @@ export default class ProductList extends Component {
     this.setState({
       ...this.state,
       filterQuery: filter,
-      filteredAssets: filteredProducts,
+      filteredAssets: filteredProducts
     });
   }
 
   render() {
     return (
       <section className="allProductList">
-        <div className="searchBar"   >
-          <Search filterQuery={this.state.filterQuery} filterProductHandler={e => this.filterProduct(e)}/>
+        <div className="searchBar">
+          <Search
+            filterQuery={this.state.filterQuery}
+            filterProductHandler={e => this.filterProduct(e)}
+          />
         </div>
 
         <div className="productList">

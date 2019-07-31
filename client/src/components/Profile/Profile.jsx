@@ -4,8 +4,7 @@ import assetServices from "../../Services/assetServices";
 import Service from "../../Services/Services";
 import edit from "./edit-button.svg";
 import { Link } from "react-router-dom";
-import bin from "../CommentList/bin.png"
-
+import bin from "../CommentList/bin.png";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -78,6 +77,64 @@ export default class Profile extends Component {
   };
 
   render() {
+    if (this.state.username === this.props.username) {
+      return (
+        <React.Fragment>
+          <section className="infoUser">
+            <article>
+              <div className="userAvatar">
+                <img src={this.state.avatar} alt="avatar" />
+              </div>
+
+              <div className="details">
+                <h1>{this.props.username}</h1>
+                <h2>{this.props.email}</h2>
+              </div>
+
+              <div className="description">
+                <p className="title">About Me</p>
+                <p>{this.props.about}</p>
+                <Link to={"/profile/settings"}>
+                  <div className="edit">
+                    <img src={edit} alt="edit" />
+                  </div>
+                </Link>
+              </div>
+
+              {/* <button
+              onClick={e => {
+                this.props.logout(e);
+              }}
+            >
+              LOGOUT
+            </button> */}
+            </article>
+          </section>
+
+          <div className="lowPart">
+            <section className="collection">
+              <ul>
+                {this.state.assetCollection.map((asset, idx) => (
+                  <li key={idx}>
+                    <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
+                      <button className="deleteBtn">
+                        <img src={bin} alt="delete button" />
+                      </button>
+                      <Link to={`/product-edit/${asset._id}`}>
+                        <button className="edit">
+                          <img src={edit} alt="delete button" />
+                        </button>
+                      </Link>
+                    </form>
+                    <ProductCard {...asset} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </React.Fragment>
+      );
+    }
     return (
       <React.Fragment>
         <section className="infoUser">
@@ -95,17 +152,19 @@ export default class Profile extends Component {
               <p className="title">About Me</p>
               <p>{this.props.about}</p>
               <Link to={"/profile/settings"}>
-                <div className="edit"><img src={edit} alt="edit" /></div>
+                <div className="edit">
+                  <img src={edit} alt="edit" />
+                </div>
               </Link>
             </div>
 
             {/* <button
-              onClick={e => {
-                this.props.logout(e);
-              }}
-            >
-              LOGOUT
-            </button> */}
+            onClick={e => {
+              this.props.logout(e);
+            }}
+          >
+            LOGOUT
+          </button> */}
           </article>
         </section>
 
@@ -115,10 +174,15 @@ export default class Profile extends Component {
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
                   <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
-                  <button className="deleteBtn"><img src={bin} alt="delete button"></img></button>
-                  <Link to={`/product-edit/${asset._id}`}><button className="edit"><img src={edit} alt="delete button"></img></button></Link>
-
-                </form>
+                    <button className="deleteBtn">
+                      <img src={bin} alt="delete button" />
+                    </button>
+                    <Link to={`/product-edit/${asset._id}`}>
+                      <button className="edit">
+                        <img src={edit} alt="delete button" />
+                      </button>
+                    </Link>
+                  </form>
                   <ProductCard {...asset} />
                 </li>
               ))}

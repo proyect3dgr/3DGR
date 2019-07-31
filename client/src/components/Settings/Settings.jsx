@@ -132,10 +132,9 @@ export default class Settings extends Component {
         //console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ image: response.secure_url });
-
       })
       .then(response => {
-        console.log("miuau hola como estas?")
+        console.log("miuau hola como estas?");
         this.setState({ uploaded: true });
         //console.log(this.state.uploaded )
       })
@@ -151,66 +150,71 @@ export default class Settings extends Component {
       return <Redirect to={`/profile/${this.state.username}`} />;
     } else {
       return (
-        
         <section className="settings">
           <h1>Settings</h1>
           <div className="upPart">
-          <form className="password" onSubmit={this.handleFormSubmit}>
-            <input
-              name="oldPass"
-              type="text"
-              placeholder="Old Password"
-              value={this.state.oldPass}
-              onChange={e => this.handleChange(e)}
-            />
-            <input
-              name="newPass"
-              type="text"
-              placeholder="New Password"
-              value={this.state.newPass}
-              onChange={e => this.handleChange(e)}
-            />
-            <input
-              name="newPassRepeat"
-              type="text"
-              placeholder="Repeat New Password"
-              value={this.state.newPassRepeat}
-              onChange={e => this.handleChange(e)}
-            />
+            <form className="password" onSubmit={this.handleFormSubmit}>
+              <input
+                name="oldPass"
+                type="text"
+                placeholder="Old Password"
+                value={this.state.oldPass}
+                onChange={e => this.handleChange(e)}
+              />
+              <input
+                name="newPass"
+                type="text"
+                placeholder="New Password"
+                value={this.state.newPass}
+                onChange={e => this.handleChange(e)}
+              />
+              <input
+                name="newPassRepeat"
+                type="text"
+                placeholder="Repeat New Password"
+                value={this.state.newPassRepeat}
+                onChange={e => this.handleChange(e)}
+              />
 
-            <button>Change your Password!</button>
-          </form>
+              <button>Change your Password!</button>
+            </form>
 
-          <form className="description" onSubmit={this.handleAboutSubmit}>
-            <textarea
-              name="about"
-              onChange={e => this.handleChange(e)}
-              value={this.state.about}
-              placeholder="About me..."
-            />
+            <form className="description" onSubmit={this.handleAboutSubmit}>
+              <textarea
+                name="about"
+                onChange={e => this.handleChange(e)}
+                value={this.state.about}
+                placeholder="About me..."
+              />
 
-           
-            <button>Change your Description!</button>
-          </form>
+              <button>Change your Description!</button>
+            </form>
 
-          <form className="avatar" onSubmit={this.handleFormSubmitAvatar}>
-            {/* <input
+            <form className="avatar" onSubmit={this.handleFormSubmitAvatar}>
+              {/* <input
                 name="image"
                 type="text"
                 placeholder="Choose Avatar URL"
                 value={this.state.image}
                 onChange={e => this.handleChange(e)}
               /> */}
-            <input type="file" onChange={e => this.handleFileUpload(e)} />
-            {this.state.uploaded === true ? <button>Change your Avatar!</button> : <button disabled>Change your Avatar!</button>}
-            {/* <button>Change your Avatar!</button> */}
-          </form>
+              <input type="file" onChange={e => this.handleFileUpload(e)} />
+              {this.state.uploaded === true ? (
+                <button>Change your Avatar!</button>
+              ) : (
+                <button disabled>Change your Avatar!</button>
+              )}
+              {/* <button>Change your Avatar!</button> */}
+            </form>
           </div>
           <div className="lowPart">
-          <form className="deleteAccount" onSubmit={e => this.handleFormDelete(e, this.state._id)}>
-            <button>Delete your account</button>
-          </form>
-          <p>(Only delete if you don't have any asset in your profile)</p>
+            <form
+              className="deleteAccount"
+              onSubmit={e => this.handleFormDelete(e, this.state._id)}
+            >
+              <button>Delete your account</button>
+            </form>
+            <p>(Only delete if you don't have any asset in your profile)</p>
           </div>
         </section>
       );
