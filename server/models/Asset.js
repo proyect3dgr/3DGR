@@ -8,7 +8,8 @@ const assetSchema = new Schema(
     urlPathModel: String,
     urlPathImg: {
       type: String,
-      default: "https://i.stack.imgur.com/dZSMi.jpg?s=328&g=1"
+      // default: "https://i.stack.imgur.com/dZSMi.jpg?s=328&g=1"
+      default: "https://res.cloudinary.com/rubvaldev/image/upload/v1564566804/thing-gallery/modelimgdefault_lt8kfw.png"
     },
     description: String,
     price: Number,

@@ -12,6 +12,7 @@ import Nav from "../Nav/Nav";
 import UploadAsset from "../UploadAsset/UploadAsset";
 import Settings from "../Settings/Settings";
 import EditAsset from "../EditAsset/EditAsset";
+import Editor from "../Editor/Editor";
 
 export default class App extends Component {
   constructor(props) {
@@ -68,6 +69,13 @@ export default class App extends Component {
                   fetchUser={this.fetchUser}
                 />
               )}
+            />
+
+<Route
+              exact
+              path="/editor"
+              render={() => (<Editor></Editor>)
+              }
             />
 
             <Route
