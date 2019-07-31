@@ -54,9 +54,9 @@ export default class assetServices {
       .then(response => response.data);
   };
 
-  editAssetModel = (_id, model) => {
+  editAssetModel = (_id, model, size) => {
     return this.service
-    .post("/edit-asset-model", {_id, model})
+    .post("/edit-asset-model", {_id, model, size})
   }
 
   deleteAsset = id => {

@@ -72,7 +72,6 @@ router.post(
 
 router.post(
   "/create-asset",
-  // uploader.single("imageUrl"),
   (req, res, next) => {
     Asset.create({
       title: req.body.title,
@@ -136,10 +135,27 @@ router.post("/edit-asset", (req, res, next) => {
 });
 
 router.post("/edit-asset-img", (req, res, next) => {
+  console.log(req.body)
   Asset.findByIdAndUpdate(
     req.body._id,
     {
       urlPathImg: req.body.image
+    },
+    {
+      new: true
+    }
+  ).then(x => {
+    res.json(x);
+  });
+});
+
+router.post("/edit-asset-model", (req, res, next) => {
+  console.log(req.body)
+  Asset.findByIdAndUpdate(
+    req.body._id,
+    {
+      urlPathModel: req.body.model,
+      size: req.body.size
     },
     {
       new: true

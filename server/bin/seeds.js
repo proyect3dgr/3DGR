@@ -42,20 +42,20 @@ let users = [
     about: "It is spelled QuaQua because its french for Duck"
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: "BlenderTheOffender",
+    password: bcrypt.hashSync("blender", bcrypt.genSaltSync(bcryptSalt)),
     avatar:
-      "https://pickaface.net/gallery/avatar/unr_mrsbob_180716_0154_16ff.png",
-    email: "bob@bob.com",
-    about: "Bobbie Bob Bobbie Bobbinci Bob Bubba Bob Bubbaloo"
+      "https://vignette.wikia.nocookie.net/en.futurama/images/7/70/BenderTheOffender.jpg/revision/latest?cb=20110614181253",
+    email: "blendertheoffender@bioware.com",
+    about: "Used to work in videogames, now I am working for the CIA"
   },
   {
-    username: "meri",
-    password: bcrypt.hashSync("meri", bcrypt.genSaltSync(bcryptSalt)),
+    username: "ZippityWob",
+    password: bcrypt.hashSync("wob", bcrypt.genSaltSync(bcryptSalt)),
     avatar:
-      "https://pickaface.net/gallery/avatar/MackennaMeadows542e92aa07839.png",
-    email: "meri@meri.com",
-    about: "You can call me Meri or Meristation, but not Vandal"
+      "https://i.ytimg.com/vi/tXb9L8LW4XI/hqdefault.jpg",
+    email: "zippitywob@zappbranigan.com",
+    about: "If you have one eye... send me an email"
   }
 ];
 
@@ -74,15 +74,22 @@ User.remove()
     userBId = createdUsers[2]._id;
     userCId = createdUsers[3]._id;
     return Comment.create([
-      { description: "QUE PEDASO DE LINCE, CABESA", author: userId },
-      { description: "No me lo creo", author: userCId },
-      { description: "Hola Gabi", author: userBId },
+      { description: "Very good model", author: userId },
+      { description: "I think you stole this from another website, you thief", author: userCId },
+      { description: "How many surreallists do you need in order to change a lightbulb? Fish", author: userBId },
       {
         description:
-          "Este modelo me parece muy interesante porque lo cierto es que me recuerda cosas de mi infancia, cuando yo era una niña y me iba por ahí a buscar aceitunas con mis abuelos y veía algunos de los linces a lo lejos cazando pequeños pájaros. Es todo muy bonito.",
+          `How does it feel
+          To treat me like you do?
+          When you've laid your hands upon me
+          And told me who you are?
+          Thought I was mistaken
+          I thought I heard your words
+          Tell me, how do I feel?
+          Tell me now, how do I feel`,
         author: userId
       },
-      { description: "¿Quedan galletas?", author: userCId }
+      { description: "What is a nun in a wheelchair? Virgin Mobile", author: userCId }
     ]);
   })
   .then(createdComment => {
@@ -90,7 +97,7 @@ User.remove()
 
     return Comment.create([
       {
-        description: "El modelo de este lince parece que es real",
+        description: "Dad, I'm pregnant. Hello Pregnant, I am Dad",
         author: userBId
       }
     ]);
@@ -100,13 +107,11 @@ User.remove()
 
     return Asset.create(
       {
-        title: "Modelo de un lince",
+        title: "Breakdancing old man",
         description:
-          "Este lince es tan real que da miedito intenso pero si te digo la verdad me gusta mucho que tenga esos bigotes tan largos y ese pájaro en la boca. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt. Lorem ipsum ternenum potorrum cotecorum botumrrum septetum potorrum gordum, maria cabili sui pectit, inter linteum et linteum, cabili sui aurum sunt.",
+          "Done in Blender. Part of a collection of groovy old men for the upcoming movie Geriatric Park",
         author: userCId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx" ,
-        urlPathImg:
-          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Breakdance_Freeze_Var_2_ojhrvn.fbx" ,
         comments: [
           createdCommentPayload[0]._id,
           createdCommentPayload[1]._id,
@@ -132,28 +137,66 @@ User.remove()
         ],
         price: 39,
         size: 54,
-        format: "OBJ",
+        format: "FBX",
         categories: ["Animal", "Character"]
       },
       {
-        title: "Modelo de un señor",
-        description: "Un señor que señorea",
-        author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
-        urlPathImg:
-          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        title: "Hipster robot",
+        description: "Robot being so hipster and having lots of swag. Used in Cyberpunk 2077",
+        author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Robot_Hip_Hop_Dance_icuqu6.fbx",
         price: 21,
         size: 22,
         format: "FBX",
         categories: ["Character"]
       },
       {
-        title: "Modelo de un lince",
-        description: "Este lince es tan real que da miedito intenso",
+        title: "Looking around",
+        description: "Done in 3DMAX Studio.",
+        author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Look_Around_rah7xp.fbx",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "OBJ",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Chicken dance model",
+        description: "Mary Jesus and her accordion inspired me to create this masterpiece in Cinema 4d",
+        author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Chicken_Dance_u5du9d.fbx",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
+      {
+        title: "Praying standard model",
+        description: "Standard model praying for this project to be successful and end world hunger at the same time",
+        author: userId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Praying_otgosr.fbx",
+        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
+        price: 39,
+        size: 54,
+        format: "OBJ",
+        categories: ["Animal", "Character"]
+      },
+      {
+        title: "Thriller reenacment",
+        description: "Michael Jackson may be dead but Blender models are really alive, like this one and his thriller dance.",
+        author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Thriller_Part_2_uyqp4n.fbx",
+        price: 21,
+        size: 22,
+        format: "FBX",
+        categories: ["Character"]
+      },
+      {
+        title: "Hip-hop pirate",
+        description: "She only has one leg, but she could move like she has three ( ͡° ͜ʖ ͡°)",
         author: userCId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
-        urlPathImg:
-          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564565891/Hip_Hop_Dancing_1_oi66bw.fbx",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
@@ -161,24 +204,20 @@ User.remove()
         categories: ["Animal", "Character"]
       },
       {
-        title: "Modelo de un señor",
-        description: "Un señor que señorea",
+        title: "Stand up model",
+        description: "Simple model to let your NPCs stand up like it is 1972",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
-        urlPathImg:
-          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562560/Stand_Up_rtcg3u.fbx",
         price: 21,
         size: 22,
         format: "FBX",
         categories: ["Character"]
       },
       {
-        title: "Modelo de un lince",
-        description: "Este lince es tan real que da miedito intenso",
-        author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
-        urlPathImg:
-          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
+        title: "Dancing",
+        description: "Dancing model done in Blender under 2 days of no sleep. May contain errors",
+        author: userBId,
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564563308/Dancing_ssli83.fbx",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
@@ -186,62 +225,12 @@ User.remove()
         categories: ["Animal", "Character"]
       },
       {
-        title: "Modelo de un señor",
-        description: "Un señor que señorea",
+        title: "Victory pose",
+        description: "Done in 3DMax. Perfect model and animation for a victory in a videogame",
         author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
-        urlPathImg:
-          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
-        price: 21,
-        size: 22,
-        format: "FBX",
-        categories: ["Character"]
-      },
-      {
-        title: "Modelo de un lince",
-        description: "Este lince es tan real que da miedito intenso",
-        author: userCId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
-        urlPathImg:
-          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
-        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
-        price: 39,
-        size: 54,
-        format: "OBJ",
-        categories: ["Animal", "Character"]
-      },
-      {
-        title: "Modelo de un señor",
-        description: "Un señor que señorea",
-        author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
-        urlPathImg:
-          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
-        price: 21,
-        size: 22,
-        format: "FBX",
-        categories: ["Character"]
-      },
-      {
-        title: "Modelo de un lince",
-        description: "Este lince es tan real que da miedito intenso",
-        author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564169942/assets/Punching_6_q7gxxj.fbx",
-        urlPathImg:
-          "https://cadenaser00.epimg.net/ser/imagenes/2019/03/09/radio_jerez/1552123616_064152_1552123853_noticia_normal.jpg",
-        comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
-        price: 39,
-        size: 54,
-        format: "OBJ",
-        categories: ["Animal", "Character"]
-      },
-      {
-        title: "Modelo de un señor para Gabi",
-        description: "Un señor que señorea",
-        author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564166160/assets/Hip_Hop_Dancing_yne9fv.fbx",
-        urlPathImg:
-          "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564566199/Victory_etwjj7.fbx",
+        // urlPathImg:
+        //   "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
         price: 21,
         size: 22,
         format: "FBX",

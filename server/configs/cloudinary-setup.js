@@ -11,7 +11,7 @@ cloudinary.config({
 var storage = cloudinaryStorage({
   cloudinary,
   folder: "thing-gallery", // The name of the folder in cloudinary
-  allowedFormats: ["jpg", "png", "gif", "fbx"],
+  allowedFormats: ["jpg", "png", "gif"],
   // params: { resource_type: "auto" },
 
   filename: function(req, res, cb) {

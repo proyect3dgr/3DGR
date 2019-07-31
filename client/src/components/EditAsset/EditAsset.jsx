@@ -39,61 +39,80 @@ export default class EditAsset extends Component {
     const title = this.state.title;
     const price = this.state.price;
     const description = this.state.description;
+    const params = this.props.match.params.id;
+
+    this.service
+      .editAsset(params, title, price, description)
+      .then(response => {
+        this.setState({
+          title: "",
+          price: "",
+          description: ""
+        });
+      })
+      .then(response => {
+        this.setState({ created: true });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
+        });
+      });
+  };
+
+  handleFormImage = event => {
+    event.preventDefault();
     const image = this.state.image;
+    const params = this.props.match.params.id;
+
+    console.log(image);
+    console.log(params);
+
+    this.service
+      .editAssetImg(params, image)
+      .then(response => {
+        this.setState({
+          image: ""
+        });
+      })
+      .then(response => {
+        this.setState({ imgUploaded: false });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
+        });
+      });
+  };
+
+  handleFormModel = event => {
+    event.preventDefault();
     const model = this.state.model;
     const size = this.state.size;
     const params = this.props.match.params.id;
 
-    console.log(image);
-    console.log(size);
-    console.log(model);
-
-    if (image) {
-      this.service
-        .editAsset(params, title, price, description, model, size, image)
-        .then(response => {
-          this.setState({
-            title: "",
-            price: "",
-            description: "",
-            image: "",
-            model: "",
-            size: ""
-          });
-        })
-        .then(response => {
-          this.setState({ created: true });
-        })
-        .catch(error => {
-          console.log(error);
-          this.setState({
-            ...this.state,
-            error: true
-          });
+    this.service
+      .editAssetModel(params, model, size)
+      .then(response => {
+        this.setState({
+          model: "",
+          size: ""
         });
-    } else {
-      this.service
-        .editAsset(params, title, price, description, model, size)
-        .then(response => {
-          this.setState({
-            title: "",
-            price: "",
-            description: "",
-            model: "",
-            size: ""
-          });
-        })
-        .then(response => {
-          this.setState({ created: true });
-        })
-        .catch(error => {
-          console.log(error);
-          this.setState({
-            ...this.state,
-            error: true
-          });
+      })
+      .then(response => {
+        this.setState({ created: false });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          error: true
         });
-    }
+      });
   };
 
   handleChange = event => {
@@ -183,8 +202,13 @@ export default class EditAsset extends Component {
               />
             </div>
           </div>
-          <div className="lowPart">
-            <div className="each">
+          <div className="infernoPart">
+            <button>Update It!</button>
+          </div>
+        </form>
+        <div className="lowPart">
+          <div className="each">
+            <form onSubmit={this.handleFormImage}>
               <label htmlFor="cover">Cover Image</label>
               <input
                 className="file"
@@ -192,8 +216,11 @@ export default class EditAsset extends Component {
                 type="file"
                 onChange={e => this.handleImgUpload(e)}
               />
-            </div>
-            <div className="each">
+              <button>Update It!</button>
+            </form>
+          </div>
+          <div className="each">
+            <form onSubmit={this.handleFormModel}>
               <label htmlFor="model">Model File</label>
               <input
                 className="file"
@@ -202,12 +229,10 @@ export default class EditAsset extends Component {
                 type="file"
                 onChange={e => this.handleModelUpload(e)}
               />
-            </div>
+              <button>Update It!</button>
+            </form>
           </div>
-          <div className="infernoPart">
-            <button>Update It!</button>
-          </div>
-        </form>
+        </div>
       </section>
     );
   }
