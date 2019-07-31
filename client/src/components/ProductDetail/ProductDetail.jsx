@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AssetServices from "../../Services/assetServices";
 import Visualizer from "../Visualizer/Visualizer";
 import CommentList from "../CommentList/CommentList";
+import { Redirect } from "react-router-dom";
 
 export default class ProductDetail extends Component {
   constructor() {
@@ -12,7 +13,8 @@ export default class ProductDetail extends Component {
       price: undefined,
       description: "",
       image: "",
-      isLoading: true
+      isLoading: true,
+      addedToCart: false
     };
     this.service = new AssetServices();
   }
@@ -64,6 +66,13 @@ export default class ProductDetail extends Component {
     }
   };
 
+  handleCartAdd = event => {
+    event.preventDefault();
+    this.props.addToCart(this.state.assetDetails);
+
+    this.setState({ ...this.state, addedToCart: true });
+  };
+
   handleChange = event => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -71,73 +80,9 @@ export default class ProductDetail extends Component {
   };
 
   render() {
-    if (this.props.username === this.state.assetDetails.author.username) {
-      return (
-        <React.Fragment>
-          <section className="productDetail">
-            <div className="canvas">
-              <Visualizer {...this.state.assetDetails} />
-            </div>
-
-            <div className="aside">
-            <div>
-                <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
-                <img
-                  className="photo"
-                  src={this.state.assetDetails.urlPathImg}
-                  alt="ok"
-                />
-                <h2 className="descriptionAsset">{this.state.assetDetails.description}</h2>
-                <h5 className="priceAsset">{this.state.assetDetails.price} €</h5>
-              </div>
-
-             
-              </div>
-          </section>
-          <div>
-          <CommentList
-                loggedUser={this.props.username}
-                paramsId={this.props.match.params.id}
-              />
-          </div>
-          {/* <section className="productDetail">
-            <form onSubmit={this.handleFormSubmit}>
-              <input
-                name="title"
-                placeholder="Choose new title"
-                value={this.state.title}
-                onChange={e => this.handleChange(e)}
-              />
-              <input
-                name="description"
-                placeholder="Edit description"
-                value={this.state.description}
-                onChange={e => this.handleChange(e)}
-              />
-              <input
-                name="price"
-                type="number"
-                placeholder="Choose new price"
-                value={this.state.price}
-                onChange={e => this.handleChange(e)}
-              />
-
-              <button>Submit</button>
-            </form>
-            <form onSubmit={this.handleFormSubmit}>
-              <input
-                name="image"
-                placeholder="Choose Avatar URL"
-                value={this.state.image}
-                onChange={e => this.handleChange(e)}
-              />
-              <button>Change avatar</button>
-            </form>
-          </section> */}
-        </React.Fragment>
-      );
+    if (this.state.addedToCart === true) {
+      return <Redirect to="/cart" />;
     }
-
     return (
       <React.Fragment>
         <section className="productDetail">
@@ -146,25 +91,28 @@ export default class ProductDetail extends Component {
           </div>
 
           <div className="aside">
-            
-                <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
-                <img
-                  className="photo"
-                  src={this.state.assetDetails.urlPathImg}
-                  alt="assetPhoto"
-                />
-                <h2 className="descriptionAsset">{this.state.assetDetails.description}</h2>
-                <h5 className="priceAsset">{this.state.assetDetails.price} €</h5>
-              
+            <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
+            <img
+              className="photo"
+              src={this.state.assetDetails.urlPathImg}
+              alt="assetPhoto"
+            />
+            <h2 className="descriptionAsset">
+              {this.state.assetDetails.description}
+            </h2>
+            <h5 className="priceAsset">{this.state.assetDetails.price} €</h5>
 
+            {this.props.username === this.state.assetDetails.author.username ||
+            this.props.username == null ? null : (
+              <button onClick={e => this.handleCartAdd(e)}>Add to Cart</button>
+            )}
           </div>
         </section>
-        
-          <CommentList
-                loggedUser={this.props.username}
-                paramsId={this.props.match.params.id}
-              />
-          
+
+        <CommentList
+          loggedUser={this.props.username}
+          paramsId={this.props.match.params.id}
+        />
       </React.Fragment>
     );
   }

@@ -55,9 +55,8 @@ export default class assetServices {
   };
 
   editAssetModel = (_id, model, size) => {
-    return this.service
-    .post("/edit-asset-model", {_id, model, size})
-  }
+    return this.service.post("/edit-asset-model", { _id, model, size });
+  };
 
   deleteAsset = id => {
     return this.service
