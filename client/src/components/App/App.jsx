@@ -12,6 +12,7 @@ import Nav from "../Nav/Nav";
 import UploadAsset from "../UploadAsset/UploadAsset";
 import Settings from "../Settings/Settings";
 import EditAsset from "../EditAsset/EditAsset";
+import Cart from "../Cart/Cart";
 
 export default class App extends Component {
   constructor(props) {
@@ -21,7 +22,6 @@ export default class App extends Component {
     };
     this.service = new AuthServices();
   }
-  
 
   getTheUser = userObj => {
     this.setState({ ...this.state, loggedInUser: userObj });
@@ -123,6 +123,8 @@ export default class App extends Component {
               path="/product-edit/:id"
               render={props => <EditAsset {...props} />}
             />
+
+            <Route exact path="/cart" render={() => <Cart/>} />
           </Switch>
         </React.Fragment>
       );
