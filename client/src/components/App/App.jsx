@@ -18,7 +18,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      cart: []
     };
     this.service = new AuthServices();
   }
@@ -35,6 +36,34 @@ export default class App extends Component {
       });
     });
   };
+
+  addToCart(movie) {
+    let newState = { ...this.state };
+
+    newState.cart.push(movie);
+
+    this.setState(newState);
+
+    console.log(newState.cart);
+  }
+
+  getCartTotal() {
+    return this.state.cart.reduce((ac, cu) => ac + cu.price, 0);
+  }
+
+  removeProductFromBasket(modelID) {
+    let newState = { ...this.state };
+    let cartItemIndex = 0;
+
+    for (var i = 0; i < newState.cart.length; i++) {
+      if (newState.cart[i].id === modelID) {
+        cartItemIndex = i;
+      }
+    }
+    newState.cart.splice(cartItemIndex, 1);
+
+    this.setState(newState);
+  }
 
   fetchUser = () => {
     this.service.checkLogin().then(response => {
@@ -104,7 +133,11 @@ export default class App extends Component {
               exact
               path="/product/:id"
               render={props => (
-                <ProductDetail {...props} {...this.state.loggedInUser} />
+                <ProductDetail
+                  {...props}
+                  {...this.state.loggedInUser}
+                  addToCart={model => this.addToCart(model)}
+                />
               )}
             />
             <Route
@@ -124,7 +157,19 @@ export default class App extends Component {
               render={props => <EditAsset {...props} />}
             />
 
-            <Route exact path="/cart" render={() => <Cart/>} />
+            <Route
+              exact
+              path="/cart"
+              render={() => (
+                <Cart
+                  cart={this.state.cart}
+                  getCartTotal={() => this.getCartTotal()}
+                  removeProductFromBasket={modelID =>
+                    this.removeProductFromBasket(modelID)
+                  }
+                />
+              )}
+            />
           </Switch>
         </React.Fragment>
       );

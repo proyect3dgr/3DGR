@@ -129,7 +129,7 @@ router.post("/edit-profile", (req, res, next) => {
     User.findByIdAndUpdate(
       req.user._id,
       {
-        password: hashPass,
+        password: hashPass
       },
       { new: true }
     ).then(updatedUser => {
@@ -161,7 +161,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.delete("/delete-profile", (req, res, next) => {
-  console.log(req.body.id)
+  console.log(req.body.id);
   User.findByIdAndRemove(req.body.id).then(x => res.json(x));
 });
 
