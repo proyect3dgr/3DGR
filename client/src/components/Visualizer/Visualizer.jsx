@@ -33,12 +33,12 @@ export default class Visualizer extends Component {
     ////////////Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
-    scene.fog = new THREE.Fog(0xa0a0a0, 300, 5000);
+    //scene.fog = new THREE.Fog(0xa0a0a0, 300, 5000);
 
     var clock = new THREE.Clock();
 
     ///////////Camera
-    var camera = new THREE.PerspectiveCamera(75, window.width/window.height, 1, 4000);
+    var camera = new THREE.PerspectiveCamera(75, window.width/window.height, 1, 7000);
 
     camera.position.set(100, 200, 300);
   
@@ -52,7 +52,7 @@ export default class Visualizer extends Component {
     var controls = new OrbitControls(camera, renderer.domElement);
     controls.enabled = true;
     //controls.maxDistance = 50;
-    controls.minDistance = 1.5;
+    controls.minDistance = .1;
     controls.enableDamping = true;
     controls.dampingFactor = .5;
     controls.enableZoom = true;
@@ -98,15 +98,15 @@ export default class Visualizer extends Component {
     );
     mesh.rotation.x = -Math.PI / 2;
     mesh.receiveShadow = true;
-    mesh.position.set(0, -5, 0);
+    mesh.position.set(0, 0, 0);
     scene.add(mesh);
 
     //grid
-    var grid = new THREE.GridHelper(2000, 20, 0x000000, 0x000000);
-    grid.material.opacity = 0.2;
-    grid.material.transparent = true;
-    grid.position.set(0, -5, 0);
-    scene.add(grid);
+    // var grid = new THREE.GridHelper(2000, 20, 0x000000, 0x000000);
+    // grid.material.opacity = 0.2;
+    // grid.material.transparent = true;
+    // grid.position.set(0, 0, 0);
+    // scene.add(grid);
 
     /////////Responsive Canvas
     const canvas = renderer.domElement;

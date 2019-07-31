@@ -28,7 +28,7 @@
     transition: all 0.5s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     font-weight: bold;
-    margin-top: 3rem;
+    
     &:hover {
       opacity: 1;
     }
@@ -67,29 +67,27 @@
       justify-content: space-around;
       margin-bottom: 3rem;
     }
-
-    .lowPart {
+    .infernoPart {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .file {
-      width: 40rem;
-    }
-
-    .each {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
+      justify-content: center;
     }
   }
-  .infernoPart {
+
+  .lowPart {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 10rem;
+    justify-content: space-around;
+    label {
+      margin: 0 3rem;
+      font-size: 1.3rem;
+    }
+    form {
+      margin: 0 3rem;
+    }
+    button {
+      margin: 0 3rem;
+    }
   }
 }
 

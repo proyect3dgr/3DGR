@@ -203,13 +203,15 @@ export default class EditAsset extends Component {
             </div>
           </div>
           <div className="infernoPart">
-            <button>Update It!</button>
+            <button>Update Then!</button>
           </div>
         </form>
+        
         <div className="lowPart">
-          <div className="each">
+
+          
             <form onSubmit={this.handleFormImage}>
-              <label htmlFor="cover">Cover Image</label>
+              <label htmlFor="cover">Preview Image</label>
               <input
                 className="file"
                 name="cover"
@@ -218,8 +220,8 @@ export default class EditAsset extends Component {
               />
               <button>Update It!</button>
             </form>
-          </div>
-          <div className="each">
+          
+          
             <form onSubmit={this.handleFormModel}>
               <label htmlFor="model">Model File</label>
               <input
@@ -232,7 +234,7 @@ export default class EditAsset extends Component {
               <button>Update It!</button>
             </form>
           </div>
-        </div>
+        
       </section>
     );
   }

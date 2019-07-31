@@ -37,7 +37,7 @@ let users = [
     username: "qaqa",
     password: bcrypt.hashSync("qaqa", bcrypt.genSaltSync(bcryptSalt)),
     avatar:
-      "https://pickaface.net/gallery/avatar/unr_mrsbob_180716_0154_16ff.png",
+      "https://res.cloudinary.com/rubvaldev/image/upload/v1564482738/thing-gallery/tumblr_pnws4g87zZ1uag7foo4_r2_1280.jpg.jpg",
     email: "qaqa@qaqa.com",
     about: "It is spelled QuaQua because its french for Duck"
   },
@@ -52,10 +52,17 @@ let users = [
   {
     username: "ZippityWob",
     password: bcrypt.hashSync("wob", bcrypt.genSaltSync(bcryptSalt)),
-    avatar:
-      "https://i.ytimg.com/vi/tXb9L8LW4XI/hqdefault.jpg",
+    avatar: "https://i.ytimg.com/vi/tXb9L8LW4XI/hqdefault.jpg",
     email: "zippitywob@zappbranigan.com",
     about: "If you have one eye... send me an email"
+  },
+  {
+    username: "tali",
+    password: bcrypt.hashSync("tali", bcrypt.genSaltSync(bcryptSalt)),
+    avatar:
+      "https://res.cloudinary.com/rubvaldev/image/upload/v1564507295/thing-gallery/taliAvatar.png",
+    email: "talizorah@flotilla.com",
+    about: "Keep calm and keelah se'lai"
   }
 ];
 
@@ -75,11 +82,17 @@ User.remove()
     userCId = createdUsers[3]._id;
     return Comment.create([
       { description: "Very good model", author: userId },
-      { description: "I think you stole this from another website, you thief", author: userCId },
-      { description: "How many surreallists do you need in order to change a lightbulb? Fish", author: userBId },
+      {
+        description: "I think you stole this from another website, you thief",
+        author: userCId
+      },
       {
         description:
-          `How does it feel
+          "How many surreallists do you need in order to change a lightbulb? Fish",
+        author: userBId
+      },
+      {
+        description: `How does it feel
           To treat me like you do?
           When you've laid your hands upon me
           And told me who you are?
@@ -89,7 +102,10 @@ User.remove()
           Tell me now, how do I feel`,
         author: userId
       },
-      { description: "What is a nun in a wheelchair? Virgin Mobile", author: userCId }
+      {
+        description: "What is a nun in a wheelchair? Virgin Mobile",
+        author: userCId
+      }
     ]);
   })
   .then(createdComment => {
@@ -110,8 +126,11 @@ User.remove()
         title: "Breakdancing old man",
         description:
           "Done in Blender. Part of a collection of groovy old men for the upcoming movie Geriatric Park",
-        author: userCId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Breakdance_Freeze_Var_2_ojhrvn.fbx" ,
+        author: userId,
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Breakdance_Freeze_Var_2_ojhrvn.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573428/thing-gallery/photo4.png",
         comments: [
           createdCommentPayload[0]._id,
           createdCommentPayload[1]._id,
@@ -142,9 +161,13 @@ User.remove()
       },
       {
         title: "Hipster robot",
-        description: "Robot being so hipster and having lots of swag. Used in Cyberpunk 2077",
+        description:
+          "Robot being so hipster and having lots of swag. Used in Cyberpunk 2077",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Robot_Hip_Hop_Dance_icuqu6.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Robot_Hip_Hop_Dance_icuqu6.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564572677/thing-gallery/Photo2.png",
         price: 21,
         size: 22,
         format: "FBX",
@@ -154,18 +177,25 @@ User.remove()
         title: "Looking around",
         description: "Done in 3DMAX Studio.",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Look_Around_rah7xp.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Look_Around_rah7xp.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573226/thing-gallery/photo3.png",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
-        format: "OBJ",
+        format: "FBX",
         categories: ["Animal", "Character"]
       },
       {
-        title: "Chicken dance model",
-        description: "Mary Jesus and her accordion inspired me to create this masterpiece in Cinema 4d",
+        title: "T-pose",
+        description:
+          "Mary Jesus and her accordion inspired me to create this masterpiece in Cinema 4d",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Chicken_Dance_u5du9d.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Chicken_Dance_u5du9d.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573428/thing-gallery/photo5.png",
         price: 21,
         size: 22,
         format: "FBX",
@@ -173,20 +203,28 @@ User.remove()
       },
       {
         title: "Praying standard model",
-        description: "Standard model praying for this project to be successful and end world hunger at the same time",
+        description:
+          "Standard model praying for this project to be successful and end world hunger at the same time",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Praying_otgosr.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Praying_otgosr.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573644/thing-gallery/photo6.png",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
-        format: "OBJ",
+        format: "FBX",
         categories: ["Animal", "Character"]
       },
       {
-        title: "Thriller reenacment",
-        description: "Michael Jackson may be dead but Blender models are really alive, like this one and his thriller dance.",
+        title: "Thriller reenactment",
+        description:
+          "Michael Jackson may be dead but Blender models are really alive, like this one and his thriller dance.",
         author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Thriller_Part_2_uyqp4n.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Thriller_Part_2_uyqp4n.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573727/thing-gallery/photo7.png",
         price: 21,
         size: 22,
         format: "FBX",
@@ -194,20 +232,27 @@ User.remove()
       },
       {
         title: "Hip-hop pirate",
-        description: "She only has one leg, but she could move like she has three ( ͡° ͜ʖ ͡°)",
+        description:
+          "She only has one leg, but she could move like she has three ( ͡° ͜ʖ ͡°)",
         author: userCId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564565891/Hip_Hop_Dancing_1_oi66bw.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564565891/Hip_Hop_Dancing_1_oi66bw.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564573910/thing-gallery/photo8.png",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
-        format: "OBJ",
+        format: "FBX",
         categories: ["Animal", "Character"]
       },
       {
         title: "Stand up model",
         description: "Simple model to let your NPCs stand up like it is 1972",
         author: userId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562560/Stand_Up_rtcg3u.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562560/Stand_Up_rtcg3u.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564578399/thing-gallery/photo9.png",
         price: 21,
         size: 22,
         format: "FBX",
@@ -215,22 +260,28 @@ User.remove()
       },
       {
         title: "Dancing",
-        description: "Dancing model done in Blender under 2 days of no sleep. May contain errors",
+        description:
+          "Dancing model done in Blender under 2 days of no sleep. May contain errors",
         author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564563308/Dancing_ssli83.fbx",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564579067/Samba_Dancing_goljtw.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564579147/thing-gallery/photo10.png",
         comments: [createdCommentPayload[0]._id, createdCommentPayload2[0]._id],
         price: 39,
         size: 54,
-        format: "OBJ",
+        format: "FBX",
         categories: ["Animal", "Character"]
       },
       {
         title: "Victory pose",
-        description: "Done in 3DMax. Perfect model and animation for a victory in a videogame",
+        description:
+          "Done in 3DMax. Perfect model and animation for a victory in a videogame",
         author: userBId,
-        urlPathModel: "https://res.cloudinary.com/rubvaldev/raw/upload/v1564566199/Victory_etwjj7.fbx",
-        // urlPathImg:
-        //   "https://thumbs.dreamstime.com/z/se%C3%B1or-mayor-32079845.jpg",
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564566199/Victory_etwjj7.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564579250/thing-gallery/photo11.png",
         price: 21,
         size: 22,
         format: "FBX",
@@ -253,6 +304,7 @@ User.remove()
         console.log(popAsset[0]._id);
         User.findByIdAndUpdate(
           popAsset[0].author,
+
           {
             $push: { assetCollection: assetId }
           },
