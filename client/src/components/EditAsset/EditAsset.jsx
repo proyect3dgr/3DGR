@@ -218,7 +218,7 @@ export default class EditAsset extends Component {
                 type="file"
                 onChange={e => this.handleImgUpload(e)}
               />
-              <button>Update It!</button>
+            {this.state.imgUploaded ? <button>Upload It!</button> : <button disabled>Upload It!</button>}
             </form>
           
           
@@ -231,7 +231,7 @@ export default class EditAsset extends Component {
                 type="file"
                 onChange={e => this.handleModelUpload(e)}
               />
-              <button>Update It!</button>
+            {this.state.modelUploaded ? <button>Upload It!</button> : <button disabled>Upload It!</button>}
             </form>
           </div>
         

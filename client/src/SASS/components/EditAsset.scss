@@ -32,6 +32,14 @@
     &:hover {
       opacity: 1;
     }
+
+    &:disabled {
+      background: #999;
+      cursor: default;
+      &:hover {
+        opacity: 0;
+      }
+    }
   }
 
   h1 {

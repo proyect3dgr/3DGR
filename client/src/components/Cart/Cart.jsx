@@ -16,33 +16,68 @@ export default class Cart extends Component {
   render() {
     if (this.props.cart.length === 0) {
       return (
-        <React.Fragment>
-          <Link to="/">Back to the Models</Link>
+        <section className="cartCheckoutBg">
 
+          <h1>Shopping Cart</h1>
+          <hr />
           <p>You have no items in your cart</p>
-        </React.Fragment>
+          <hr />
+          <Link to="/">
+            <button>CONTINUE SHOPPING</button>
+          </Link>
+        </section>
       );
     }
     return (
-      <section className="cart">
-        <Link to="/">Back to the Shop</Link>
-
-        <h2>Total {this.props.getCartTotal()}$</h2>
-
-        <div>
-          {this.state.cart.map((cartItem, idx) => {
-            return (
-              <div key={idx}>
-                <p>{cartItem.title}</p>
-                <p>{cartItem.price}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div />
-
-        <div />
+      <section className="cartCheckoutBg">
+        <h1>Shopping Cart</h1>
+        <hr />
+        <article className="cartCheckout">
+          <div className="containerItems">
+            {this.state.cart.map((cartItem, idx) => {
+              return (
+                <div className="item" key={idx}>
+                  <div className="itemImg">
+                    <img
+                      className="realImg"
+                      src={cartItem.urlPathImg}
+                      alt="item"
+                    />
+                  </div>
+                  <div className="itemTP">
+                    <p>{cartItem.title}</p>
+                    <p>{cartItem.price} €</p>
+                  </div>
+                  <div>
+                    <button onClick={()=>this.props.removeProductFromBasket(cartItem.idx)}>Delete</button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <hr />
+          <div className="totalPrice">
+            <div>
+              <span>Total Price:</span>
+            </div>
+            <div>
+              <span>{this.props.getCartTotal()} €</span>
+            </div>
+          </div>
+          <div className="buttonsPart">
+            <Link to="/">
+              <button>CONTINUE SHOPPING</button>
+            </Link>
+            <button>
+              CHECK OUT
+              {/* Checkout
+            name={'The Road to learn React'}
+            description={'Only the Book'}
+            amount={1}
+          /> */}
+            </button>
+          </div>
+        </article>
       </section>
     );
   }

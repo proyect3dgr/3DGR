@@ -19,15 +19,13 @@ export default class Slider extends Component {
     // setState method is used to update the state
     
     let index = this.state.currentIndex + 1
-    console.log(index+"soy index cucucuccucuccu")
-    if (index === 4) index = 0;
+    if (index === 3) index = 0;
     this.setState({ currentIndex: index  });
   }
 
   componentDidMount() {
     setInterval(
       function() {
-        console.log("<--------");
         this.setNextImage();
       }.bind(this),
       5000
@@ -51,7 +49,7 @@ export default class Slider extends Component {
         <div data-src={banner4} />
         <div data-src={banner1} />
         <div data-src={banner2} />
-        <div data-src={banner3} />
+
       </AwesomeSlider>
     );
   }

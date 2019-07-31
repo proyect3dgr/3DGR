@@ -1,0 +1,80 @@
+.cartCheckoutBg {
+  h1 {
+    text-align: center;
+    font-size: 7rem;
+    margin: 2rem 0;
+  }
+  hr {
+    border: 1px solid whitesmoke;
+  }
+  button {
+    padding: 2.5rem 5rem;
+    border-radius: 1rem;
+    background: #f0f2f0;
+    opacity: 0.6;
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    font-weight: bold;
+    margin-top: 3rem;
+    text-shadow: 2px 2px 15px black;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 5px black;
+  min-height: 100vh;
+  color: whitesmoke;
+  background: linear-gradient(
+    to right,
+    #243b55,
+    #141e30
+  ); 
+
+  .cartCheckout {
+    padding: 2rem;
+
+    .containerItems {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      padding: 2rem;
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0;
+
+        .itemImg {
+          .realImg {
+            width: 15rem;
+            height: 15rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1),
+              0 6px 20px 0 rgba(0, 0, 0, 1);
+          }
+        }
+
+        .itemTP {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .totalPrice {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+    }
+
+    .buttonsPart {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}
