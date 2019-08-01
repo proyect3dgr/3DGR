@@ -14,6 +14,20 @@ export default class Cart extends Component {
     this.setState({ ...this.props });
   }
 
+  removeProductFromBasket(modelID) {
+    let newState = { ...this.state };
+    let cartItemIndex = 0;
+
+    for (var i = 0; i < newState.cart.length; i++) {
+      if (newState.cart[i].id === modelID) {
+        cartItemIndex = i;
+      }
+    }
+    newState.cart.splice(cartItemIndex, 1);
+
+    this.setState(newState);
+  }
+
   render() {
     if (this.props.cart.length === 0) {
       return (
@@ -51,7 +65,7 @@ export default class Cart extends Component {
                   <div>
                     <button
                       onClick={() =>
-                        this.props.removeProductFromBasket(cartItem.idx)
+                        this.removeProductFromBasket(cartItem.id)
                       }
                     >
                       Delete
@@ -78,7 +92,7 @@ export default class Cart extends Component {
               name={"3DGR Checkout"}
               description={"Give me all your money"}
               amount={this.props.getCartTotal()}
-              onClick={e => this.props.emptyCart(e)}
+              emptyCart={() => this.props.emptyCart()}
             />
           </div>
         </article>
