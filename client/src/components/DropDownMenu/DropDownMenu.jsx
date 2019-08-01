@@ -15,17 +15,23 @@ export default class DropDownMenu extends Component {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item>
-            <Link to={`/profile/${this.props.userLogged.username}`}>
+          <Dropdown.Item href={`/profile/${this.props.userLogged.username}`}>
+            {/* <Link to={`/profile/${this.props.userLogged.username}`}>
               Profile
-            </Link>
+            </Link> */}
+            Profile
           </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={"/profile/settings"}>Settings</Link>
+
+          <Dropdown.Item href={"/profile/settings"}>
+            {/* <Link to={"/profile/settings"}>Settings</Link> */}
+            Settings
           </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={"/product/upload"}>Upload New Asset</Link>
+
+          <Dropdown.Item href={"/product/upload"}>
+            {/* <Link to={"/product/upload"}>Upload New Asset</Link> */}
+            Upload New Asset
           </Dropdown.Item>
+
           <Dropdown.Item
             onClick={e => {
               this.props.logout(e);
