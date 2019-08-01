@@ -37,10 +37,10 @@ export default class App extends Component {
     });
   };
 
-  addToCart(movie) {
+  addToCart(model) {
     let newState = { ...this.state };
 
-    newState.cart.push(movie);
+    newState.cart.push(model);
 
     this.setState(newState);
 
@@ -95,9 +95,10 @@ export default class App extends Component {
           <Switch>
             <Route
               exact
-              path={`/profile/${this.state.loggedInUser.username}`}
-              render={() => (
+              path={`/profile/:name`}
+              render={(props) => (
                 <Profile
+                  {...props}
                   {...this.state.loggedInUser}
                   fetchUser={this.fetchUser}
                 />
@@ -212,10 +213,11 @@ export default class App extends Component {
         />
         <Route
           exact
-          path="/profile/:id"
-          render={() => {
-            return <Redirect to="/login" />;
-          }}
+          path="/profile/:name"
+          render={(props) => (
+            <Profile {...props}
+            />
+          )}
         />
 
         <Route

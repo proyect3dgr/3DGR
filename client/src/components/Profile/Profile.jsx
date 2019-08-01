@@ -22,8 +22,10 @@ export default class Profile extends Component {
   }
 
   getProfile = () => {
-    const params = this.props._id;
-    this.service.getUser(params).then(response => {
+    const name = this.props.match.params.name;
+    console.log(name)
+    // const params = this.props._id;
+    this.service.getUser(name).then(response => {
       this.setState(response);
     });
   };
@@ -77,7 +79,11 @@ export default class Profile extends Component {
   };
 
   render() {
-    if (this.state.username === this.props.username) {
+
+    console.log(this.state)
+    console.log(this.props)
+
+    if (this.props.username === this.props.match.params.name) {
       return (
         <React.Fragment>
           <section className="infoUser">
@@ -87,13 +93,13 @@ export default class Profile extends Component {
               </div>
 
               <div className="details">
-                <h1>{this.props.username}</h1>
-                <h2>{this.props.email}</h2>
+                <h1>{this.state.username}</h1>
+                <h2>{this.state.email}</h2>
               </div>
 
               <div className="description">
                 <p className="title">About Me</p>
-                <p>{this.props.about}</p>
+                <p>{this.state.about}</p>
                 <Link to={"/profile/settings"}>
                   <div className="edit">
                     <img src={edit} alt="edit" />
@@ -144,19 +150,14 @@ export default class Profile extends Component {
             </div>
 
             <div className="details">
-              <h1>{this.props.username}</h1>
-              <h2>{this.props.email}</h2>
+              <h1>{this.state.username}</h1>
+              <h2>{this.state.email}</h2>
             </div>
 
             <div className="description">
               <p className="title">About Me</p>
-              <p>{this.props.about}</p>
-              <Link to={"/profile/settings"}>
-                <div className="edit">
-                  <img src={edit} alt="edit" />
-                </div>
-              </Link>
-            </div>
+              <p>{this.state.about}</p>
+                         </div>
 
             {/* <button
             onClick={e => {
@@ -173,17 +174,7 @@ export default class Profile extends Component {
             <ul>
               {this.state.assetCollection.map((asset, idx) => (
                 <li key={idx}>
-                  <form onSubmit={e => this.handleFormDelete(e, asset._id)}>
-                    <button className="deleteBtn">
-                      <img src={bin} alt="delete button" />
-                    </button>
-                    <Link to={`/product-edit/${asset._id}`}>
-                      <button className="edit">
-                        <img src={edit} alt="delete button" />
-                      </button>
-                    </Link>
-                  </form>
-                  <ProductCard {...asset} />
+                     <ProductCard {...asset} />
                 </li>
               ))}
             </ul>

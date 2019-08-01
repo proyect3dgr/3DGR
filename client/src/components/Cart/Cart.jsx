@@ -11,7 +11,8 @@ export default class Cart extends Component {
   }
 
   componentDidMount() {
-    this.setState({ ...this.props });
+    console.log(this.state.cart)
+    this.setState({...this.state, cart: this.props.cart });
   }
 
   removeProductFromBasket(modelID) {
@@ -19,7 +20,7 @@ export default class Cart extends Component {
     let cartItemIndex = 0;
 
     for (var i = 0; i < newState.cart.length; i++) {
-      if (newState.cart[i].id === modelID) {
+      if (newState.cart[i]._id === modelID) {
         cartItemIndex = i;
       }
     }
@@ -29,6 +30,8 @@ export default class Cart extends Component {
   }
 
   render() {
+
+    console.log(this.state)
     if (this.props.cart.length === 0) {
       return (
         <section className="cartCheckoutBg">
@@ -64,7 +67,9 @@ export default class Cart extends Component {
                   </div>
                   <div>
                     <button
-                      onClick={() => this.removeProductFromBasket(cartItem.id)}
+                      onClick={() =>
+                        this.removeProductFromBasket(cartItem._id)
+                      }
                     >
                       Delete
                     </button>
