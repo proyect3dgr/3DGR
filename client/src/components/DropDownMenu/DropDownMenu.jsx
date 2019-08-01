@@ -22,7 +22,7 @@ export default class DropDownMenu extends Component {
             Profile
           </Dropdown.Item>
 
-          <Dropdown.Item href={"/profile/settings"}>
+          <Dropdown.Item href={"/settings"}>
             {/* <Link to={"/profile/settings"}>Settings</Link> */}
             Settings
           </Dropdown.Item>

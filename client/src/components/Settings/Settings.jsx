@@ -24,7 +24,7 @@ export default class Settings extends Component {
   }
 
   getProfile = () => {
-    const params = this.props._id;
+    const params = this.props.username;
     this.service.getUser(params).then(response => {
       this.setState(response);
     });
