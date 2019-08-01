@@ -51,6 +51,11 @@ export default class App extends Component {
     return this.state.cart.reduce((ac, cu) => ac + cu.price, 0);
   }
 
+  emptyCart() {
+    let newState = {...this.state, cart:[]}
+    this.setState(newState)
+  }
+
   removeProductFromBasket(modelID) {
     let newState = { ...this.state };
     let cartItemIndex = 0;
@@ -167,6 +172,7 @@ export default class App extends Component {
                   removeProductFromBasket={modelID =>
                     this.removeProductFromBasket(modelID)
                   }
+                  emptyCart={() => this.emptyCart()}
                 />
               )}
             />

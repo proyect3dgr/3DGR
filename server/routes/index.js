@@ -3,6 +3,16 @@ const router = express.Router();
 const Asset = require("../models/Asset");
 const User = require("../models/User");
 const Comment = require("../models/Comment");
+const stripe = require('../configs/stripe');
+
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+  if (stripeErr) {
+    res.status(500).send({ error: stripeErr });
+  } else {
+    res.status(200).send({ success: stripeRes });
+  }
+}
+
 
 // include CLOUDINARY:
 const uploader = require("../configs/cloudinary-setup");
@@ -41,6 +51,10 @@ router.get("/product/:id", (req, res, next) => {
     });
 });
 /* ------------CREATE ENDPOINTS-------------- */
+
+router.post('/stripe-checkout', (req, res) => {
+  stripe.charges.create(req.body, postStripeCharge(res));
+});
 
 router.post("/upload", uploader.single("modelImg"), (req, res, next) => {
   // console.log('file is: ', req.file)

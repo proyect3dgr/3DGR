@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Checkout from "../Checkout/Checkout";
 
 export default class Cart extends Component {
   constructor(props) {
@@ -17,7 +18,6 @@ export default class Cart extends Component {
     if (this.props.cart.length === 0) {
       return (
         <section className="cartCheckoutBg">
-
           <h1>Shopping Cart</h1>
           <hr />
           <p>You have no items in your cart</p>
@@ -49,7 +49,13 @@ export default class Cart extends Component {
                     <p>{cartItem.price} €</p>
                   </div>
                   <div>
-                    <button onClick={()=>this.props.removeProductFromBasket(cartItem.idx)}>Delete</button>
+                    <button
+                      onClick={() =>
+                        this.props.removeProductFromBasket(cartItem.idx)
+                      }
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );
@@ -68,14 +74,12 @@ export default class Cart extends Component {
             <Link to="/">
               <button>CONTINUE SHOPPING</button>
             </Link>
-            <button>
-              CHECK OUT
-              {/* Checkout
-            name={'The Road to learn React'}
-            description={'Only the Book'}
-            amount={1}
-          /> */}
-            </button>
+            <Checkout
+              name={"3DGR Checkout"}
+              description={"Give me all your money"}
+              amount={this.props.getCartTotal()}
+              onClick={e => this.props.emptyCart(e)}
+            />
           </div>
         </article>
       </section>
