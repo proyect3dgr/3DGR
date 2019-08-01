@@ -175,7 +175,7 @@ export default class UploadAsset extends Component {
             </div>
             <div className="lowPart">
               <div className="each">
-                <label for="cover">Cover Image</label>
+                <label for="cover">Preview Image</label>
                 <input
                   className="file"
                   name="cover"

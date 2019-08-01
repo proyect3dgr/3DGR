@@ -77,11 +77,12 @@ User.remove()
     return User.create(users);
   })
   .then(createdUsers => {
-    userId = createdUsers[1]._id;
+    userAId = createdUsers[1]._id;
     userBId = createdUsers[2]._id;
     userCId = createdUsers[3]._id;
+    userDId = createdUsers[4]._id;
     return Comment.create([
-      { description: "Very good model", author: userId },
+      { description: "Very good model", author: userAId },
       {
         description: "I think you stole this from another website, you thief",
         author: userCId
@@ -100,7 +101,7 @@ User.remove()
           I thought I heard your words
           Tell me, how do I feel?
           Tell me now, how do I feel`,
-        author: userId
+        author: userAId
       },
       {
         description: "What is a nun in a wheelchair? Virgin Mobile",
@@ -126,7 +127,7 @@ User.remove()
         title: "Breakdancing old man",
         description:
           "Done in Blender. Part of a collection of groovy old men for the upcoming movie Geriatric Park",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Breakdance_Freeze_Var_2_ojhrvn.fbx",
         urlPathImg:
@@ -163,7 +164,7 @@ User.remove()
         title: "Hipster robot",
         description:
           "Robot being so hipster and having lots of swag. Used in Cyberpunk 2077",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Robot_Hip_Hop_Dance_icuqu6.fbx",
         urlPathImg:
@@ -176,7 +177,7 @@ User.remove()
       {
         title: "Looking around",
         description: "Done in 3DMAX Studio.",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562508/Look_Around_rah7xp.fbx",
         urlPathImg:
@@ -191,7 +192,7 @@ User.remove()
         title: "T-pose",
         description:
           "Mary Jesus and her accordion inspired me to create this masterpiece in Cinema 4d",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Chicken_Dance_u5du9d.fbx",
         urlPathImg:
@@ -205,7 +206,7 @@ User.remove()
         title: "Praying standard model",
         description:
           "Standard model praying for this project to be successful and end world hunger at the same time",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562509/Praying_otgosr.fbx",
         urlPathImg:
@@ -248,7 +249,7 @@ User.remove()
       {
         title: "Stand up model",
         description: "Simple model to let your NPCs stand up like it is 1972",
-        author: userId,
+        author: userAId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564562560/Stand_Up_rtcg3u.fbx",
         urlPathImg:
@@ -286,6 +287,20 @@ User.remove()
         size: 22,
         format: "FBX",
         categories: ["Character"]
+      },
+      {
+        title: "Clapping",
+        description:
+          "We hope people do this when we finish the exposition",
+        author: userDId,
+        urlPathModel:
+          "https://res.cloudinary.com/rubvaldev/raw/upload/v1564646227/assets/Standing_Clap_1_sqvuzc.fbx",
+        urlPathImg:
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564646308/thing-gallery/photo12.png",
+        price: 21,
+        size: 78,
+        format: "FBX",
+        categories: ["Character"]
       }
     );
   })
@@ -301,17 +316,31 @@ User.remove()
       })
       .then(popAsset => {
         let assetId = [popAsset[0]._id, popAsset[3]._id];
+        let assetDId = [popAsset[10]._id]
+        let allAssets = [popAsset[1]._id,popAsset[2]._id,popAsset[4]._id,
+        popAsset[5]._id,popAsset[6]._id,popAsset[7]._id,popAsset[8]._id,popAsset[9]._id,popAsset[10]._id]
         console.log(popAsset[0]._id);
+        
         User.findByIdAndUpdate(
-          popAsset[0].author,
+          userAId,
 
           {
-            $push: { assetCollection: assetId }
+            $push: { assetCollection: allAssets }
           },
           {
             new: true
-          }
-        ).then(givenUser => {
+          })
+
+          // User.findByIdAndUpdate(
+          //   userDId,
+            
+          //   {
+          //     $push: { assetCollection: assetId }
+          //   },
+          //   {
+          //     new: true
+          //   })
+          .then(givenUser => {
           console.log(givenUser);
           process.exit(0);
         });
