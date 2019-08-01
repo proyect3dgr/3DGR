@@ -95,9 +95,10 @@ export default class App extends Component {
           <Switch>
             <Route
               exact
-              path={`/profile/${this.state.loggedInUser.username}`}
-              render={() => (
+              path={`/profile/:name`}
+              render={(props) => (
                 <Profile
+                  {...props}
                   {...this.state.loggedInUser}
                   fetchUser={this.fetchUser}
                 />
@@ -212,10 +213,11 @@ export default class App extends Component {
         />
         <Route
           exact
-          path="/profile/:id"
-          render={() => {
-            return <Redirect to="/login" />;
-          }}
+          path="/profile/:name"
+          render={(props) => (
+            <Profile {...props}
+            />
+          )}
         />
 
         <Route

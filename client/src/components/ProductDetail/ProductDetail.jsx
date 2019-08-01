@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AssetServices from "../../Services/assetServices";
 import Visualizer from "../Visualizer/Visualizer";
 import CommentList from "../CommentList/CommentList";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 export default class ProductDetail extends Component {
   constructor() {
@@ -92,6 +92,7 @@ export default class ProductDetail extends Component {
 
           <div className="aside">
             <h1 className="titleAsset">{this.state.assetDetails.title}</h1>
+            <h2>Uploaded by: <Link to={`/profile/${this.state.assetDetails.author.username}`}>{this.state.assetDetails.author.username}</Link></h2>
             <img
               className="photo"
               src={this.state.assetDetails.urlPathImg}

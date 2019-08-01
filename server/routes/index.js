@@ -27,8 +27,8 @@ router.get("/assets", (req, res, next) => {
     });
 });
 
-router.get("/user/:id", (req, res, next) => {
-  User.findById(req.params.id)
+router.get("/user/:name", (req, res, next) => {
+  User.findOne({username:req.params.name })
     .populate("assetCollection")
     .then(userPayload => {
       res.json(userPayload);
