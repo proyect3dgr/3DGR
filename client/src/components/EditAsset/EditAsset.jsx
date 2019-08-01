@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import assetServices from "../../Services/assetServices";
-import { Redirect } from "react-router-dom";
-
 
 export default class EditAsset extends Component {
   constructor(props) {
@@ -14,7 +12,7 @@ export default class EditAsset extends Component {
       image: "",
       model: "",
       size: "",
-      edited: false,
+      created: false,
       imgUploaded: false,
       modelUploaded: false
     };
@@ -23,7 +21,6 @@ export default class EditAsset extends Component {
 
   componentDidMount() {
     this.getAsset();
-    console.log(this.props)
   }
 
   getAsset() {
@@ -54,7 +51,7 @@ export default class EditAsset extends Component {
         });
       })
       .then(response => {
-        this.setState({ edited: true });
+        this.setState({ created: true });
       })
       .catch(error => {
         console.log(error);
@@ -81,7 +78,7 @@ export default class EditAsset extends Component {
         });
       })
       .then(response => {
-        this.setState({ edited: true });
+        this.setState({ imgUploaded: false });
       })
       .catch(error => {
         console.log(error);
@@ -107,7 +104,7 @@ export default class EditAsset extends Component {
         });
       })
       .then(response => {
-        this.setState({ edited: true });
+        this.setState({ created: false });
       })
       .catch(error => {
         console.log(error);
@@ -173,7 +170,6 @@ export default class EditAsset extends Component {
   };
 
   render() {
-    if(this.state.edited === true) { return (<Redirect to={`/product/${this.props.match.params.id}`}/>)}
     return (
       <section className="edditAsset">
         <h1>Update your Asset</h1>
@@ -207,7 +203,7 @@ export default class EditAsset extends Component {
             </div>
           </div>
           <div className="infernoPart">
-            <button>Update Them!</button>
+            <button>Update Then!</button>
           </div>
         </form>
         
