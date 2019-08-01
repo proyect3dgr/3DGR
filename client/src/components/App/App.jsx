@@ -37,10 +37,10 @@ export default class App extends Component {
     });
   };
 
-  addToCart(movie) {
+  addToCart(model) {
     let newState = { ...this.state };
 
-    newState.cart.push(movie);
+    newState.cart.push(model);
 
     this.setState(newState);
 
