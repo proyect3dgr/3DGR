@@ -26,7 +26,7 @@ export default class DropDownMenu extends Component {
             Settings
           </Dropdown.Item>
 
-          <Dropdown.Item href={"/product/upload"}>
+          <Dropdown.Item href={"/asset-upload"}>
             {/* <Link to={"/product/upload"}>Upload New Asset</Link> */}
             Upload New Asset
           </Dropdown.Item>

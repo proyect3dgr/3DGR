@@ -13,17 +13,17 @@ export default class assetServices {
   };
 
   handleUpload = file => {
-    return this.service.post("/upload", file).then(res => res.data);
+    return this.service.post("/upload", file).then(res => res.data).catch((error) => {"promise error"}) ;
   };
 
   handleUploadModel = file => {
-    return this.service.post("/upload-asset", file).then(res => res.data);
+    return this.service.post("/upload-asset", file).then(res => res.data).catch((error) => {"promise error"});
   };
 
   createAsset = (title, price, description, model, size, image) => {
     return this.service
       .post("/create-asset", { title, price, description, model, size, image })
-      .then(response => response.data);
+      .then(response => response.data).catch((error) => {"promise error"});
   };
 
   createComment = (description, populateAsset) => {
