@@ -5,4 +5,4 @@
 
 #We used THREEJS to build a Visualizer where we can upload the models and see them in real time.
 
-#If you want to fork this project, remember to do a "npm install" in both folders (client and server).
+#If you want to fork this project, remember to do a "npm install" in both folders (client and server). 

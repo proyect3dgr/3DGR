@@ -23,7 +23,6 @@ export default class EditAsset extends Component {
 
   componentDidMount() {
     this.getAsset();
-    console.log(this.props)
   }
 
   getAsset() {
