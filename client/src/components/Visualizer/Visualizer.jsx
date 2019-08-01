@@ -16,12 +16,9 @@ export default class Visualizer extends Component {
     // this.loadModel();
     // }
     // this.urlPathModel = this.props.urlPathModel;
-    console.log(this.props);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps);
-    console.log(this.props.author);
     // only update chart if the data has changed
     if (prevProps !== this.props) {
       this.loadModel();
@@ -38,10 +35,15 @@ export default class Visualizer extends Component {
     var clock = new THREE.Clock();
 
     ///////////Camera
-    var camera = new THREE.PerspectiveCamera(75, window.width/window.height, 1, 7000);
+    var camera = new THREE.PerspectiveCamera(
+      75,
+      window.width / window.height,
+      1,
+      7000
+    );
 
     camera.position.set(100, 200, 300);
-  
+
     scene.add(camera);
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -52,9 +54,9 @@ export default class Visualizer extends Component {
     var controls = new OrbitControls(camera, renderer.domElement);
     controls.enabled = true;
     //controls.maxDistance = 50;
-    controls.minDistance = .1;
+    controls.minDistance = 0.1;
     controls.enableDamping = true;
-    controls.dampingFactor = .5;
+    controls.dampingFactor = 0.5;
     controls.enableZoom = true;
 
     ////////////canvas size
@@ -67,14 +69,14 @@ export default class Visualizer extends Component {
     const texture = textureloader.load(
       "https://66.media.tumblr.com/07b00df16a910359a331e158b79dfa72/tumblr_nvuw1mFBzL1qharjqo1_500.gif"
     );
-    var geometry = new THREE.BoxGeometry(.1, .1, .1);
+    var geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
     var material = new THREE.MeshLambertMaterial({
       map: texture,
       //color: "#0006FF",
       wireframe: false
     });
     var cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 0, 0);
+    cube.position.set(0, 0.1, 0);
     scene.add(cube);
 
     ///////////// light
