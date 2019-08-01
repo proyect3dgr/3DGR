@@ -48,6 +48,8 @@
   min-height: 100vh;
   color: whitesmoke;
   background: linear-gradient(to right, #243b55, #141e30);
+  transition: all 0.5s;
+  animation: fade 0.5s ease-in-out;
 
   .cartCheckout {
     padding: 2rem;
@@ -91,5 +93,15 @@
       display: flex;
       justify-content: space-evenly;
     }
+  }
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
