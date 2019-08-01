@@ -49,8 +49,10 @@
   .dropdown-menu {
     background: #6D8DA5;
     border-radius: 2rem;
-    left:-20px;
-
     
+  }
+
+  .dropdown-menu.show {
+    left: -2.5rem !important;
   }
 }

@@ -92,10 +92,30 @@
     .buttonsPart {
       display: flex;
       justify-content: space-evenly;
+
+      span {
+        padding: 2.5rem 5rem !important;
+        border-radius: 1rem !important;
+        background: #0ca50c !important;
+        opacity: .7 !important;
+        transition: all 0.5s !important;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1) !important;
+        font-weight: bold !important;
+        margin-top: 3rem !important;
+        text-shadow: 2px 2px 15px black !important;
+        color: whitesmoke !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.5rem !important;
+        margin: 0 !important;
+        display: unset !important;
+
+        &:hover {
+          opacity: 1 !important;
+        }
+      }
     }
   }
 }
-
 
 @keyframes fade {
   from {
