@@ -290,8 +290,7 @@ User.remove()
       },
       {
         title: "Clapping",
-        description:
-          "We hope people do this when we finish the exposition",
+        description: "We hope people do this when we finish the exposition",
         author: userDId,
         urlPathModel:
           "https://res.cloudinary.com/rubvaldev/raw/upload/v1564646227/assets/Standing_Clap_1_sqvuzc.fbx",
@@ -315,34 +314,60 @@ User.remove()
         }
       })
       .then(popAsset => {
-        let assetId = [popAsset[0]._id, popAsset[3]._id];
-        let assetDId = [popAsset[10]._id]
-        let allAssets = [popAsset[1]._id,popAsset[2]._id,popAsset[4]._id,
-        popAsset[5]._id,popAsset[6]._id,popAsset[7]._id,popAsset[8]._id,popAsset[9]._id,popAsset[10]._id]
-        console.log(popAsset[0]._id);
-        
-        User.findByIdAndUpdate(
-          userAId,
+        // console.log(popAsset)
+        let assetAId = [];
+        let assetBId = [];
+        let assetCId = [];
+        let assetDId = [];
 
-          {
-            $push: { assetCollection: allAssets }
-          },
-          {
-            new: true
-          })
+        for (var i = 0; i < popAsset.length; i++) {
+          console.log(popAsset[i].id);
+          if (popAsset[i].author.id.toString() === userAId.toString()) {
+            assetAId.push(popAsset[i].id);
+          }
+          if (popAsset[i].author.id.toString() === userBId.toString()) {
+            assetBId.push(popAsset[i].id);
+          }
+          if (popAsset[i].author.id.toString() === userCId.toString()) {
+            assetCId.push(popAsset[i].id);
+          }
+          if (popAsset[i].author.id.toString() === userDId.toString()) {
+            assetDId.push(popAsset[i].id);
+          }
+        }
+        console.log(assetAId);
+        console.log(assetBId);
+        console.log(assetCId);
+        console.log(assetDId);
 
-          // User.findByIdAndUpdate(
-          //   userDId,
-            
-          //   {
-          //     $push: { assetCollection: assetId }
-          //   },
-          //   {
-          //     new: true
-          //   })
+        User.update(
+          { _id: { $in: [userAId] } },
+
+          { $set: { assetCollection: assetAId } }
+        ).then(x => {});
+
+        User.update(
+          { _id: { $in: [userBId] } },
+
+          { $set: { assetCollection: assetBId } }
+        ).then(x => {});
+
+        User.update(
+          { _id: { $in: [userCId] } },
+
+          { $set: { assetCollection: assetCId } }
+        ).then(x => {});
+
+        User.update(
+          { _id: { $in: [userDId] } },
+
+          { $set: { assetCollection: assetDId } }
+        )
+          .then(x => {})
+
           .then(givenUser => {
-          console.log(givenUser);
-          process.exit(0);
-        });
+            console.log(givenUser);
+            process.exit(0);
+          });
       });
   });

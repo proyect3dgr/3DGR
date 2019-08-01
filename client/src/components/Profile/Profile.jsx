@@ -78,7 +78,6 @@ export default class Profile extends Component {
   };
 
   render() {
-
     if (this.props.username === this.props.match.params.name) {
       return (
         <React.Fragment>
