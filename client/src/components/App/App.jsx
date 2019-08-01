@@ -126,7 +126,7 @@ export default class App extends Component {
                   <ProductList />
                 </React.Fragment>
               )}
-            />
+            /> 
 
             <Route
               exact
