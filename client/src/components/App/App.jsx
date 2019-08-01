@@ -148,7 +148,7 @@ export default class App extends Component {
             />
             <Route
               exact
-              path="/profile/settings"
+              path="/settings"
               render={() => (
                 <Settings
                   reloadUser={this.fetchUser}
