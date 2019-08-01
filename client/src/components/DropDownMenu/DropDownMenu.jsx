@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Link } from "react-router-dom";
 
 export default class DropDownMenu extends Component {
   render() {
