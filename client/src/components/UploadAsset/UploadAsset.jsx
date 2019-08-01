@@ -89,6 +89,7 @@ export default class UploadAsset extends Component {
 
   // this method handles just the file upload
   handleImgUpload = e => {
+    e.preventDefault()
     console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
@@ -111,6 +112,8 @@ export default class UploadAsset extends Component {
   };
 
   handleModelUpload = e => {
+    
+    e.preventDefault()
     console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
@@ -175,7 +178,7 @@ export default class UploadAsset extends Component {
             </div>
             <div className="lowPart">
               <div className="each">
-                <label for="cover">Preview Image</label>
+                <label htmlFor="cover">Preview Image</label>
                 <input
                   className="file"
                   name="cover"
@@ -184,7 +187,7 @@ export default class UploadAsset extends Component {
                 />
               </div>
               <div className="each">
-                <label for="model">Model File</label>
+                <label htmlFor="model">Model File</label>
                 <input
                   className="file"
                   name="model"

@@ -130,7 +130,7 @@ export default class App extends Component {
 
             <Route
               exact
-              path="/product/upload"
+              path="/asset-upload"
               render={() => (
                 <UploadAsset user={this.state.loggedInUser.username} />
               )}
