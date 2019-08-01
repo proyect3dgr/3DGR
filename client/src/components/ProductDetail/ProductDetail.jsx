@@ -30,7 +30,6 @@ export default class ProductDetail extends Component {
         ...this.state,
         assetDetails: response
       });
-      console.log(this.state.assetDetails.urlPathModel);
     });
   }
 

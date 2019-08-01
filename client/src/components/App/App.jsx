@@ -181,7 +181,7 @@ export default class App extends Component {
         </React.Fragment>
       );
     }
-
+    
     return (
       <React.Fragment>
         <Nav />
@@ -220,13 +220,13 @@ export default class App extends Component {
           )}
         />
 
-        <Route
+        {/* <Route
           exact
           path="/product/upload"
           render={() => {
             return <Redirect to="/login" />;
           }}
-        />
+        /> */}
       </React.Fragment>
     );
   }

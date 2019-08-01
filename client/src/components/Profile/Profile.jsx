@@ -23,7 +23,6 @@ export default class Profile extends Component {
 
   getProfile = () => {
     const name = this.props.match.params.name;
-    console.log(name)
     // const params = this.props._id;
     this.service.getUser(name).then(response => {
       this.setState(response);
@@ -79,9 +78,6 @@ export default class Profile extends Component {
   };
 
   render() {
-
-    console.log(this.state)
-    console.log(this.props)
 
     if (this.props.username === this.props.match.params.name) {
       return (
