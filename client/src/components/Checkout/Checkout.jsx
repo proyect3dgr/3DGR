@@ -48,6 +48,9 @@ export default class Checkout extends Component {
         name={this.props.name}
         description={this.props.description}
         amount={this.props.amount * 100}
+        image={
+          "https://res.cloudinary.com/rubvaldev/image/upload/v1564482712/thing-gallery/tumblr_pnws4g87zZ1uag7foo1_640.gif.gif"
+        }
         token={this.onToken(this.props.amount, this.props.description)}
         currency={this.currency}
         label={"PAY WITH RUBENS"}

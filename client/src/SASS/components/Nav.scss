@@ -32,13 +32,14 @@
   .name {
     font-family: "Bungee Outline", cursive;
 
-    color: rgb(8, 4, 46);
+    //color: rgb(8, 4, 46);
+    color: azure;
     font-size: 4rem;
     font-weight: bold;
     opacity: 0.8;
     padding: 0 2rem;
     transition: all 0.5s ease-in-out;
-    text-shadow: 2px 2px 5px black;
+    text-shadow: 5px 5px 5px black;
     
     
     &:hover {

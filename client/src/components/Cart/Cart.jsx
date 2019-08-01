@@ -64,9 +64,7 @@ export default class Cart extends Component {
                   </div>
                   <div>
                     <button
-                      onClick={() =>
-                        this.removeProductFromBasket(cartItem.id)
-                      }
+                      onClick={() => this.removeProductFromBasket(cartItem.id)}
                     >
                       Delete
                     </button>
