@@ -95,7 +95,7 @@ export default class Profile extends Component {
               <div className="description">
                 <p className="title">About Me</p>
                 <p>{this.state.about}</p>
-                <Link to={"/profile/settings"}>
+                <Link to={"/settings"}>
                   <div className="edit">
                     <img src={edit} alt="edit" />
                   </div>
